@@ -6,394 +6,8 @@
     <title>Merchandise Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="merchandise.css">    
     <script defer src="script.js"></script>
-    <style>
-        /* Existing styles */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-        }
-        /* Navbar styling */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background: transparent; /* Slightly transparent */
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-/* Logo */
-.logo {
-    color: #fff;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-/* Navigation links */
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links li {
-    display: inline-block;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    padding: 8px 12px;
-    transition: 0.3s;
-    border-radius: 5px;
-}
-.snackbar {
-            visibility: hidden;
-            min-width: 250px;
-            margin-left: -125px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 16px;
-            position: fixed;
-            z-index: 1002;
-            left: 50%;
-            bottom: 30px;
-            font-size: 14px;
-            transition: visibility 0.3s, opacity 0.3s;
-            opacity: 0;
-        }
-
-        .snackbar.success {
-            background-color: #4114e4;
-        }
-
-        .snackbar.error {
-            background-color: #f44336;
-        }
-
-        .snackbar.show {
-            visibility: visible;
-            opacity: 1;
-        }
-
-/* Hover & Active Effects */
-.nav-links a:hover,
-.nav-links a.active {
-    background-color: #ff6600;
-    color: white;
-}
-
-/* Mobile menu button */
-.hamburger {
-    display: none;
-    font-size: 28px;
-    color: white;
-    cursor: pointer;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background: rgba(0, 0, 0, 0.8);
-        width: 200px;
-        border-radius: 5px;
-        padding: 10px 0;
-    }
-
-    .nav-links li {
-        text-align: center;
-        padding: 10px 0;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    /* Show menu when active */
-    .nav-links.active {
-        display: flex;
-    }
-}
-
-        .hero {
-            background: url('img/tbm.jpg') no-repeat center center/cover;
-            height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-        }
-
-        .hero h1 {
-            font-size: 2rem;
-            margin: 0;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 1.8rem;
-            color: #333;
-            margin: 30px 0 10px;
-        }
-        .promo-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 50px;
-  background-color: #fafafa;
-  font-family: 'Poppins', sans-serif;
-}
-
-.promo-content {
-  max-width: 50%;
-}
-
-.promo-content h4 {
-  font-size: 16px;
-  font-family: 'Poppins', sans-serif;
-  color: #888;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-.promo-content h1 {
-  font-size: 48px;
-  font-family: 'Poppins', sans-serif;
-  color: #000;
-  margin-bottom: 20px;
-}
-
-.shop-now-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #f23e3e;
-  color: #fff;
-  text-decoration: none;
-  font-size: 16px;
-  font-family: 'Poppins', sans-serif;
-  border-radius: 5px;
-}
-
-.promo-image img {
-  max-width: 60%;
-  height: auto;
-}
-
-.promo-features {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 50px;
-  background-color: #fff;
-}
-
-.feature-item {
-  text-align: center;
-  max-width: 20%;
-}
-
-.feature-item img {
-  max-width: 50px;
-  margin-bottom: 10px;
-}
-
-.feature-item p {
-  font-size: 20px;
-  font-family: 'Poppins', sans-serif;
-  color: #333;
-}
-
-.feature-item span {
-  font-size: 16px;
-  color: #888;
-  font-family: 'Poppins', sans-serif;
-}
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .product {
-            background: #fff;
-            padding: 15px;
-            text-align: center;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .product img {
-            width: 100%;
-            border-radius: 5px;
-            transition: transform 0.3s ease;
-        }
-
-        .product p {
-            font-size: 1rem;
-            margin: 10px 0;
-            color: #333;
-        }
-
-        .product span {
-            font-weight: bold;
-            color: #000;
-        }
-        /* Hover effect for product cards */
-.product:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.product:hover img {
-    transform: scale(1.05); /* Slightly enlarge the image */
-}
-
-.product:hover p, 
-.product:hover span {
-    color: #007bff; /* Change text color on hover */
-}
-
-        /* New styles for cart functionality */
-        .cart-icon {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #ff6600;
-            color: white;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #ff0000;
-            color: white;
-            border-radius: 50%;
-            padding: 4px 8px;
-            font-size: 12px;
-        }
-
-        .cart-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 300px;
-            height: 100%;
-            background: white;
-            box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-            z-index: 1001;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .close-cart {
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-
-        .cart-items {
-            margin-bottom: 20px;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .cart-total {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-
-        .quantity-selector {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .quantity-selector button {
-            background: #eee;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 3px;
-        }
-
-        .purchase-btn {
-            background: #ff6600;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            width: 50%;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
-
-        .purchase-btn:hover {
-            background: #ff8533;
-        }
-
-        .add-to-cart-btn {
-            background: #ff6600;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 8px;
-            width: 120px;
-            font-size: 0.9rem;
-            transition: background-color 0.2s ease;
-        }    
-
-            .add-to-cart-btn:hover {
-            background: #ff8533;
-        }
-        
-    </style>
 </head>
 <body>
     <div class="snackbar" id="snackbar"></div>
@@ -465,8 +79,8 @@
             <h2 class="section-title">T-Shirts</h2>
             <div class="products">
                 <div class="product">
-                    <img src="img/T1.png" alt="Fearless Tee (Port)">
-                    <p>Fearless Tee (Port)</p>
+                    <img src="img/T1.png" alt="Fearless Tee (White)">
+                    <p>Fearless T-shirt (White)</p>
                     <span>KSh 799.00</span>
                     <div class="quantity-selector">
                         <button onclick="updateQuantity('tee-port', -1)">-</button>
@@ -486,7 +100,7 @@
                 </div>
                 <div class="product">
                     <img src="img/T2.png" alt="Fearless Tee (Deep Forest)">
-                    <p>Fearless Tee </p>
+                    <p>Fearless T-shirt (Grey)</p>
                     <span>KSh 799.00</span>
                     <div class="quantity-selector">
                         <button onclick="updateQuantity('tee-forest', -1)">-</button>
@@ -506,7 +120,7 @@
                 </div>
                 <div class="product">
                     <img src="img/T3.png" alt="Fearless Tee (Bone)">
-                    <p>Fearless Tee (Bone)</p>
+                    <p>Fearless T-shirt (Yellow)</p>
                     <span>KSh 799.00</span>
                     <div class="quantity-selector">
                         <button onclick="updateQuantity('tee-bone', -1)">-</button>
@@ -526,7 +140,7 @@
                 </div>
                 <div class="product">
                     <img src="img/T4.png" alt="Fearless Tee (Charcoal)">
-                    <p>Fearless Tee (Charcoal)</p>
+                    <p>Fearless T-shirt (Black)</p>
                     <span>KSh 799.00</span>
                     <div class="quantity-selector">
                         <button onclick="updateQuantity('tee-charcoal', -1)">-</button>
@@ -593,7 +207,7 @@
                 </div>
                 <div class="product">
                     <img src="img/j3.png" alt="Fearless Hoodie (Navy)">
-                    <p>Fearless Hoodie (Navy)</p>
+                    <p>Fearless Hoodie (White)</p>
                     <span>KSh 1,500.00</span>
                     <div class="quantity-selector">
                         <button onclick="updateQuantity('hoodie-navy', -1)">-</button>
@@ -613,7 +227,7 @@
                 </div>
                 <div class="product">
                     <img src="img/j4.png" alt="Fearless Hoodie (Olive)">
-                    <p>Fearless Hoodie (Olive)</p>
+                    <p>Fearless Hoodie (Red)</p>
                     <span>KSh 1,500.00</span>
                     <div class="quantity-selector">
                         <button onclick="updateQuantity('hoodie-olive', -1)">-</button>
@@ -680,7 +294,7 @@
                 </div>
                 <div class="product">
                     <img src="img/h3.png" alt="Fearless Cap (Navy)">
-                    <p>Fearless Cap (Navy)</p>
+                    <p>Fearless Cap (Red)</p>
                     <span>KSh 400.00</span>
                     <div class="quantity-selector">
                         <button onclick="updateQuantity('cap-navy', -1)">-</button>
@@ -700,7 +314,7 @@
                 </div>
                 <div class="product">
                     <img src="img/h4.png" alt="Fearless Cap (Olive)">
-                    <p>Fearless Cap (Olive)</p>
+                    <p>Fearless Cap (White)</p>
                     <span>KSh 400.00</span>
                     <div class="quantity-selector">
                         <button onclick="updateQuantity('cap-olive', -1)">-</button>
@@ -722,159 +336,6 @@
         </section>
     </main>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-    const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".nav-links");
-
-    hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-    });
-});
-
-    </script>    
-
-<script>
-    // Snackbar function
-    function showSnackbar(message, type = 'success') {
-        const snackbar = document.getElementById('snackbar');
-        snackbar.textContent = message;
-        snackbar.className = `snackbar ${type} show`;
-
-        // Hide after 3 seconds
-        setTimeout(() => {
-            snackbar.className = 'snackbar';
-        }, 3000);
-    }
-
-    let cart = [];
-    let cartTotal = 0;
-
-    function updateCartCount() {
-        const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-        document.querySelector('.cart-count').textContent = count;
-    }
-
-    function updateCartDisplay() {
-        const cartItems = document.querySelector('.cart-items');
-        cartItems.innerHTML = '';
-        cartTotal = 0;
-
-        cart.forEach(item => {
-            const itemTotal = item.price * item.quantity;
-            cartTotal += itemTotal;
-            
-            cartItems.innerHTML += `
-                <div class="cart-item">
-                    <div>
-                        <p>${item.name}</p>
-                        <p>KSh ${item.price} x ${item.quantity}</p>
-                    </div>
-                    <button onclick="removeFromCart('${item.id}')">&times;</button>
-                </div>
-            `;
-        });
-
-        document.getElementById('cart-total-amount').textContent = cartTotal;
-    }
-
-    function toggleCart() {
-        const cartModal = document.querySelector('.cart-modal');
-        cartModal.style.display = cartModal.style.display === 'block' ? 'none' : 'block';
-    }
-
-    function updateQuantity(productId, change) {
-        const qtyElement = document.getElementById(`qty-${productId}`);
-        let quantity = parseInt(qtyElement.textContent) + change;
-        if (quantity < 1) quantity = 1;
-        if (quantity > 10) quantity = 10;
-        qtyElement.textContent = quantity;
-    }
-
-    function addToCart(name, price, id) {
-        const quantity = parseInt(document.getElementById(`qty-${id}`).textContent);
-        const size = document.querySelector(`#qty-${id}`).parentElement.nextElementSibling.value;
-        const existingItem = cart.find(item => item.id === id);
-
-        if (existingItem) {
-            existingItem.quantity += quantity;
-        } else {
-            cart.push({ id, name, price, quantity, size });
-        }
-
-        updateCartCount();
-        updateCartDisplay();
-        
-        showSnackbar(`Added ${quantity} ${name} to cart`, 'success');
-    }
-
-    function removeFromCart(productId) {
-        const removedItem = cart.find(item => item.id === productId);
-        if (removedItem) {
-            cart = cart.filter(item => item.id !== productId);
-            updateCartCount();
-            updateCartDisplay();
-            showSnackbar(`Removed ${removedItem.name} from cart`, 'success');
-        }
-    }
-
-    async function checkout() {
-        if (cart.length === 0) {
-            showSnackbar('Your cart is empty!', 'error');
-            return;
-        }
-
-        // Show loading state
-        const purchaseBtn = document.querySelector('.purchase-btn');
-        purchaseBtn.disabled = true;
-        purchaseBtn.innerHTML = 'Processing... <span class="loading-spinner"></span>';
-
-        try {
-            const response = await fetch('http://localhost:5000/api/send-order', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    items: cart,
-                    total: cartTotal
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
-
-            if (data.success) {
-                showSnackbar('Order placed successfully! We will contact you soon with payment details.', 'success');
-                cart = [];
-                updateCartCount();
-                updateCartDisplay();
-                toggleCart();
-            } else {
-                throw new Error(data.message || 'Order processing failed');
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            showSnackbar(error.message || 'There was an error processing your order. Please try again.', 'error');
-        } finally {
-            // Reset button state
-            purchaseBtn.disabled = false;
-            purchaseBtn.textContent = 'Purchase';
-        }
-    }
-
-    // Mobile menu handler
-    document.addEventListener("DOMContentLoaded", () => {
-        const hamburger = document.querySelector(".hamburger");
-        const navLinks = document.querySelector(".nav-links");
-
-        hamburger.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
-        });
-    });
-</script>
+        <script src="merchandise.js"></script>
 </body>
 </html>

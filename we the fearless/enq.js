@@ -53,7 +53,7 @@
     logoutBtn.addEventListener('click', () => {
         // In a real app, you would call your logout API
         localStorage.removeItem('authToken');
-        window.location.href = 'login.html';
+        window.location.href = 'index.html';
     });
 
     // Modal controls

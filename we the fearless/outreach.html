@@ -3,298 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Outreach</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #121212; /* Dark background */
-      color: #ffffff; /* Light text */
-      overflow-x: hidden;
-    }
-    /* Logo styling */
-.logo-overlay {
-    position: absolute;
-    top: 0px;
-    left: 40px;
-    z-index: 1001;
-}
-
-.logo-overlay img {
-    height: 120px;
-}
-
-/* Navbar */
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    font-family: 'Poppins', sans-serif; /* Use Poppins font */
-    padding: 10px 20px;
-    position: relative;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    background: #000;
-    height: 130px;
-}
-
-/* Nav links */
-.nav-links {
-    display: flex;
-    gap: 20px;
-    margin-right: 20px;
-}
-
-.nav-links a {
-    position: relative;
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    font-family: 'Poppins', sans-serif; /* Use Poppins font */
-    padding: 10px 20px;
-    border-radius: 50px; /* Makes the highlight oval */
-    transition: all 0.3s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    background: #ffae00; /* Highlight background color */
-    color: #000; /* Text color when active or hovered */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Add a shadow for effect */
-}
-
-/* Hamburger menu */
-.hamburger {
-    display: none;
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-/* Mobile responsive styles */
-@media screen and (max-width: 768px) {
-    .hamburger {
-        display: block;
-        position: fixed;
-        right: 20px;
-        top: 20px;
-    }
-
-    .nav-links {
-        position: fixed;
-        right: -100%;
-        top: 0;
-        flex-direction: column;
-        background: #000;
-        height: 100vh;
-        width: 250px;
-        padding-top: 80px;
-        transition: 0.3s ease;
-        margin: 0;
-    }
-
-    .nav-links.active {
-        right: 0;
-    }
-
-    .nav-links a {
-        padding: 15px 25px;
-        width: 100%;
-        display: block;
-    }
-
-    .logo-overlay img {
-        height: 100px;
-    }
-}
-
-    header {
-      background: url('header-image.jpg') no-repeat center center/cover;
-      height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    header h1 { 
-      font-size: 3rem;
-      color: white;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    }
-
-    .testimonial-section {
-    text-align: center;
-    background-color: #121212; /* Greyish white background */
-    padding: 0; /* Only vertical padding, no horizontal padding */
-    margin: 0; /* Remove default margins */
-    width: 100%; /* Ensure the section takes up the full width */
-    color: #121212; /* Default text color in black */
-}
-
-.testimonial-section blockquote {
-    font-style: italic;
-    font-size: 1.5rem;
-    line-height: 1.6;
-    color: #fff; /* Make blockquote text black */
-    font-weight: bold; /* Make text bold */
-}
-
-.testimonial-section cite {
-    display: block;
-    margin-top: 10px;
-    color: #fff; /* Make citation black */
-    font-weight: bold; /* Make citation bold */
-}
-    .sermons-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .sermon-card {
-      background-color: #1e1e1e;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    .sermon-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .sermon-content {
-      padding: 15px;
-    }
-    .sermon-content h3 {
-      margin: 10px 0;
-      color: #f0c040;
-    }
-    .sermon-meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-      color: #bbb;
-    }
-    .video-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #121212;
-            padding: 40px 20px;
-            color: #fff;
-        }
-
-        .video-content {
-            max-width: 1200px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .video-text {
-            flex: 1;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .video-embed {
-            flex: 1;
-            max-width: 600px;
-        }
-
-        .video-embed iframe {
-            width: 100%;
-            height: 340px;
-            border: none;
-        }
-        .thank-you-message {
-         margin-top: 20px;
-        }
-
-        .thank-you-message p {
-         color: white;
-         font-style: italic;
-         font-size: 1.2rem;
-}
-/* Footer */
-.footer {
-    background-color: #222; /* Matches dark theme in screenshot */
-    color: #fff;
-    padding: 40px 20px; /* Increased padding for better spacing */
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.footer .footer-column {
-    flex: 1 1 30%; /* Allows responsive layout */
-    margin: 10px; /* Adds spacing between columns */
-}
-
-.footer .footer-column h4 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.footer .footer-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer .footer-column ul li {
-    margin: 5px 0;
-}
-
-.footer .footer-column ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.9rem;
-}
-
-.footer .footer-column ul li a:hover {
-    color: #ffae00;
-    text-decoration: underline;
-}
-
-.footer .footer-socials {
-    text-align: left;
-    margin-top: 20px;
-}
-
-.footer .footer-socials a {
-    color: #fff;
-    font-size: 1.5rem;
-    margin: 0 10px;
-    text-decoration: none;
-}
-
-.footer .footer-socials a:hover {
-    color: #ffae00;
-}
-
-.footer .footer-copyright {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: #888;
-}
-
-.footer .footer-copyright span {
-    font-weight: bold;
-}
-
-
-    
-  </style>
+  <title>Outreach - The Fearless Movement</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Join The Fearless Movement's outreach programs and mission trips. Experience life-changing community service and spiritual growth.">
+  <link rel="stylesheet" href="outreach.css">
 </head>
 <body>
   
@@ -319,117 +32,540 @@
   </div>
   
   <!-- Hamburger Menu Icon -->
-  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </div>
 
-<header>
-  <h1>Outreach</h1>
-</header>
-<section>
-    <div class="testimonial-section">
-        <blockquote>
-            <p>Our Missions and outreach programs are spearheaded by passionate young individuals with a deep hunger to spread 
-              the Gospel and bring many people to Christ. These initiatives are driven by a desire to transform lives, offering hope,
-               compassion, and spiritual guidance to communities in need. Through dynamic events, service projects, and personal
-                interactions, the movement seeks to share God's love and create lasting change. By empowering youth and leveraging
-                 their energy, creativity, and commitment, these missions foster unity and inspire others to join in the great
-                  commission of spreading the Good News far and wide.
-            <cite></cite>
-        </blockquote>
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Outreach</h1>
+    <p class="hero-subtitle">Transforming Communities Through Faith and Action</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number" data-target="500">0</div>
+        <div class="stat-label">Lives Touched</div>
       </div>
-</section>
-<section>
-<div class="sermons-container">
-  <div class="sermon-card">
-    <img src="img/fe5.jpg" alt="Sermon 1">
-    <div class="sermon-content">
-      <h3>Jesus Came to Bring Joy</h3>
-      <div class="sermon-meta">
-        <span>February 18, 2023</span>
-        <span>CMSEMASTERS</span>
+      <div class="stat-item">
+        <div class="stat-number" data-target="25">0</div>
+        <div class="stat-label">Communities Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="50">0</div>
+        <div class="stat-label">Mission Trips</div>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="sermon-card">
-    <img src="img/pj1.jpg" alt="Sermon 2">
-    <div class="sermon-content">
-      <h3>Is "Repent" in the Gospel?</h3>
-      <div class="sermon-meta">
-        <span>February 16, 2023</span>
-        <span>CMSEMASTERS</span>
+<!-- Mission Statement -->
+<section class="mission-section">
+  <div class="container">
+    <div class="mission-content">
+      <div class="mission-icon">
+        <i class="fas fa-heart"></i>
+      </div>
+      <blockquote class="mission-quote">
+        <p>Our Missions and Outreach programs are led by bold, faith-driven young individuals who are committed to living as "the light of the world." With hearts on fire for Christ, they are equipped and inspired to actively participate in the Great Commission. Through intentional small groups, dynamic events, and strategic service projects, these efforts aim to disciple, empower, and transform communities with hope, compassion, and truth.</p>
+        <cite>- The Fearless Movement Mission</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- Outreach Programs -->
+<section class="programs-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Our Outreach Programs</h2>
+      <p>Discover the various ways we're making an impact in communities</p>
+    </div>
+    
+    <div class="programs-grid">
+      <div class="program-card" data-aos="fade-up">
+        <div class="program-icon">
+          <i class="fas fa-hands-helping"></i>
+        </div>
+        <h3>Community Service</h3>
+        <p>Regular volunteer activities serving local communities with practical needs and spiritual support.</p>
+        <div class="program-stats">
+          <span><i class="fas fa-users"></i> 100+ Volunteers</span>
+          <span><i class="fas fa-calendar"></i> Weekly Events</span>
+        </div>
+      </div>
+      
+      <div class="program-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="program-icon">
+          <i class="fas fa-globe-americas"></i>
+        </div>
+        <h3>Mission Trips</h3>
+        <p>Life-changing journeys across the country bringing hope and the Gospel to underserved areas.</p>
+        <div class="program-stats">
+          <span><i class="fas fa-map-marker-alt"></i> 15 States</span>
+          <span><i class="fas fa-clock"></i> Year-round</span>
+        </div>
+      </div>
+      
+      <div class="program-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="program-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h3>Youth Discipleship</h3>
+        <p>Mentoring and training programs equipping young leaders for effective ministry and outreach.</p>
+        <div class="program-stats">
+          <span><i class="fas fa-user-graduate"></i> 50+ Mentees</span>
+          <span><i class="fas fa-book"></i> Ongoing Training</span>
+        </div>
+      </div>
+      
+      <div class="program-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="program-icon">
+          <i class="fas fa-home"></i>
+        </div>
+        <h3>Local Outreach</h3>
+        <p>Neighborhood initiatives focusing on building relationships and meeting immediate community needs.</p>
+        <div class="program-stats">
+          <span><i class="fas fa-house-user"></i> 200+ Families</span>
+          <span><i class="fas fa-heart"></i> Monthly Visits</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
-  <section class="video-section">
+
+<!-- Recent Sermons/Content -->
+<section class="sermons-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Recent Messages & Content</h2>
+      <p>Stay connected with our latest teachings and inspirational content</p>
+    </div>
+    
+    <div class="sermons-container">
+      <div class="sermon-card">
+        <div class="sermon-image">
+          <img src="img/fe5.jpg" alt="Jesus Came to Bring Joy">
+          <div class="sermon-overlay">
+            <button class="like-btn" onclick="likeSermon('sermon1')">
+              <i class="fas fa-heart"></i>
+              <span class="like-count">24</span>
+            </button>
+          </div>
+        </div>
+        <div class="sermon-content">
+          <div class="sermon-category">Inspirational</div>
+          <h3>Jesus Came to Bring Joy</h3>
+          <p>Discover the true source of lasting joy and how Christ's presence transforms our daily lives.</p>
+          <div class="sermon-meta">
+            <div class="sermon-date">
+              <i class="fas fa-calendar"></i>
+              <span>February 18, 2023</span>
+            </div>
+            <div class="sermon-author">
+              <i class="fas fa-user"></i>
+              <span>CMSEMASTERS</span>
+            </div>
+          </div>
+          <div class="sermon-actions">
+            <button class="btn-secondary" onclick="likeSermon('sermon1')">
+              <i class="fas fa-thumbs-up"></i> Like
+            </button>
+            <button class="btn-outline" onclick="shareSermon('sermon1')">
+              <i class="fas fa-share"></i> Share
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="sermon-card">
+        <div class="sermon-image">
+          <img src="img/pj1.jpg" alt="Is Repent in the Gospel">
+          <div class="sermon-overlay">
+            <button class="like-btn" onclick="likeSermon('sermon2')">
+              <i class="fas fa-heart"></i>
+              <span class="like-count">18</span>
+            </button>
+          </div>
+        </div>
+        <div class="sermon-content">
+          <div class="sermon-category">Teaching</div>
+          <h3>Is "Repent" in the Gospel?</h3>
+          <p>Exploring the essential role of repentance in the Gospel message and Christian faith.</p>
+          <div class="sermon-meta">
+            <div class="sermon-date">
+              <i class="fas fa-calendar"></i>
+              <span>February 16, 2023</span>
+            </div>
+            <div class="sermon-author">
+              <i class="fas fa-user"></i>
+              <span>CMSEMASTERS</span>
+            </div>
+          </div>
+          <div class="sermon-actions">
+            <button class="btn-secondary" onclick="likeSermon('sermon2')">
+              <i class="fas fa-thumbs-up"></i> Like
+            </button>
+            <button class="btn-outline" onclick="shareSermon('sermon2')">
+              <i class="fas fa-share"></i> Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!--<div class="load-more-container">NB:THIS ONE IS FOR LATER USE 
+      <button class="btn-primary load-more-btn" onclick="loadMoreSermons()">
+        <i class="fas fa-plus"></i> Load More Messages
+      </button>-->
+    </div>
+  </div>
+</section>
+
+<!-- Featured Video Section -->
+<section class="video-section">
+  <div class="container">
     <div class="video-content">
-        <!-- Text section for the video area -->
-        <div class="video-text">
-            Step Into the Future with The Fearless Movement Mission trips
-            <p>Embark on life-changing missions and outreach programs across the country with us today.</p>
+      <div class="video-text-content">
+        <div class="video-badge">Featured Video</div>
+        <h2 class="video-title">Step Into the Future with The Fearless Movement</h2>
+        <p class="video-description">Embark on life-changing missions and outreach programs across the country with us today. Experience transformation, build lasting relationships, and make a real difference in communities that need hope.</p>
+        <div class="video-features">
+          <div class="feature-item">
+            <i class="fas fa-check"></i>
+            <span>Life-changing experiences</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check"></i>
+            <span>Community impact</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-check"></i>
+            <span>Spiritual growth</span>
+          </div>
         </div>
-        <!-- Facebook video embed -->
-        <div class="video-embed">
-            <iframe
-                src="https://www.youtube.com/embed/M2NLS7-u7X4?si=QLnQS1wKBQEWCLxW"
-                allow="autoplay; encrypted-media"
-                allowfullscreen>
-            </iframe>
+        <div class="video-cta">
+          <button class="btn-primary" onclick="joinMission()">
+            <i class="fas fa-hands-helping"></i> Join Our Mission
+          </button>
+          <button class="btn-outline" onclick="learnMore()">
+            <i class="fas fa-info-circle"></i> Learn More
+          </button>
         </div>
-    </div>
-</section>
-  <!-- Add more sermon cards as necessary -->
-</div>
-
-<div class="footer">
-  <!-- Left Column -->
-  <div class="footer-column">
-      <h4>The Fearlessmovement</h4>
-      <p> Nurturing a fearless generation ready to uplift their communities and inspire the world.</p>
-      <div class="footer-socials">
-          <a href="https://twitter.com/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="https://instagram.com/the.fearlessmovement" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.facebook.com/thefearlessmovement" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.tiktok.com/@the.fearless.move" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
       </div>
+      
+      <div class="video-embed-container">
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/M2NLS7-u7X4?si=QLnQS1wKBQEWCLxW"
+            title="The Fearless Movement Mission"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-overlay-text">
+          <span>Watch Our Story</span>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <!-- Middle Column -->
-  <div class="footer-column">
-      <h4>Our Store</h4>
-      <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#service">Service</a></li>
-          <li><a href="#contact">Contact</a></li>
-      </ul>
+<!-- Call to Action Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <div class="cta-icon">
+        <i class="fas fa-hands-praying"></i>
+      </div>
+      <h2>Ready to Make a Difference?</h2>
+      <p>Join thousands of young people who are transforming communities through faith-driven action. Your journey of impact starts here.</p>
+      <div class="cta-buttons">
+        <button class="btn-primary" onclick="getInvolved()">
+          <i class="fas fa-heart"></i> Get Involved
+      <!-- </button>THIS BUTTON IS FOR LATER USE
+        <button class="btn-secondary" onclick="scheduleMeeting()">
+          <i class="fas fa-calendar-plus"></i> Schedule a Meeting
+        </button>-->
+      </div>
+    </div>
   </div>
+</section>
 
-  <!-- Right Column -->
-  <div class="footer-column">
-      <h4>Get In Touch</h4>
-      <ul>
-        <li><i class="fas fa-map-marker-alt"></i> 04, Funzi Road Nairobi</li>
-        <li><i class="fas fa-phone"></i> +254 710 899453</li>
-        <li><i class="fas fa-phone"></i> +254 710 899453</li>
-        <li><i class="fas fa-envelope"></i> thefearlessmovement1@gmail.com</li>
-      </ul>
+<!-- Newsletter Signup -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-content">
+      <div class="newsletter-text">
+        <h3>Stay Connected</h3>
+        <p>Get updates on our latest outreach programs, mission trips, and inspiring stories from the field.</p>
+      </div>
+      <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+        <div class="form-group">
+          <input type="email" placeholder="Enter your email address" required>
+          <button type="submit" class="btn-primary">
+            <i class="fas fa-paper-plane"></i> Subscribe
+          </button>
+        </div>
+        <div class="form-checkbox">
+          <input type="checkbox" id="consent" required>
+          <label for="consent">I agree to receive updates and communications from The Fearless Movement</label>
+        </div>
+      </form>
+    </div>
   </div>
+</section>
 
-  <!-- Copyright -->
-  <div class="footer-copyright">
-      &copy; 2024 <span>The Fearlessmovement</span>. All rights reserved
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <!-- Left Column -->
+      <div class="footer-column">
+        <div class="footer-logo">
+          <img src="img/2f.png" alt="The Fearless Movement">
+          <h4>The Fearless Movement</h4>
+        </div>
+        <p>Nurturing a fearless generation ready to uplift their communities and inspire the world through faith, action, and love.</p>
+        <div class="footer-socials">
+          <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://instagram.com/the.fearlessmovement" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/thefearlessmovement" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.tiktok.com/@the.fearless.move" target="_blank" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="outreach.html">Outreach</a></li>
+          <li><a href="merchandise.html">Merchandise</a></li>
+          <li><a href="donations.html">Donations</a></li>
+        </ul>
+      </div>
+
+      <!-- Programs -->
+      <div class="footer-column">
+        <h4>Our Programs</h4>
+        <ul>
+          <li><a href="#missions">Mission Trips</a></li>
+          <li><a href="#community">Community Service</a></li>
+          <li><a href="#discipleship">Youth Discipleship</a></li>
+          <li><a href="#local">Local Outreach</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-column">
+        <h4>Get In Touch</h4>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>04, Funzi Road Nairobi, Kenya</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+254 710 899453</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>thefearlessmovement1@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <span>Mon - Fri: 9:00 AM - 6:00 PM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        &copy; 2024 <span>The Fearless Movement</span>. All rights reserved.
+      </div>
+      <div class="footer-links">
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+        <a href="#cookies">Cookie Policy</a>
+      </div>
+    </div>
   </div>
-</div>
+</footer>
 
+<!-- Scripts -->
 <script>
+  // Navigation Toggle
   function toggleMenu() {
-      const navLinks = document.getElementById('nav-links');
-      navLinks.classList.toggle('active');
+    const navLinks = document.getElementById('nav-links');
+    const hamburger = document.querySelector('.hamburger');
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('active');
   }
-  </script>
+
+  // Animated Counter for Stats
+  function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-target'));
+      const count = +counter.innerText;
+      const increment = target / 100;
+      
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(() => animateCounters(), 50);
+      } else {
+        counter.innerText = target;
+      }
+    });
+  }
+
+  // Sermon Actions
+  function playSermon(sermonId) {
+    alert(`Playing sermon: ${sermonId}`);
+    // Implement actual audio/video player logic here
+  }
+
+  function shareSermon(sermonId) {
+    if (navigator.share) {
+      navigator.share({
+        title: 'The Fearless Movement - Sermon',
+        text: 'Check out this inspiring message!',
+        url: window.location.href
+      });
+    } else {
+      // Fallback for browsers that don't support Web Share API
+      const url = window.location.href;
+      navigator.clipboard.writeText(url);
+      alert('Link copied to clipboard!');
+    }
+  }
+
+  function loadMoreSermons() {
+    alert('Loading more sermons...');
+    // Implement load more functionality
+  }
+
+  // CTA Actions
+  function joinMission() {
+    window.location.href = 'contact.html';
+  }
+
+  function learnMore() {
+    window.location.href = 'about.html';
+  }
+
+  function getInvolved() {
+    window.location.href = 'contact.html';
+  }
+
+  function scheduleMeeting() {
+    alert('Redirecting to scheduling system...');
+    // Implement scheduling logic
+  }
+
+  // Newsletter Subscription
+  function subscribeNewsletter(event) {
+    event.preventDefault();
+    const email = event.target.querySelector('input[type="email"]').value;
+    alert(`Thank you for subscribing with email: ${email}`);
+    event.target.reset();
+  }
+
+  // Smooth Scrolling for Internal Links
+  document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Start counter animation when page loads
+    setTimeout(animateCounters, 1000);
+  });
+
+  // Scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+      }
+    });
+  }, observerOptions);
+
+  // Observe elements for animation
+  document.addEventListener('DOMContentLoaded', function() {
+    const animateElements = document.querySelectorAll('.program-card, .sermon-card');
+    animateElements.forEach(el => observer.observe(el));
+  });
+  function likeSermon(sermonId) {
+  const likeBtn = document.querySelector(`[onclick="likeSermon('${sermonId}')"]`);
+  const heartBtn = document.querySelector(`.sermon-card .like-btn[onclick="likeSermon('${sermonId}')"]`);
+  const likeCount = heartBtn ? heartBtn.querySelector('.like-count') : null;
+  
+  if (heartBtn && !heartBtn.classList.contains('liked')) {
+    heartBtn.classList.add('liked');
+    if (likeCount) {
+      const currentCount = parseInt(likeCount.textContent);
+      likeCount.textContent = currentCount + 1;
+    }
+    
+    // Update the thumbs up button text
+    const thumbsBtn = likeBtn.querySelector('i').parentElement;
+    thumbsBtn.innerHTML = '<i class="fas fa-thumbs-up"></i> Liked';
+    thumbsBtn.style.background = '#4CAF50';
+    thumbsBtn.style.color = 'white';
+  }
+}
+
+function shareSermon(sermonId) {
+  // Simple share functionality
+  const sermonCard = document.querySelector(`[onclick="shareSermon('${sermonId}')"]`).closest('.sermon-card');
+  const sermonTitle = sermonCard.querySelector('h3').textContent;
+  
+  if (navigator.share) {
+    navigator.share({
+      title: sermonTitle,
+      text: `Check out this inspiring message: ${sermonTitle}`,
+      url: window.location.href
+    });
+  } else {
+    // Fallback for browsers that don't support Web Share API
+    const shareText = `Check out this inspiring message: ${sermonTitle} - ${window.location.href}`;
+    navigator.clipboard.writeText(shareText).then(() => {
+      alert('Share link copied to clipboard!');
+    });
+  }
+}
+</script>
 
 </body>
 </html>
-

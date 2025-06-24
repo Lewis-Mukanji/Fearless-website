@@ -31,15 +31,19 @@
                 <span>💰</span>
                 <span>Donations</span>
             </a>
-            <a href="admintickets.html" class="nav-item">
+            <!-- <a href="admintickets.html" class="nav-item">
                 <span>👥</span>
                 <span>Tickets</span>
-            </a>
-            <a href="adminorders.html" class="nav-item">
+            </a> -->
+            <a href="adminmerch.html" class="nav-item">
                 <span>📝</span>
-                <span>Orders</span>
+                <span>Merchandise</span>
             </a>
-            <a href="#" class="nav-item">
+            <a href="adminvolunteers.html" class="nav-item">
+                <span>📝</span>
+                <span>Volunteers</span>
+            </a>
+            <a href="adminsettings.html" class="nav-item">
                 <span>⚙️</span>
                 <span>Settings</span>
             </a>
@@ -597,7 +601,7 @@
             localStorage.removeItem('authToken');
             localStorage.removeItem('user');
             localStorage.removeItem('adminUser');
-            window.location.href = 'login.html';
+            window.location.href = 'index.html';
           });
           
           document.getElementById('cancel-logout').addEventListener('click', hideSnackbar);

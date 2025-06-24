@@ -254,6 +254,55 @@ db.query(`CREATE TABLE IF NOT EXISTS events (
     }
   });
 
+// Create volunteers table
+db.query(`CREATE TABLE IF NOT EXISTS volunteers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(20),
+    code VARCHAR(50) UNIQUE NOT NULL,
+    assigned_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status ENUM('active', 'inactive') DEFAULT 'active'
+);`, (err) => {
+    if (err) {
+        console.error('Error creating volunteers table:', err);
+    } else {
+        console.log('Volunteers table created or already exists.');
+    }
+});
+
+// Create codes table
+db.query(`CREATE TABLE IF NOT EXISTS codes (
+    code VARCHAR(50) PRIMARY KEY,
+    is_assigned BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);`, (err) => {
+    if (err) {
+        console.error('Error creating codes table:', err);
+    } else {
+        console.log('Codes table created or already exists.');
+    }
+});
+
+// Create registrations table
+db.query(`CREATE TABLE IF NOT EXISTS registrations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    volunteer_code VARCHAR(50) NOT NULL,
+    member_name VARCHAR(255) NOT NULL,
+    phone VARCHAR(20),
+    event VARCHAR(255) NOT NULL,
+    amount_paid DECIMAL(10,2) NOT NULL,
+    balance DECIMAL(10,2) DEFAULT 0,
+    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (volunteer_code) REFERENCES volunteers(code)
+);`, (err) => {
+    if (err) {
+        console.error('Error creating registrations table:', err);
+    } else {
+        console.log('Registrations table created or already exists.');
+    }
+});
+
 // ==================== AUTHENTICATION FUNCTIONS ====================
 // Function to send login notification email
 const sendLoginNotification = async (email, username, loginTime, ipAddress) => {
@@ -724,7 +773,7 @@ app.post('/api/send-email', async (req, res) => {
 });
 
 // Modify your existing /api/submit-form route to handle both POST and GET
-app.route('/api/submit-form')
+ app.route('/api/submit-form')
   .post(async (req, res) => {
     // Your existing POST handler (for form submissions)
     try {
@@ -1873,6 +1922,263 @@ app.get('/api/admin/enquiries/time-distribution', authenticateToken, async (req,
             success: false,
             message: 'Failed to fetch time distribution'
         });
+    }
+});
+
+    //Get user profile
+ app.get('/api/user/profile', authenticateToken, (req, res) => {
+    const userId = req.user.id;
+
+    db.query('SELECT * FROM users WHERE id = ?', [userId], (err, results) => {
+        if (err) {
+            console.error('Error fetching user profile:', err);
+            return res.status(500).json({ 
+                success: false, 
+                message: 'Failed to fetch user profile' 
+            });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ 
+                success: false, 
+                message: 'User not found' 
+            });
+        }
+
+        res.json({
+            success: true,
+            profile: results[0]
+        });
+    });
+}); 
+
+// ==================== CODES ADMIN ROUTES ==================== 
+// Generate new codes
+app.post('/api/generate-codes', authenticateToken, async (req, res) => {
+    const { codes } = req.body;
+
+    try {
+        const timestamp = new Date().toISOString();
+        const values = codes.map(code => [code, timestamp]);
+
+        await db.promise().query(
+            'INSERT IGNORE INTO codes (code, created_at) VALUES ?',
+            [values]
+        );
+
+        res.json({ success: true, message: `${codes.length} codes generated successfully` });
+    } catch (error) {
+        console.error('Error generating codes:', error);
+        res.status(500).json({ success: false, message: 'Failed to generate codes' });
+    }
+});
+
+// Get all available codes
+app.get('/api/codes', authenticateToken, async (req, res) => {
+    try {
+        const [rows] = await db.promise().query('SELECT code, is_assigned FROM codes');
+        res.json({ success: true, codes: rows });
+    } catch (error) {
+        console.error('Error fetching codes:', error);
+        res.status(500).json({ success: false, message: 'Failed to fetch codes' });
+    }
+});
+
+// Assign code to volunteer
+app.post('/api/assign-volunteer', (req, res) => {
+    const { name, email, phone, code } = req.body;
+    // Change this line to use MySQL compatible format
+    const assignedDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
+    db.beginTransaction((err) => {
+        if (err) {
+            console.error('Error starting transaction:', err);
+            return res.status(500).json({ error: 'Failed to start transaction' });
+        }
+
+        // Check if code exists and is unassigned
+        db.query("SELECT code FROM codes WHERE code = ? AND is_assigned = 0", [code], (err, rows) => {
+            if (err) {
+                db.rollback(() => {
+                    console.error('Error checking code availability:', err);
+                    return res.status(500).json({ error: 'Failed to check code availability' });
+                });
+            }
+
+            if (rows.length === 0) {
+                db.rollback(() => {
+                    return res.status(400).json({ error: 'Code not available or already assigned' });
+                });
+            }
+
+            // Insert volunteer
+            db.query(
+                "INSERT INTO volunteers (name, email, phone, code, assigned_date) VALUES (?, ?, ?, ?, ?)",
+                [name, email, phone, code, assignedDate],
+                (err, result) => {
+                    if (err) {
+                        db.rollback(() => {
+                            console.error('Error inserting volunteer:', err);
+                            return res.status(500).json({ error: 'Failed to insert volunteer' });
+                        });
+                    }
+
+                    // Mark code as assigned
+                    db.query(
+                        "UPDATE codes SET is_assigned = 1 WHERE code = ?",
+                        [code],
+                        (err) => {
+                            if (err) {
+                                db.rollback(() => {
+                                    console.error('Error updating code status:', err);
+                                    return res.status(500).json({ error: 'Failed to update code status' });
+                                });
+                            }
+
+                            db.commit((err) => {
+                                if (err) {
+                                    db.rollback(() => {
+                                        console.error('Error committing transaction:', err);
+                                        return res.status(500).json({ error: 'Failed to commit transaction' });
+                                    });
+                                }
+
+                                res.json({
+                                    message: 'Volunteer assigned successfully',
+                                    volunteerId: result.insertId
+                                });
+                            });
+                        }
+                    );
+                }
+            );
+        });
+    });
+});
+
+
+// Get all volunteers
+app.get('/api/volunteers', authenticateToken, async (req, res) => {
+    try {
+        const [rows] = await db.promise().query(`
+            SELECT v.*, 
+                   COUNT(r.id) AS member_count,
+                   COALESCE(SUM(r.amount_paid), 0) AS total_revenue
+            FROM volunteers v
+            LEFT JOIN registrations r ON v.code = r.volunteer_code
+            GROUP BY v.id
+        `);
+
+        res.json({ success: true, volunteers: rows });
+    } catch (error) {
+        console.error('Error fetching volunteers:', error);
+        res.status(500).json({ success: false, message: 'Failed to fetch volunteers' });
+    }
+});
+
+// Add new registration
+app.post('/api/registrations', async (req, res) => {
+    const { volunteerCode, memberName, phone, event, amountPaid, balance } = req.body;
+    
+    // Validate required fields
+    if (!volunteerCode || !memberName || !event || amountPaid === undefined) {
+        return res.status(400).json({
+            success: false,
+            message: 'Missing required fields',
+            required: ['volunteerCode', 'memberName', 'event', 'amountPaid']
+        });
+    }
+
+    try {
+        // Check volunteer exists
+        const [volunteer] = await db.promise().query(
+            'SELECT id FROM volunteers WHERE code = ?', 
+            [volunteerCode]
+        );
+        
+        if (!volunteer.length) {
+            return res.status(400).json({
+                success: false,
+                message: 'Invalid volunteer code',
+                error: `Volunteer with code ${volunteerCode} not found`
+            });
+        }
+
+        // Insert registration
+        const [result] = await db.promise().query(
+            `INSERT INTO registrations 
+            (volunteer_code, member_name, phone, event, amount_paid, balance, registration_date) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)`,
+            [
+                volunteerCode, 
+                memberName, 
+                phone, 
+                event, 
+                amountPaid, 
+                balance || 0, 
+                new Date().toISOString().slice(0, 19).replace('T', ' ')
+            ]
+        );
+
+        res.json({
+            success: true,
+            message: 'Registration added successfully',
+            registrationId: result.insertId
+        });
+
+    } catch (err) {
+        console.error('Registration error:', err);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to add registration',
+            error: err.message
+        });
+    }
+});
+
+// Get all registrations
+app.get('/api/registrations', authenticateToken, async (req, res) => {
+    try {
+        const [rows] = await db.promise().query(`
+            SELECT 
+                r.volunteer_code as volunteerCode,
+                r.member_name as memberName,
+                r.phone,
+                r.event,
+                r.amount_paid as amountPaid,
+                r.balance,
+                r.registration_date as registrationDate,
+                v.name as volunteerName
+            FROM registrations r
+            LEFT JOIN volunteers v ON r.volunteer_code = v.code
+        `);
+
+        res.json({ success: true, registrations: rows });
+    } catch (error) {
+        console.error('Error fetching registrations:', error);
+        res.status(500).json({ success: false, message: 'Failed to fetch registrations' });
+    }
+});
+
+// Get members for a specific volunteer
+app.get('/api/volunteers/:code/members', authenticateToken, async (req, res) => {
+    const { code } = req.params;
+
+    try {
+        const [members] = await db.promise().query(
+            'SELECT * FROM registrations WHERE volunteer_code = ?',
+            [code]
+        );
+
+        const [volunteer] = await db.promise().query(
+            'SELECT name FROM volunteers WHERE code = ?',
+            [code]
+        );
+
+        res.json({ success: true, volunteer: volunteer[0], members });
+    } catch (error) {
+        console.error('Error fetching members:', error);
+        res.status(500).json({ success: false, message: 'Failed to fetch members' });
     }
 });
 

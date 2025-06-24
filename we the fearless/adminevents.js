@@ -704,6 +704,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Logout functionality
   document.getElementById('logout-btn').addEventListener('click', function() {
     localStorage.removeItem('authToken');
-    window.location.href = 'admin-login.html';
+    window.location.href = 'index.html';
   });
 });

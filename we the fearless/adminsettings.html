@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 0;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .admin-header {
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .admin-header h3 {
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .nav-menu li {
+            margin: 0;
+        }
+
+        .nav-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-left-color: #3498db;
+        }
+
+        .nav-menu i {
+            width: 18px;
+            font-size: 16px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .content-header {
+            background: white;
+            padding: 25px 30px;
+            border-bottom: 1px solid #e9ecef;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .content-header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .profile-content {
+            padding: 30px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .avatar-section {
+            padding: 30px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .avatar-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .avatar-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #e9ecef;
+        }
+
+        .avatar-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+
+        .btn-secondary {
+            background: #e9ecef;
+            color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #dee2e6;
+        }
+
+        .form-section {
+            padding: 30px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #6c757d;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3498db;
+            background: white;
+        }
+
+        .form-group input:disabled {
+            background: #f8f9fa;
+            color: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .form-actions {
+            padding: 20px 30px;
+            background: #f8f9fa;
+            text-align: right;
+        }
+
+        .btn-save {
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            font-size: 14px;
+            font-weight: 500;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-save:hover {
+            background: #2980b9;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .profile-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="admin-header">
+                <h3>
+                    <i class="fas fa-user-shield"></i>
+                    Admin Panel
+                </h3>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-hand-holding-heart"></i> Donations</a></li>
+                <li><a href="#"><i class="fas fa-shopping-cart"></i> Merchandise</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Events</a></li>
+                <li><a href="#" class="active"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="content-header">
+                <h1>Account</h1>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-card">
+                    <!-- Avatar Section -->
+                    <div class="avatar-section">
+                        <h3>Avatar</h3>
+                        <div class="avatar-container">
+                            <img src="https://via.placeholder.com/80x80/e9ecef/6c757d?text=User" alt="User Avatar" class="avatar" id="userAvatar">
+                            <div class="avatar-buttons">
+                                <button class="btn btn-primary" onclick="uploadAvatar()">Upload</button>
+                                <button class="btn btn-secondary" onclick="removeAvatar()">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Section -->
+                    <div class="form-section">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="displayName">Display name</label>
+                                <input type="text" id="displayName" placeholder="Enter display name" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="fullName">Full name</label>
+                                <input type="text" id="fullName" placeholder="Enter full name" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" id="email" placeholder="Enter email address" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="role">Role</label>
+                                <input type="text" id="role" placeholder="Enter role" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button class="btn-save" onclick="saveChanges()">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fetch user data dynamically
+        async function loadUserData() {
+            try {
+                const response = await fetch('/api/user/profile', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user data');
+                }
+
+                const userData = await response.json();
+
+                // Populate form fields with user data
+                document.getElementById('displayName').value = userData.displayName || '';
+                document.getElementById('fullName').value = userData.fullName || '';
+                document.getElementById('email').value = userData.email || '';
+                document.getElementById('role').value = userData.role || '';
+                document.getElementById('userAvatar').src = userData.avatar || 'https://via.placeholder.com/80x80/e9ecef/6c757d?text=User';
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+                alert('Failed to load user data.');
+            }
+        }
+
+        function uploadAvatar() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('userAvatar').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        }
+
+        function removeAvatar() {
+            const defaultAvatar = 'https://via.placeholder.com/80x80/e9ecef/6c757d?text=User';
+            document.getElementById('userAvatar').src = defaultAvatar;
+        }
+
+        function saveChanges() {
+            alert('Changes saved successfully!');
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', loadUserData);
+    </script>
+</body>
+</html>

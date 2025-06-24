@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Management</title>
+    <link rel="stylesheet" href="volunteer.css">
+</head>
+<body>
+    <div class="volunteer-container">
+        <h1>Volunteer Management</h1>
+        
+        <div class="section">
+            <h2>Generate Volunteer Codes</h2>
+            <button id="generateCodes">Generate 50 Unique Codes</button>
+            <div id="codeDisplay" class="code-display"></div>
+        </div>
+        
+        <div class="section">
+            <h2>Register New Volunteer</h2>
+            <form id="volunteerForm">
+                <input type="text" id="volunteerName" placeholder="Volunteer Name" required>
+                <select id="volunteerCode" required>
+                    <option value="">Select a code</option>
+                </select>
+                <button type="submit">Register Volunteer</button>
+            </form>
+        </div>
+        
+        <div class="section">
+            <h2>Volunteer Members</h2>
+            <div class="search-box">
+                <input type="text" id="searchCode" placeholder="Enter volunteer code">
+                <button id="searchBtn">Search</button>
+            </div>
+            <div id="memberResults">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Event</th>
+                            <th>Amount Paid</th>
+                            <th>Balance</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="memberTableBody">
+                        <!-- Will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="volunteer.js"></script>
+</body>
+</html>

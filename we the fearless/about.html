@@ -327,107 +327,202 @@ body {
     font-weight: bold; /* Make citation bold */
 }
 
-/* Leadership Section */
+/* Updated Leadership Section Styles */
 .leadership-section {
     text-align: center;
-    padding: 40px 20px;
+    padding: 80px 20px;
     background-color: #0c0e14;
 }
 
-.leader-highlight {
+.leadership-section h1 {
+    font-size: 3rem;
+    margin-bottom: 60px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.team-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Main Leader Container */
+.main-leader-container {
     display: flex;
-    justify-content: center;
     align-items: center;
+    gap: 50px;
+    margin-bottom: 60px;
+    text-align: left;
+    max-width: 900px;
+    margin: 0 auto 60px auto;
+}
+
+.leader-image-container {
+    flex: 1;
+}
+
+.leader-content {
+    flex: 1;
+    display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-bottom: 40px;
+    align-items: flex-start;
+}
+
+/* Leader Image Styling */
+.leader-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.main-leader-container .leader-image {
+    width: 100%;
+    height: 550px;
 }
 
 .leader-image img {
-    width: 300px; /* Size of the main leader image */
-    height: 300px; /* Ensure height matches width for a perfect circle */
-    border-radius: 50%; /* Makes the image circular */
-    /* border: 4px solid #ffae00;  */
-    object-fit: cover; /* Ensures the image fills the circle without distortion */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-.leader-image img:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
-    box-shadow: 0 0 20px rgba(255, 174, 0, 0.8); /* Add a glow effect */
+.leader-image:hover img {
+    transform: scale(1.03);
 }
 
-.leader-description {
-    text-align: center;
-    max-width: 600px;
-}
-
-.leader-description blockquote {
-    font-size: 18px;
-    font-style: italic;
-    line-height: 1.6;
-    margin-bottom: 20px;
+/* Leader Message Styling */
+.leader-message {
+    font-size: 1.2rem;
+    line-height: 1.8;
     color: #ffffff;
+    font-style: italic;
+    position: relative;
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: rgba(255, 174, 0, 0.1);
+    border-left: 4px solid #ffae00;
+    border-radius: 0 8px 8px 0;
 }
 
-.leader-description footer {
-    font-size: 16px;
-    font-weight: bold;
+/* Leader Name & Position */
+.leader-name-position h3 {
+    font-size: 1.8rem;
+    margin: 0 0 5px 0;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.leader-name-position .position {
+    font-size: 1.2rem;
     color: #ffae00;
+    margin: 0;
+    font-weight: 400;
 }
 
+/* Button Styling */
 #view-leaders-btn {
     background-color: #ffae00;
     color: #000;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 40px;
     font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    border-radius: 5px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+    border-radius: 50px;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+    align-self: center;
 }
 
 #view-leaders-btn:hover {
     background-color: #e69500;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 174, 0, 0.4);
 }
 
-/* Other Leaders Section */
-.team-members {
+/* Team Grid Layout */
+.team-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two leaders per row */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
-    margin-top: 20px;
-    max-width: 800px;
-    margin: 0 auto;
+    justify-items: center;
+    margin-top: 40px;
 }
 
-.team-member {
-    text-align: center;
+.team-grid .leader-box {
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 0px;
+    transition: transform 0.3s ease;
 }
 
-.team-member img {
-    width: 250px; /* Size of other leader images */
-    height: 250px; /* Ensure height matches width for a perfect circle */
-    border-radius: 50%; /* Makes the image circular */
-    /* border: 4px solid #ffae00; */
-    object-fit: cover; /* Ensures the image fills the circle without distortion */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+.team-grid .leader-box:hover {
+    transform: translateY(-5px);
 }
 
-.team-member img:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
-    box-shadow: 0 0 20px rgba(255, 174, 0, 0.8); /* Add a glow effect */
+.team-grid .leader-image {
+    width: 100%;
+    height: 350px;
+    margin-bottom: 20px;
 }
 
-.team-member h3 {
-    font-size: 16px;
-    margin-top: 10px;
-    color: #ffffff;
+.team-grid h3 {
+    font-size: 1.3rem;
+    margin: 0 0 5px 0;
+}
+
+.team-grid .position {
+    font-size: 1rem;
+    color: #ffae00;
+    margin: 0;
 }
 
 .hidden {
     display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .main-leader-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .leader-content {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .leader-message {
+        text-align: left;
+    }
+    
+    .main-leader-container .leader-image {
+        height: 350px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-leader-container .leader-image {
+        height: 300px;
+    }
+    
+    .leader-message {
+        font-size: 1rem;
+    }
+    
+    .leader-name-position h3 {
+        font-size: 1.5rem;
+    }
 }
 /* Contact Form Section */
 .contact-form-section {
@@ -686,13 +781,13 @@ form button:hover {
                     <div class="icon-box">
                         <i class="icon">✔️</i>
                         <h3>Vision</h3>
-                        <p>To raise a Fearless generation that boldly reflects Jesus, shining His light in a dark world, and passionately embracing their role in the Great Commission.
+                        <p>To inspire and equip youth to live Boldly in their Faith by leading them to be ‘The light of the World’ through active participation in The Great Commission
                             .</p>
                     </div>
                     <div class="icon-box">
                         <i class="icon">✔️</i>
                         <h3>Mission</h3>
-                        <p>To disciple and empower young people to walk in unwavering faith, live courageously for Christ, and become beacons of hope and transformation through evangelism and spiritual maturity.
+                        <p>To Disciple and Empower youth through intentional small-group communities, dynamic events and strategic outreach activities targeted to nurture individual spiritual growth, encourage godly living and foster lasting impact.
                             .</p>
                     </div>
                 </div>
@@ -707,41 +802,64 @@ form button:hover {
             </blockquote>
         </div>
     </section>
-   <!-- Leadership Section -->
-<section class="leadership-section">
-  <div class="leader-highlight">
-      <div class="leader-image">
-          <img src="img/pj.jpg" alt="Leader Name">
-      </div>
-      <div class="leader-description">
-          <blockquote>
-              <p>This is our leader, <br>brief description here......</p>
-              <footer>- Leader Name</footer>
-          </blockquote>
-          <button id="view-leaders-btn">View Other Leaders</button>
-      </div>
-  </div>
 
-  <!-- Hidden Section for Other Leaders -->
-  <div id="other-leaders" class="team-members hidden">
-      <div class="team-member">
-          <img src="img/d4.jpg" alt="Mr and Mrs Chola">
-          <h3>Mr and Mrs Chola</h3>
-      </div>
-      <div class="team-member">
-          <img src="img/pj.jpeg" alt="Mr and Mrs Okumu">
-          <h3>Mr and Mrs Okumu</h3>
-      </div>
-      <div class="team-member">
-          <img src="img/pj.jpg" alt="Phillip Muasa">
-          <h3>Phillip Muasa</h3>
-      </div>
-      <div class="team-member">
-          <img src="img/pj.jpg" alt="Marcus Courage">
-          <h3>Marcus Courage</h3>
-      </div>
-  </div>
+<!-- Leadership Section -->
+<section class="leadership-section">
+    <h1>Team</h1>
+    <div class="team-container">
+        <!-- Main Leader Box - Updated layout -->
+        <div class="main-leader-container">
+            <div class="leader-image-container">
+                <div class="leader-image">
+                    <img src="img/pj.jpg" alt="Emmanuel Balogun">
+                </div>
+            </div>
+            <div class="leader-content">
+                <blockquote class="leader-message">
+                    "We are called to be fearless in our faith, to shine brightly in a world that needs hope. 
+                    The Fearless Movement is more than an organization - it's a family united by purpose and 
+                    driven by a passion to see this generation transformed by the power of God."
+                </blockquote>
+                <div class="leader-name-position">
+                    <h3>Emmanuel Balogun</h3>
+                    <p class="position">Founder & Director</p>
+                </div>
+                <button id="view-leaders-btn">View All Team Members</button>
+            </div>
+        </div>
+
+        <!-- Other Leaders Section -->
+        <div id="other-leaders" class="hidden">
+            <div class="team-grid">
+                <div class="leader-box">
+                    <div class="leader-image">
+                        <img src="img/d4.jpg" alt="Marcus Courage">
+                    </div>
+                    <h3>Marcus Courage</h3>
+                    <p class="position">Co-Director</p>
+                </div>
+                
+                <div class="leader-box">
+                    <div class="leader-image">
+                        <img src="img/pj.jpeg" alt="Kimera Chefty">
+                    </div>
+                    <h3>Kimera Chefty</h3>
+                    <p class="position">Creative Director</p>
+                </div>
+                
+                <div class="leader-box">
+                    <div class="leader-image">
+                        <img src="img/pj.jpg" alt="Magdalene Kariuki">
+                    </div>
+                    <h3>Magdalene Kariuki</h3>
+                    <p class="position">Operations Manager</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+
+    <!-- Contact Form Section -->
   <section class="contact-form-section">
     <div class="form-container">
       <div class="form-text">
@@ -803,7 +921,7 @@ form button:hover {
 
   <!-- Copyright -->
   <div class="footer-copyright">
-      &copy; 2024 <span>The Fearlessmovement</span>. All rights reserved
+      &copy; 2025 <span>The Fearlessmovement</span>. All rights reserved
   </div>
 </div>
 
@@ -838,7 +956,7 @@ form button:hover {
 </script>
 
   <script>
-  // Select the "View Other Leaders" button
+// Select the "View Other Leaders" button
 const viewLeadersButton = document.getElementById("view-leaders-btn");
 
 // Select the "Other Leaders" section
@@ -851,12 +969,14 @@ viewLeadersButton.addEventListener("click", () => {
 
     // Update the button text
     if (otherLeadersSection.classList.contains("hidden")) {
-        viewLeadersButton.textContent = "View Other Leaders";
+        viewLeadersButton.textContent = "View All Team Members";
     } else {
-        viewLeadersButton.textContent = "Hide Other Leaders";
+        viewLeadersButton.textContent = "Hide Team Members";
     }
 });
-    //form script
+</script>
+    <!--form script-->
+    <script>
     const form = document.getElementById("contactForm");
   const formStatus = document.getElementById("formStatus");
   const submitButton = document.getElementById("submitButton");
@@ -919,5 +1039,6 @@ viewLeadersButton.addEventListener("click", () => {
     }
   });
   </script>
+
 </body>
 </html>
