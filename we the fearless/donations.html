@@ -199,6 +199,20 @@ input[type="range"] {
     width: 100%;
 }
 
+.amount-input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.amount-input-group span {
+    font-weight: bold;
+}
+
+.amount-input-group input {
+    flex: 0 0 120px;
+}
+
 button.donate-now {
     background-color: #ff6600;
     color: #fff;
@@ -208,10 +222,11 @@ button.donate-now {
     font-size: 1.2rem;
     cursor: pointer;
     text-align: center;
+    width: 100%;
 }
 
 button.donate-now:hover {
-    background-color:#ff6600;
+    background-color:#e65c00;
 }
 
 /* FAQ Section */
@@ -394,14 +409,17 @@ button.donate-now:hover {
                             <option value="corporate">Group</option>
                         </select>
                         <select id="paymentMethod" name="paymentMethod" required>
-                            <option value="">Donation Payment</option>
+                            <option value="">Payment Method</option>
+                            <option value="card">Credit/Debit Card</option>
                             <option value="mpesa">Mpesa</option>
                             <option value="paypal">PayPal</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="amount">Amount: KES <span id="amountDisplay">500</span></label>
-                        <input type="range" id="amount" name="amount" min="100" max="100000" value="500" step="100">
+                        <div class="amount-input-group">
+                            <span>Amount (KES):</span>
+                            <input type="number" id="customAmount" name="customAmount" min="100" step="100" placeholder="Enter amount" required>
+                        </div>
                     </div>
                     <p id="formStatus" style="margin: 1rem 0; display: none;"></p>
                     <button type="submit" class="donate-now">Donate Now</button>
@@ -500,34 +518,6 @@ button.donate-now:hover {
     }
     </script>
 
-    <script>
-
-function handleDonation() {
-    const paymentMethod = document.getElementById('paymentMethod');
-    
-    if (!paymentMethod) {
-        alert('Error: Payment method selection not found');
-        return;
-    }
-
-    if (paymentMethod.value === 'paypal') {
-        window.location.href = 'paypal.html';
-    } else if (paymentMethod.value === 'mpesa') {
-        alert('Proceed with Mpesa payment.');
-    } else {
-        alert('Please select a payment method.');
-    }
-}
-
-// Add event listener when the document loads
-document.addEventListener('DOMContentLoaded', function() {
-    const donateButton = document.querySelector('.donate-now');
-    if (donateButton) {
-        donateButton.addEventListener('click', handleDonation);
-    }
-});
-    </script>
-  
     <!-- JavaScript for FAQ Dropdown -->
     <script>
         document.querySelectorAll('.faq-item h3').forEach((faqHeader) => {
@@ -544,67 +534,43 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 
 <script>
-    // Update amount display when slider moves
-    const amountInput = document.getElementById('amount');
-    const amountDisplay = document.getElementById('amountDisplay');
-    amountInput.addEventListener('input', (e) => {
-        amountDisplay.textContent = e.target.value;
-    });
-    
     // Handle form submission
     const donationForm = document.getElementById('donationForm');
     const formStatus = document.getElementById('formStatus');
     
-    donationForm.addEventListener('submit', async function(event) {
+    donationForm.addEventListener('submit', function(event) {
         event.preventDefault();
         
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const address = document.getElementById('address').value;
+        const message = document.getElementById('message').value;
+        const donorType = document.getElementById('donorType').value;
+        const paymentMethod = document.getElementById('paymentMethod').value;
+        const amount = document.getElementById('customAmount').value;
+        
+        // Validate amount
+        if (amount < 100) {
+            formStatus.style.display = "block";
+            formStatus.style.color = "#f44336";
+            formStatus.textContent = "Minimum donation amount is KES 100";
+            return;
+        }
+        
+        // Submit button state
         const submitButton = donationForm.querySelector('button[type="submit"]');
         submitButton.disabled = true;
         submitButton.textContent = 'Processing...';
         
-        try {
-            const formData = {
-                to: "thefearlessmovement1@gmail.com",
-                subject: "New Donation Form Submission",
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                address: document.getElementById('address').value,
-                message: document.getElementById('message').value,
-                donorType: document.getElementById('donorType').value,
-                paymentMethod: document.getElementById('paymentMethod').value,
-                amount: document.getElementById('amount').value
-            };
-    
-            const response = await fetch('http://localhost:5000/api/send-donation', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
-            
-            const result = await response.json();
-            
-            if (result.success) {
-                formStatus.style.display = "block";
-                formStatus.style.color = "#4CAF50";
-                formStatus.textContent = "Thank you for your donation! We'll contact you with payment details.";
-                donationForm.reset();
-                amountDisplay.textContent = "500"; // Reset amount display
-            } else {
-                throw new Error(result.message || "Donation submission failed");
-            }
-        } catch (error) {
-            formStatus.style.display = "block";
-            formStatus.style.color = "#f44336";
-            formStatus.textContent = error.message || "Sorry, there was an error processing your donation. Please try again.";
-            console.error('Error:', error);
-        }
+        // Redirect to Paystack with all payment methods
+        window.location.href = `https://paystack.shop/pay/inn06eose9?amount=${amount * 100}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}`;
         
+        // Reset button state (though redirect will happen)
         submitButton.disabled = false;
         submitButton.textContent = 'Donate Now';
     });
-    </script>
+</script>
 </body>
 </html>

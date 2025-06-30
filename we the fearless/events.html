@@ -238,7 +238,20 @@
     <div class="total">Total: Sh. <span id="total-cost">0</span></div>
     <button class="purchase-btn" id="purchase-button">Purchase Tickets</button>
   </div>
-</section>
+  <div class="thank-you-message">
+    <p>
+      <em>"We have plans that can help you purchase tickets in a more convenient and pocket friendly way."
+        <br> "Please select an appropriate payment plan and proceed." </br> 
+      </em> 
+    </p>
+    <div class="action-buttons">
+      <button class="orange-button" id="daily-button">Daily Plan</button>
+      <button class="orange-button" id="weekly-button">Weekly Plan</button>
+      <button class="orange-button" id="monthly-button">Monthly Plan</button>
+    </div>
+    <em>"We appreciate your support and look forward to seeing you at the camp!"</em>
+</div>
+</section>  
 
 <!-- Add Modal HTML for M-Pesa Payment -->
 <div class="modal" id="mpesa-modal">
@@ -252,7 +265,6 @@
 </div>
 <section class="ticket-section">
   <!-- <button class="purchase-ticket">Purchase Ticket</button> -->
-
   <div class="thank-you-message">
     <p>
       <em>Thank you for being part of the fearless movement. View our Camp Calender and gallery.</em>
@@ -430,264 +442,273 @@
 
 
 <script>
-   // Consolidated JavaScript for Event Website
+  // Consolidated JavaScript for Event Website
 document.addEventListener("DOMContentLoaded", () => {
-  // Navigation menu toggle
-  function toggleMenu() {
-    const navLinks = document.getElementById('nav-links');
-    navLinks.classList.toggle('active');
-  }
+ // Navigation menu toggle
+ function toggleMenu() {
+   const navLinks = document.getElementById('nav-links');
+   navLinks.classList.toggle('active');
+ }
 
-  // Countdown Timer
-  const eventDate = new Date("August 25, 2025 00:00:00").getTime();
-  
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const timeLeft = eventDate - now;
-  
-    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-  
-    document.getElementById("days").textContent = days.toString().padStart(3, '0');
-    document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
-    document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
-    document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
-  }
-  
-  // Update the countdown every second
-  setInterval(updateCountdown, 1000);
-  
-  // Initialize the countdown on page load
-  updateCountdown();
+ // Define redirect URLs for each ticket type
+ const ticketRedirectUrls = {
+   '4500': 'https://paystack.com/buy/discounted-ticket-imcmdb',  // Discounted ticket URL
+   '5000': 'https://paystack.com/buy/fearlessalone',    // Standard ticket URL
+   '20000': 'https://paystack.com/buy/group-ticket-qofmko'       // Group ticket URL
+ };
 
-  // Stats counter animation
-  const counters = document.querySelectorAll(".counter");
-
-  const startCount = (counter) => {
-    const target = +counter.getAttribute("data-target");
-    let count = 0;
-    const increment = target / 100; // Adjust speed
-
-    const updateCounter = () => {
-      count += increment;
-      counter.innerText = Math.ceil(count);
-
-      if (count < target) {
-        requestAnimationFrame(updateCounter);
-      } else {
-        counter.innerText = target; // Ensure it stops exactly at target
-      }
-    };
-
-    updateCounter();
+  // Define redirect URLs for payment plans
+  const planRedirectUrls = {
+    'daily': 'https://paystack.com/buy/daily-plan-kiycmn',    // Replace with your actual daily plan URL
+    'weekly': 'https://paystack.com/buy/weekly-plan-thhtlr',  // Replace with your actual weekly plan URL
+    'monthly': 'https://paystack.com/buy/monthly-plan-nszjok' // Replace with your actual monthly plan URL
   };
 
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          startCount(entry.target);
-          observer.unobserve(entry.target); // Prevent multiple triggers
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
+  // Add event listeners for plan buttons
+  const dailyButton = document.getElementById('daily-button');
+  const weeklyButton = document.getElementById('weekly-button');
+  const monthlyButton = document.getElementById('monthly-button');
 
-  counters.forEach((counter) => observer.observe(counter));
-
-  // Toggle event description
-  function toggleDescription(card) {
-    const description = card.querySelector('.event-description');
-    const isVisible = description.style.display === 'block';
-    description.style.display = isVisible ? 'none' : 'block';
-  }
-
-  // Update Total Price for tickets
-  const ticketType = document.getElementById("ticket-type");
-  const ticketQuantity = document.getElementById("ticket-quantity");
-  const totalCost = document.getElementById("total-cost");
-
-  function updateTotal() {
-    const price = parseInt(ticketType.value);
-    const quantity = parseInt(ticketQuantity.value) || 0;
-    totalCost.textContent = (price * quantity).toLocaleString();
-  }
-
-  if (ticketType && ticketQuantity) {
-    ticketType.addEventListener("change", updateTotal);
-    ticketQuantity.addEventListener("input", updateTotal);
-  }
-
-  // Schedule tabs functionality
-  const tabs = document.querySelectorAll(".tab");
-  const rows = document.querySelectorAll(".schedule-table tbody tr");
-
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-      tabs.forEach(t => t.classList.remove("active"));
-      tab.classList.add("active");
-
-      const filter = tab.dataset.filter;
-
-      rows.forEach(row => {
-        if (filter === "all" || row.dataset.event.includes(filter)) {
-          row.classList.remove("hidden");
-        } else {
-          row.classList.add("hidden");
-        }
-      });
-    });
-  });
-
-  // Toggle schedule and gallery sections
-  const scheduleButton = document.getElementById('schedule-button');
-  const scheduleSection = document.getElementById('event-schedule');
-  const galleryButton = document.getElementById('gallery-button');
-  const gallerySection = document.getElementById('gallery-section');
-
-  if (scheduleButton && scheduleSection) {
-    scheduleButton.addEventListener('click', () => {
-      if (scheduleSection.classList.contains('hidden')) {
-        scheduleSection.classList.remove('hidden');
-        scheduleButton.textContent = 'Hide Schedule';
-      } else {
-        scheduleSection.classList.add('hidden');
-        scheduleButton.textContent = 'Schedule';
-      }
+  if (dailyButton) {
+    dailyButton.addEventListener('click', () => {
+      window.location.href = planRedirectUrls.daily;
     });
   }
 
-  if (galleryButton && gallerySection) {
-    galleryButton.addEventListener('click', () => {
-      if (gallerySection.classList.contains('hidden')) {
-        gallerySection.classList.remove('hidden');
-        galleryButton.textContent = 'Hide Gallery';
-      } else {
-        gallerySection.classList.add('hidden');
-        galleryButton.textContent = 'Gallery';
-      }
+  if (weeklyButton) {
+    weeklyButton.addEventListener('click', () => {
+      window.location.href = planRedirectUrls.weekly;
     });
   }
 
-  // Function to generate a unique ticket number
-  function generateTicketNumber() {
-    return `TICKET-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
-  }
-
-  // Function to generate a QR code
-  async function generateQRCode(data) {
-    const qrCode = await QRCode.toDataURL(data);
-    return qrCode;
-  }
-
-  // Purchase button logic
-  const purchaseButton = document.getElementById("purchase-button");
-  const mpesaModal = document.getElementById("mpesa-modal");
-  
-  if (purchaseButton) {
-    purchaseButton.addEventListener("click", function () {
-      const quantity = parseInt(document.getElementById("ticket-quantity").value);
-      if (quantity > 0) {
-        if (mpesaModal) {
-          mpesaModal.style.display = "flex"; // Show M-Pesa modal
-        }
-      } else {
-        alert("Please select a ticket quantity before proceeding.");
-      }
+  if (monthlyButton) {
+    monthlyButton.addEventListener('click', () => {
+      window.location.href = planRedirectUrls.monthly;
     });
   }
 
-  // Confirm M-Pesa payment button logic
-  const confirmMpesaButton = document.getElementById("confirm-mpesa-button");
-  
-  if (confirmMpesaButton) {
-    confirmMpesaButton.addEventListener("click", async function () {
-      const name = document.getElementById("user-name").value;
-      const email = document.getElementById("user-email").value;
-      const phone = document.getElementById("user-phone").value;
-      const ticketType = document.getElementById("ticket-type").value;
-      const quantity = parseInt(document.getElementById("ticket-quantity").value);
+ // Countdown Timer
+ const eventDate = new Date("August 25, 2025 00:00:00").getTime();
+ 
+ function updateCountdown() {
+   const now = new Date().getTime();
+   const timeLeft = eventDate - now;
+ 
+   const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+   const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+   const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+   const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+ 
+   document.getElementById("days").textContent = days.toString().padStart(3, '0');
+   document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+   document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+   document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+ }
+ 
+ // Update the countdown every second
+ setInterval(updateCountdown, 1000);
+ 
+ // Initialize the countdown on page load
+ updateCountdown();
 
-      if (!name || !email || !phone || quantity <= 0) {
-        alert("Please fill all details correctly.");
-        return;
-      }
+ // Stats counter animation
+ const counters = document.querySelectorAll(".counter");
 
-      const totalCost = ticketType * quantity;
-      const ticketNumber = generateTicketNumber();
+ const startCount = (counter) => {
+   const target = +counter.getAttribute("data-target");
+   let count = 0;
+   const increment = target / 100; // Adjust speed
 
-      // Generate QR code data
-      const qrCodeData = `Ticket Number: ${ticketNumber}\nEvent: The Fearless Movement Camp\nName: ${name}\nEmail: ${email}\nPhone: ${phone}`;
-      const qrCodeImage = await generateQRCode(qrCodeData);
+   const updateCounter = () => {
+     count += increment;
+     counter.innerText = Math.ceil(count);
 
-      // Prepare ticket data
-      const ticketData = {
-        name,
-        email,
-        phone,
-        ticketType,
-        quantity,
-        totalCost,
-        ticketNumber,
-        qrCodeImage,
-      };
+     if (count < target) {
+       requestAnimationFrame(updateCounter);
+     } else {
+       counter.innerText = target; // Ensure it stops exactly at target
+     }
+   };
 
-      // Send ticket data to the server
-      fetch("http://localhost:5000/api/purchase-ticket", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(ticketData),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            alert("Purchase successful! Check your email for the ticket.");
-            mpesaModal.style.display = "none"; // Close modal
-          } else {
-            alert("Purchase failed. Please try again.");
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          alert("An error occurred while processing your request.");
-        });
-    });
-  }
+   updateCounter();
+ };
 
-  // Close modal on outside click
-  if (mpesaModal) {
-    mpesaModal.addEventListener("click", function (e) {
-      if (e.target === this) {
-        this.style.display = "none";
-      }
-    });
-  }
+ const observer = new IntersectionObserver(
+   (entries, observer) => {
+     entries.forEach((entry) => {
+       if (entry.isIntersecting) {
+         startCount(entry.target);
+         observer.unobserve(entry.target); // Prevent multiple triggers
+       }
+     });
+   },
+   { threshold: 0.5 }
+ );
 
-  // Function to show snackbar
-  function showSnackbar(message, type = 'success') {
-    const snackbar = document.getElementById('snackbar');
-    if (snackbar) {
-      snackbar.textContent = message;
-      snackbar.className = `snackbar ${type} show`;
+ counters.forEach((counter) => observer.observe(counter));
 
-      // Hide after 3 seconds
-      setTimeout(() => {
-        snackbar.className = 'snackbar';
-      }, 3000);
-    }
-  }
+ // Toggle event description
+ function toggleDescription(card) {
+   const description = card.querySelector('.event-description');
+   const isVisible = description.style.display === 'block';
+   description.style.display = isVisible ? 'none' : 'block';
+ }
 
-  // Make functions available globally
-  window.toggleMenu = toggleMenu;
-  window.toggleDescription = toggleDescription;
-  window.showSnackbar = showSnackbar;
-  window.generateTicketNumber = generateTicketNumber;
-  window.generateQRCode = generateQRCode;
+ // Update Total Price for tickets
+ const ticketType = document.getElementById("ticket-type");
+ const ticketQuantity = document.getElementById("ticket-quantity");
+ const totalCost = document.getElementById("total-cost");
+
+ function updateTotal() {
+   const price = parseInt(ticketType.value);
+   const quantity = parseInt(ticketQuantity.value) || 0;
+   totalCost.textContent = (price * quantity).toLocaleString();
+ }
+
+ if (ticketType && ticketQuantity) {
+   ticketType.addEventListener("change", updateTotal);
+   ticketQuantity.addEventListener("input", updateTotal);
+ }
+
+ // Schedule tabs functionality
+ const tabs = document.querySelectorAll(".tab");
+ const rows = document.querySelectorAll(".schedule-table tbody tr");
+
+ tabs.forEach(tab => {
+   tab.addEventListener("click", () => {
+     tabs.forEach(t => t.classList.remove("active"));
+     tab.classList.add("active");
+
+     const filter = tab.dataset.filter;
+
+     rows.forEach(row => {
+       if (filter === "all" || row.dataset.event.includes(filter)) {
+         row.classList.remove("hidden");
+       } else {
+         row.classList.add("hidden");
+       }
+     });
+   });
+ });
+
+ // Toggle schedule and gallery sections
+ const scheduleButton = document.getElementById('schedule-button');
+ const scheduleSection = document.getElementById('event-schedule');
+ const galleryButton = document.getElementById('gallery-button');
+ const gallerySection = document.getElementById('gallery-section');
+
+ if (scheduleButton && scheduleSection) {
+   scheduleButton.addEventListener('click', () => {
+     if (scheduleSection.classList.contains('hidden')) {
+       scheduleSection.classList.remove('hidden');
+       scheduleButton.textContent = 'Hide Schedule';
+     } else {
+       scheduleSection.classList.add('hidden');
+       scheduleButton.textContent = 'Schedule';
+     }
+   });
+ }
+
+ if (galleryButton && gallerySection) {
+   galleryButton.addEventListener('click', () => {
+     if (gallerySection.classList.contains('hidden')) {
+       gallerySection.classList.remove('hidden');
+       galleryButton.textContent = 'Hide Gallery';
+     } else {
+       gallerySection.classList.add('hidden');
+       galleryButton.textContent = 'Gallery';
+     }
+   });
+ }
+
+ // Function to generate a unique ticket number
+ function generateTicketNumber() {
+   return `TICKET-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+ }
+
+ // Function to generate a QR code
+ async function generateQRCode(data) {
+   const qrCode = await QRCode.toDataURL(data);
+   return qrCode;
+ }
+
+ // Purchase button logic
+ const purchaseButton = document.getElementById("purchase-button");
+ const mpesaModal = document.getElementById("mpesa-modal");
+ 
+ if (purchaseButton) {
+   purchaseButton.addEventListener("click", function () {
+     const quantity = parseInt(document.getElementById("ticket-quantity").value);
+     if (quantity > 0) {
+       if (mpesaModal) {
+         mpesaModal.style.display = "flex"; // Show M-Pesa modal
+       }
+     } else {
+       alert("Please select a ticket quantity before proceeding.");
+     }
+   });
+ }
+
+ // Confirm M-Pesa payment button logic
+ const confirmMpesaButton = document.getElementById("confirm-mpesa-button");
+ 
+ if (confirmMpesaButton) {
+   confirmMpesaButton.addEventListener("click", async function () {
+     const name = document.getElementById("user-name").value;
+     const email = document.getElementById("user-email").value;
+     const phone = document.getElementById("user-phone").value;
+     const ticketTypeValue = document.getElementById("ticket-type").value;
+     const quantity = parseInt(document.getElementById("ticket-quantity").value);
+
+     if (!name || !email || !phone || quantity <= 0) {
+       alert("Please fill all details correctly.");
+       return;
+     }
+
+     // Get the redirect URL based on ticket type
+     const redirectUrl = ticketRedirectUrls[ticketTypeValue];
+     
+     if (redirectUrl) {
+       // Redirect to the specific payment URL
+       window.location.href = redirectUrl;
+     } else {
+       alert("Invalid ticket type selected.");
+     }
+
+     // The rest of your existing code for ticket generation can go here
+     // or you can remove it if you're handling everything on the payment page
+   });
+ }
+
+ // Close modal on outside click
+ if (mpesaModal) {
+   mpesaModal.addEventListener("click", function (e) {
+     if (e.target === this) {
+       this.style.display = "none";
+     }
+   });
+ }
+
+ // Function to show snackbar
+ function showSnackbar(message, type = 'success') {
+   const snackbar = document.getElementById('snackbar');
+   if (snackbar) {
+     snackbar.textContent = message;
+     snackbar.className = `snackbar ${type} show`;
+
+     // Hide after 3 seconds
+     setTimeout(() => {
+       snackbar.className = 'snackbar';
+     }, 3000);
+   }
+ }
+
+ // Make functions available globally
+ window.toggleMenu = toggleMenu;
+ window.toggleDescription = toggleDescription;
+ window.showSnackbar = showSnackbar;
+ window.generateTicketNumber = generateTicketNumber;
+ window.generateQRCode = generateQRCode;
 });
 </script>
 
