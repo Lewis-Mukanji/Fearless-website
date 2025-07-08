@@ -219,6 +219,140 @@
   .menu-item:hover {
     transform: scale(1.05);
   }
+
+  /* Mobile Responsive Styles */
+  @media (max-width: 768px) {
+    /* Specialties section - stack vertically on mobile */
+    .specialties {
+      flex-direction: column;
+      padding: 30px 20px;
+      font-size: 1.5rem;
+    }
+    
+    .specialties-content {
+      text-align: center;
+      font-size: 1.5rem;
+      padding-right: 0;
+      margin-bottom: 30px;
+    }
+    
+    .specialties-content h2 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+    
+    .specialties-content p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .specialties-photo {
+      margin-left: 0;
+      height: 300px;
+      width: 100%;
+    }
+    
+    .slideshow-container {
+      height: 300px;
+    }
+    
+    /* Menu gallery - responsive grid */
+    .menu {
+      padding: 30px 15px;
+    }
+    
+    .menu h2 {
+      font-size: 1.8rem;
+    }
+    
+    .menu-gallery {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    
+    .menu-item {
+      height: 150px;
+    }
+    
+    /* Google Drive link responsiveness */
+    .google-drive-link {
+      padding: 12px 24px;
+      font-size: 1rem;
+    }
+  }
+  
+  /* Extra small screens (phones in portrait) */
+  @media (max-width: 480px) {
+    .specialties {
+      padding: 20px 15px;
+    }
+    
+    .specialties-content h2 {
+      font-size: 1.8rem;
+    }
+    
+    .specialties-content p {
+      font-size: 1rem;
+    }
+    
+    .specialties-photo {
+      height: 250px;
+    }
+    
+    .slideshow-container {
+      height: 250px;
+    }
+    
+    .menu {
+      padding: 20px 10px;
+    }
+    
+    .menu h2 {
+      font-size: 1.5rem;
+    }
+    
+    .menu-gallery {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+    
+    .menu-item {
+      height: 200px;
+    }
+    
+    /* Adjust text overlay for mobile */
+    .text-overlay {
+      bottom: 20px;
+      left: 20px;
+      font-size: 1.2rem;
+      padding: 10px 15px;
+    }
+    
+    .center-text {
+      font-size: 2rem;
+    }
+  }
+  
+  /* Medium screens (tablets) */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .specialties {
+      padding: 40px 30px;
+    }
+    
+    .specialties-content h2 {
+      font-size: 2.5rem;
+    }
+    
+    .specialties-content p {
+      font-size: 1.2rem;
+    }
+    
+    .menu-gallery {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+    }
+  }
   
 </style>
 <body>
@@ -232,7 +366,7 @@
             Set in a warm and inviting atmosphere, this event encourages individuals to connect on a deeper level,fostering friendships rooted in faith. 
             Throughout the evening, guests engage in meaningful discussions on how to build relationships that honor God, gaining valuable insights that strengthen their spiritual journey. 
             Beyond the inspiring conversations, the dinner offers a chance to make unforgettable memories, enjoy good food, and showcase personal style. 
-            It’s an evening filled with joy, community, and celebration of faith.
+            It's an evening filled with joy, community, and celebration of faith.
       </p>
       <a href="https://drive.google.com/drive/folders/1LENr8Gx6YWN5yyeEM4ntA1SCD0C-6VIc?usp=drive_link" target="_blank" class="google-drive-link">View Highlights Here</a>
     </div>
