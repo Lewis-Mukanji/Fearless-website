@@ -483,25 +483,39 @@
         /* Event Cards */
 .event-cards {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
-    background-color: transparent; /* Transparent background */
+    background-color: transparent;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    white-space: nowrap; /* Prevent wrapping */
+    flex-wrap: nowrap; /* Ensure cards stay in a single row */
 }
 
 .event-card {
-    width: 200px;
+    flex: 0 0 auto; /* Don't grow or shrink */
+    width: 280px;
     height: 300px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    position: relative;
     scroll-snap-align: start;
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    display: inline-block; /* Helps with horizontal layout */
+    white-space: normal; /* Reset for card content */
+}
+
+/* Add scrollbar styling */
+.event-cards::-webkit-scrollbar {
+    height: 8px;
+}
+
+.event-cards::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.event-cards::-webkit-scrollbar-thumb {
+    background: #ffae00;
+    border-radius: 10px;
 }
 
 .event-card img {
@@ -545,14 +559,13 @@
 }
 
 .join-us-section img {
-    width: 40%;
-    border-radius: 0;
-    margin-right: 20px;
-}
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 
-.join-us-content {
-    flex-grow: 1;
-    max-width: 60%; /* Allows text to extend further */
+  .join-us-content {
+    max-width: 100%;
 }
 
 .join-us-content h2 {
@@ -568,6 +581,13 @@
     margin-bottom: 20px;
 }
 
+@media (max-width: 768px) {
+  .join-us-section {
+    flex-direction: column;
+    padding: 20px;
+    margin: 10px;
+  }
+}
 /* Style for the link */
 .join-link {
     font-size: 1.5rem;
@@ -631,10 +651,7 @@
 }
 
 .slideshow-container {
-  position: relative;
-  width: 60%;
-  max-height: 400px;
-  overflow: hidden;
+  max-height: 250px;
 }
 
 .slide {
@@ -644,9 +661,20 @@
 
 .slide img {
   width: 100%;
-  height: auto;
+  height: 250px;
+  object-fit: cover;
   display: block;
   border-radius: 0;
+}
+
+@media (max-width: 768px) {
+  .insights-container {
+    flex-direction: column;
+  }
+  
+  .slideshow-container, .insights-content {
+    width: 100%;
+  }
 }
 
 .prev,
@@ -806,8 +834,6 @@ hr {
 }
 
         /* Mission and Store Section */
-/* Mission and Store Section */
-/* Mission and Store Section */
 .mission-store-section {
   background-color: #000; /* Black background */
   color: #fff; /* White text */
@@ -908,24 +934,26 @@ hr {
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
-    flex-direction: column; /* Stack the cards vertically */
+    flex-direction: row; /* Keep cards side by side */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    gap: 10px;
+    padding: 10px;
   }
 
   .mission-card, .store-card {
-    width: 100%; /* Full width on small screens */
+    min-width: 280px; /* Set minimum width for cards */
+    height: auto;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    height: auto; /* Allow height to adjust for smaller screens */
-  }
-
-  .mission-content, .store-content {
-    padding-right: 0;
+    padding: 15px;
   }
 
   .mission-image, .store-image {
-    margin-top: 20px;
+    margin-top: 15px;
+  }
 
+  .mission-image img, .store-image img {
+    max-width: 100%;
+    max-height: 180px;
   }
 }
 
@@ -1010,7 +1038,7 @@ hr {
   <!-- Logo -->
   <div class="logo-overlay">
       <a href="index.html">
-          <img src="img/2f.png" alt="Fearless Logo">
+          <img src="img/2f.png" alt="Fearless Logo"> 
       </a>
   </div>
   
@@ -1040,7 +1068,8 @@ hr {
     <div class="hero-overlay">
         <div class="slider-container">
             <div class="slide-text active">
-                <h1 class="main-title">Welcome to TheFearlessMovement </h1>
+                <h1 class="main-title">Welcome to  
+                  The FearlessMovement </h1>
                 <!-- <div class="subtitle">Called to shine</div> -->
                 <div class="description">"Empowering young people to walk in unwavering faith"</div>
                 <a href="about.html" class="cta-button">Learn More</a>
@@ -1289,53 +1318,33 @@ hr {
             </div>
         </a>
     </div>
+<!-- Insights Section -->
 <section class="insights-section">
-      <div class="insights-container">
-        <!-- Left: Slideshow -->
-        <div class="slideshow-container">
-          <div class="slide fade">
-            <img src="img/pt1.jpg" alt="Slide 1">
-          </div>
-          <div class="slide fade">
-            <img src="img/ev.jpg" alt="Slide 2">
-          </div>
-          <div class="slide fade">
-            <img src="img/ev1.jpg" alt="Slide 3">
-          </div>
-          <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
-          <a class="next" onclick="changeSlide(1)">&#10095;</a>
-        </div>
+  <div class="insights-container">
+    <h2>Insights</h2>
     
-        <!-- Right: Text Section -->
-        <div class="insights-content">                                         
-          <h2>Insights</h2>
-          <div class="insight-item">
-            <p class="category">Testimonies </p>
-            <h3>Stories of personal transformations and experiences from members, 
-              volunteers, and those who've benefited from our missions.</h3>
-            <p class="meta"></p>
-            <a href="#outreach.html" class="read-article">view more</a>
-          </div>
-          <hr>
-          <div class="insight-item"> 
-            <p class="category">Charity & Missions</p> 
-            <h3>Regularly update on ongoing and upcoming mission trips, 
-              including goals, progress, and ways to support.</h3>
-            <p class="meta"></p>
-            <a href="#about.html" class="read-article">View more</a>
-          </div>
-          <hr>
-          <div class="insight-item">
-            <p class="category">Event Highlights</p>
-            <h3>Recap of our past events, showcasing the impact they’ve had on the community
-               and how they align with our mission.</h3>
-            <p class="meta"></p>
-            <a href="#eventshtml" class="read-article">view more</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <div class="insight-item">
+      <p class="category">Testimonies</p>
+      <h3>Stories of personal transformations and experiences from members, 
+        volunteers, and those who've benefited from our missions.</h3>
+      <a href="outreach.html" class="read-article">View more</a>
+    </div>
+    
+    <div class="insight-item"> 
+      <p class="category">Charity & Missions</p> 
+      <h3>Regularly update on ongoing and upcoming mission trips, 
+        including goals, progress, and ways to support.</h3>
+      <a href="about.html" class="read-article">View more</a>
+    </div>
+    
+    <div class="insight-item">
+      <p class="category">Event Highlights</p>
+      <h3>Recap of our past events, showcasing the impact they've had on the community
+         and how they align with our mission.</h3>
+      <a href="events.html" class="read-article">View more</a>
+    </div>
+  </div>
+</section>
 <section class="join-us-section">
         <img src="img/fe6.jpg" alt="Join Us Image">
         <div class="join-us-content">
@@ -1392,7 +1401,6 @@ hr {
         &copy; 2025 <span>The Fearlessmovement</span>. All rights reserved
     </div>
 </div>
-
 
  <!-- JavaScript -->
 <script>
@@ -1547,8 +1555,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 </script>
-
-    
-    
 </body>
 </html>

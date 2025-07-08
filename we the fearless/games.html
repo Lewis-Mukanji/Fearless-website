@@ -12,37 +12,39 @@
       padding: 0;
       background: #f4f4f4;
     }
+    
     .logo-overlay {
       position: absolute;
-      top: 20px;
-      left: 20px;
+      top: 10px;
+      left: 10px;
       z-index: 10;
     }
 
     .logo-overlay img {
-      
-      height: 70px;
+      height: 50px;
     }
 
     /* Header Section */
     .header-title {
-      background: #fff; /* White background */
-      color: #000; /* Black text */
+      background: #fff;
+      color: #000;
       text-align: center;
-      padding: 20px 0;
-      font-size: 1.8rem;
+      padding: 15px 0;
+      font-size: 1.5rem;
       font-weight: bold;
       margin: 0;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     /* Tabs Section */
     .tabs-container {
       display: flex;
       justify-content: center;
-      background: #fff; /* White background for tabs */
+      background: #fff;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 0 10px;
     }
+    
     .tab {
       color: #000;
       padding: 10px 20px;
@@ -50,10 +52,13 @@
       margin: 0 10px;
       border-bottom: 2px solid transparent;
       transition: border-color 0.3s ease, color 0.3s ease;
+      font-size: 1rem;
     }
+    
     .tab:hover {
       color: orange;
     }
+    
     .tab.active {
       color: orange;
       border-bottom: 2px solid orange;
@@ -61,32 +66,35 @@
 
     /* Explanation Section */
     .explanation-section {
-      width: 100%; /* Full width */
+      width: 100%;
       margin: 0 auto 20px auto;
       padding: 20px;
-      background: #333; /* Subtle black background */
-      color: white; /* White text for readability */
-      border-radius: 0; /* No border-radius for full-width effect */
+      background: #333;
+      color: white;
+      border-radius: 0;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       line-height: 1.6;
       font-size: 1rem;
     }
+    
     .explanation-title {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: bold;
       margin-bottom: 10px;
-      color: #fff; /* Bright white for title */
+      color: #fff;
     }
 
     /* Main Content */
     .main-container {
-      padding: 20px;
+      padding: 15px;
     }
+    
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
-      gap: 20px; /* Space between cards */
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
     }
+    
     .card {
       background: #fff;
       border: 1px solid #ddd;
@@ -95,63 +103,70 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
-      height: 400px;
+      height: 350px;
     }
+    
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
+    
     .card img {
       width: 100%;
-      height: 200px;
+      height: 180px;
       object-fit: cover;
     }
+    
     .card-content {
-      padding: 15px;
+      padding: 12px;
     }
+    
     .card-title {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
+    
     .card-description {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #555;
+      line-height: 1.4;
     }
+    
     .video-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #000;
-            padding: 40px 20px;
-            color: #fff;
-        }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      padding: 30px 20px;
+      color: #fff;
+    }
 
-        .video-content {
-            max-width: 1200px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 20px;
-        }
+    .video-content {
+      max-width: 1200px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+    }
 
-        .video-text {
-            flex: 1;
-            font-family: '_Poppins_cd6858', '_Poppins_Fallback_cd6858', Helvetica, Arial, sans-serif;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
+    .video-text {
+      flex: 1;
+      font-family: '_Poppins_cd6858', '_Poppins_Fallback_cd6858', Helvetica, Arial, sans-serif;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
 
-        .video-embed {
-            flex: 1;
-            max-width: 600px;
-        }
+    .video-embed {
+      flex: 1;
+      max-width: 600px;
+    }
 
-        .video-embed iframe {
-            width: 100%;
-            height: 340px;
-            border: none;
-        }
+    .video-embed iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+    }
 
     /* Details Section */
     .details-section {
@@ -162,46 +177,209 @@
       border: 1px solid #ddd;
       border-radius: 10px;
     }
+    
     .details-image {
       width: 100%;
-      max-height: 300px;
+      max-height: 250px;
       object-fit: cover;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
+    
     .details-title {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       margin-bottom: 10px;
     }
+    
     .details-description {
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: #333;
       margin-bottom: 20px;
+      line-height: 1.5;
     }
+    
     .cta-button {
-      padding: 10px 20px;
+      padding: 12px 24px;
       background: orange;
       color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 1rem;
     }
+    
     .footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #f0f0f0;
-    color: #333;
-  }
+      text-align: center;
+      padding: 20px;
+      background-color: #f0f0f0;
+      color: #333;
+    }
 
-  .footer-socials a {
-    color: #333;
-    font-size: 1.2rem;
-    margin: 0 10px;
-    text-decoration: none;
-  }
+    .footer-socials a {
+      color: #333;
+      font-size: 1.2rem;
+      margin: 0 10px;
+      text-decoration: none;
+    }
 
-  .footer-socials a:hover {
-    color: #ffae00;
-  }
+    .footer-socials a:hover {
+      color: #ffae00;
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+      .logo-overlay {
+        top: 5px;
+        left: 5px;
+      }
+      
+      .logo-overlay img {
+        height: 40px;
+      }
+      
+      .header-title {
+        font-size: 1.2rem;
+        padding: 12px 0;
+      }
+      
+      .tabs-container {
+        padding: 0 5px;
+      }
+      
+      .tab {
+        padding: 8px 12px;
+        margin: 0 5px;
+        font-size: 0.9rem;
+      }
+      
+      .explanation-section {
+        padding: 15px;
+        font-size: 0.9rem;
+      }
+      
+      .explanation-title {
+        font-size: 1.1rem;
+      }
+      
+      .main-container {
+        padding: 10px;
+      }
+      
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      
+      .card {
+        height: 300px;
+      }
+      
+      .card img {
+        height: 150px;
+      }
+      
+      .card-content {
+        padding: 10px;
+      }
+      
+      .card-title {
+        font-size: 1rem;
+      }
+      
+      .card-description {
+        font-size: 0.8rem;
+      }
+      
+      .video-section {
+        padding: 20px 10px;
+      }
+      
+      .video-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .video-text {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+      }
+      
+      .video-embed {
+        max-width: 100%;
+      }
+      
+      .video-embed iframe {
+        height: 250px;
+      }
+      
+      .details-section {
+        padding: 15px;
+      }
+      
+      .details-title {
+        font-size: 1.1rem;
+      }
+      
+      .details-description {
+        font-size: 0.9rem;
+      }
+      
+      .cta-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Small Mobile Devices */
+    @media (max-width: 480px) {
+      .header-title {
+        font-size: 1.1rem;
+        padding: 10px 0;
+      }
+      
+      .tab {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+      }
+      
+      .explanation-section {
+        padding: 12px;
+        font-size: 0.85rem;
+      }
+      
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      
+      .card {
+        height: 280px;
+      }
+      
+      .card img {
+        height: 140px;
+      }
+      
+      .card-title {
+        font-size: 0.95rem;
+      }
+      
+      .card-description {
+        font-size: 0.75rem;
+      }
+      
+      .video-text {
+        font-size: 1rem;
+      }
+      
+      .video-embed iframe {
+        height: 200px;
+      }
+      
+      .footer-socials a {
+        font-size: 1.1rem;
+        margin: 0 8px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -227,9 +405,9 @@
     <!-- Explanation Section -->
        <div class="explanation-section">
       <div class="explanation-title">About Our Games</div>
-      At Fearless Youth Camp, our games are intentionally crafted to go beyond laughter and adrenaline—they’re designed to reflect real-life challenges that young Christians face today. Each activity is built around teamwork, trust, quick decision-making, and strategy, echoing key spiritual themes like peer pressure, identity in Christ, emotional resilience, and standing firm in faith even when things get tough.
+      At Fearless Youth Camp, our games are intentionally crafted to go beyond laughter and adrenaline—they're designed to reflect real-life challenges that young Christians face today. Each activity is built around teamwork, trust, quick decision-making, and strategy, echoing key spiritual themes like peer pressure, identity in Christ, emotional resilience, and standing firm in faith even when things get tough.
 
-Through creative, fast-paced, and sometimes hilarious challenges, campers will discover biblical truths in action. Whether it’s learning the power of unity during a team relay or the importance of perseverance in a high-stakes obstacle course, every game has a deeper message rooted in God’s Word.
+Through creative, fast-paced, and sometimes hilarious challenges, campers will discover biblical truths in action. Whether it's learning the power of unity during a team relay or the importance of perseverance in a high-stakes obstacle course, every game has a deeper message rooted in God's Word.
     </div>
  <!-- Cards -->
 <div class="card-grid">
@@ -246,7 +424,7 @@ Through creative, fast-paced, and sometimes hilarious challenges, campers will d
     <img src="img/g7.jpeg" alt="Plays and Dances">
     <div class="card-content">
       <div class="card-title">Plays & Dances</div>
-      <div class="card-description">Express truth and faith through movement, drama, and creativity for God\'s glory.</div>
+      <div class="card-description">Express truth and faith through movement, drama, and creativity for God's glory.</div>
     </div>
   </div>
 
@@ -258,7 +436,7 @@ Through creative, fast-paced, and sometimes hilarious challenges, campers will d
     </div>
   </div>
 
-  <div class="card" onclick="showDetails('🥊 Boxing – Faith Fight', 'A powerful and safe activity focused on endurance, discipline, and staying spiritually alert. It\'s not about violence—it’s about learning when to fight for what matters.', 'img/g6.jpeg')">
+  <div class="card" onclick="showDetails('🥊 Boxing – Faith Fight', 'A powerful and safe activity focused on endurance, discipline, and staying spiritually alert. It\'s not about violence—its about learning when to fight for what matters.', 'img/g6.jpeg')">
     <img src="img/g6.jpeg" alt="Boxing">
     <div class="card-content">
       <div class="card-title">Boxing</div>
@@ -270,7 +448,7 @@ Through creative, fast-paced, and sometimes hilarious challenges, campers will d
     <img src="img/g5.jpeg" alt="Football">
     <div class="card-content">
       <div class="card-title">Football</div>
-      <div class="card-description">Play with passion and purpose while building teamwork and perseverance for God\'s glory.</div>
+      <div class="card-description">Play with passion and purpose while building teamwork and perseverance for God's glory.</div>
     </div>
   </div>
 
