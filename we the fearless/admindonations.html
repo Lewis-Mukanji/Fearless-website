@@ -182,7 +182,7 @@
             const tableBody = document.getElementById('donationsTableBody');
             tableBody.innerHTML = '<tr><td colspan="6" style="text-align: center;">Loading donations...</td></tr>';
             
-            let url = `http://localhost:5000/api/donations?page=${page}&limit=${limit}`;
+            let url = `https://endpoint.thefearlessmovement.co.ke/api/donations?page=${page}&limit=${limit}`;
             if (searchQuery) {
                 url += `&search=${encodeURIComponent(searchQuery)}`;
             }
@@ -345,7 +345,7 @@
         }
         
         function loadDonationStats() {
-            fetch('http://localhost:5000/api/donations/stats')
+            fetch('https://endpoint.thefearlessmovement.co.ke/api/donations/stats')
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {

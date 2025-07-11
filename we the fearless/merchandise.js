@@ -153,7 +153,7 @@ purchaseBtn.disabled = true;
 purchaseBtn.innerHTML = 'Processing... <span class="loading-spinner"></span>';
 
 try {
-    const response = await fetch('http://localhost:5000/api/send-order', {
+    const response = await fetch('https://endpoint.thefearlessmovement.co.ke/api/send-order', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

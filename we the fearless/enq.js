@@ -114,7 +114,7 @@
             sendReplyBtn.textContent = 'Sending...';
             
             // In a real app, you would call your email API
-            const response = await fetch('http://localhost:5000/api/send-email', {
+            const response = await fetch('https://endpoint.thefearlessmovement.co.ke/api/send-email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -196,7 +196,7 @@
         if (currentDateFilter !== 'all') params.set('dateFilter', currentDateFilter);
         if (currentYearFilter !== 'all') params.set('year', currentYearFilter);
         
-        const response = await fetch(`http://localhost:5000/api/admin/enquiries/trend?${params.toString()}`, {
+        const response = await fetch(`https://endpoint.thefearlessmovement.co.ke/api/admin/enquiries/trend?${params.toString()}`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('authToken')}`
             }
@@ -210,7 +210,7 @@
         if (currentDateFilter !== 'all') params.set('dateFilter', currentDateFilter);
         if (currentYearFilter !== 'all') params.set('year', currentYearFilter);
         
-        const response = await fetch(`http://localhost:5000/api/admin/enquiries/time-distribution?${params.toString()}`, {
+        const response = await fetch(`https://endpoint.thefearlessmovement.co.ke/api/admin/enquiries/time-distribution?${params.toString()}`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('authToken')}`
             }
@@ -224,7 +224,7 @@
         if (currentDateFilter !== 'all') params.set('dateFilter', currentDateFilter);
         if (currentYearFilter !== 'all') params.set('year', currentYearFilter);
         
-        const response = await fetch(`http://localhost:5000/api/admin/enquiries?${params.toString()}`, {
+        const response = await fetch(`https://endpoint.thefearlessmovement.co.ke/api/admin/enquiries?${params.toString()}`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('authToken')}`
             }
@@ -446,7 +446,7 @@
             }
             
             // Fetch from API
-            const response = await fetch(`http://localhost:5000/api/admin/enquiries?${params.toString()}`, {
+            const response = await fetch(`https://endpoint.thefearlessmovement.co.ke/api/admin/enquiries?${params.toString()}`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('authToken')}`
@@ -521,7 +521,7 @@
         }
         
         try {
-            const response = await fetch(`http://localhost:5000/api/admin/enquiries/${enquiryId}`, {
+            const response = await fetch(`https://endpoint.thefearlessmovement.co.ke/api/admin/enquiries/${enquiryId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('authToken')}`
