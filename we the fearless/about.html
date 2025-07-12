@@ -1148,7 +1148,7 @@ viewLeadersButton.addEventListener("click", () => {
       }
 
       // Send to server
-      const response = await fetch('https://endpoint.thefearlessmovement.co.ke/api/submit-form', {
+      const response = await fetch('http://localhost:5000/api/submit-form', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

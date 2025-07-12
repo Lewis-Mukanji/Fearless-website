@@ -5,7 +5,7 @@ let registrations = [];
 
 // Configuration - Update these URLs to match your backend
 const CONFIG = {
-    API_BASE_URL: 'https://endpoint.thefearlessmovement.co.ke/api', // Change this to your actual API URL
+    API_BASE_URL: 'http://localhost:5000/api', // Change this to your actual API URL
     TOKEN_KEY: 'authToken',
     EVENT_FEE: 5000 // Static event fee
 };

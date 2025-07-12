@@ -249,7 +249,7 @@
             }
             
             // Fetch data with authentication
-            fetch(`https://endpoint.thefearlessmovement.co.ke/api/merchandise/orders?page=${page}&limit=${limit}`, {
+            fetch(`http://localhost:5000/api/merchandise/orders?page=${page}&limit=${limit}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -295,7 +295,7 @@
             }
             
             // Load monthly sales data
-            fetch('https://endpoint.thefearlessmovement.co.ke/api/merchandise/monthly-sales', {
+            fetch('http://localhost:5000/api/merchandise/monthly-sales', {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -318,7 +318,7 @@
             });
             
             // Load weekly trends data
-            fetch('https://endpoint.thefearlessmovement.co.ke/api/merchandise/weekly-trends?weeks=8', {
+            fetch('http://localhost:5000/api/merchandise/weekly-trends?weeks=8', {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -341,7 +341,7 @@
             });
             
             // Load top items data
-            fetch('https://endpoint.thefearlessmovement.co.ke/api/merchandise/top-items?limit=5&period=month', {
+            fetch('http://localhost:5000/api/merchandise/top-items?limit=5&period=month', {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'

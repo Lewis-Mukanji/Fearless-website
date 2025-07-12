@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Load events from API
   function loadEvents() {
-    fetch('https://endpoint.thefearlessmovement.co.ke/api/events', {
+    fetch('http://localhost:5000/api/events', {
       headers: getHeaders(),
       method: 'GET'
     })
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Check if the poster URL is relative and doesn't start with the API base URL
       if (posterUrl && !posterUrl.startsWith('http') && !posterUrl.startsWith('/')) {
-        posterUrl = `https://endpoint.thefearlessmovement.co.ke/${posterUrl}`;
+        posterUrl = `http://localhost:5000/${posterUrl}`;
       }
       
       let statusClass = '';
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Ensure the poster URL is complete
       if (!posterUrl.startsWith('http') && !posterUrl.startsWith('/')) {
-        posterUrl = `https://endpoint.thefearlessmovement.co.ke/${posterUrl}`;
+        posterUrl = `http://localhost:5000/${posterUrl}`;
       }
       
       posterPreview.innerHTML = `<img src="${posterUrl}" alt="Event Poster" onerror="this.onerror=null; this.src='img/default-event.jpg';">`;
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log(pair[0] + ': ' + pair[1]);
     }
     
-    const url = eventId ? `https://endpoint.thefearlessmovement.co.ke/api/events/${eventId}` : 'https://endpoint.thefearlessmovement.co.ke/api/events';
+    const url = eventId ? `http://localhost:5000/api/events/${eventId}` : 'http://localhost:5000/api/events';
     const method = eventId ? 'PUT' : 'POST';
     
     fetch(url, {
@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Delete event
   function deleteEvent(eventId) {
-    fetch(`https://endpoint.thefearlessmovement.co.ke/api/events/${eventId}`, {
+    fetch(`http://localhost:5000/api/events/${eventId}`, {
       method: 'DELETE',
       headers: getHeaders()
     })
@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Load ticket sales data
   function loadTicketSales() {
-    fetch('https://endpoint.thefearlessmovement.co.ke/api/events/sales', {
+    fetch('http://localhost:5000/api/events/sales', {
       headers: getHeaders()
     })
     .then(response => {
@@ -438,7 +438,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Load recent purchases
   function loadRecentPurchases() {
-    fetch('https://endpoint.thefearlessmovement.co.ke/api/purchase-ticket', {
+    fetch('http://localhost:5000/api/purchase-ticket', {
       headers: getHeaders(),
       method: 'GET'
     })
@@ -585,7 +585,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Confirm purchase
   function confirmPurchase(purchaseId) {
-    fetch(`https://endpoint.thefearlessmovement.co.ke/api/tickets/confirm/${purchaseId}`, {
+    fetch(`http://localhost:5000/api/tickets/confirm/${purchaseId}`, {
       method: 'POST',
       headers: getHeaders(),
       body: JSON.stringify({ confirmed: true })
@@ -621,7 +621,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectedIds = getSelectedPurchaseIds();
     const eventId = eventFilter.value;
     
-    let exportUrl = 'https://endpoint.thefearlessmovement.co.ke/api/tickets/export?';
+    let exportUrl = 'http://localhost:5000/api/tickets/export?';
     if (selectedIds.length > 0) {
       exportUrl += `ids=${selectedIds.join(',')}`;
     } else if (eventId !== 'all') {
