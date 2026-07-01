@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -302,39 +302,39 @@
 }
         /* Logo Section Styling */
 /* Logo Section Styling */
-.logo-section {
+/* .logo-section {
     background-color: #fff;
     padding: 60px 0;
-    overflow: hidden; /* Hide logos outside the viewport */
+    overflow: hidden; 
     display: flex;
     justify-content: center;
-}
+} */
 
-.logo-slider {
+/* .logo-slider {
     display: flex;
     gap: 50px;
-    animation: scroll-logos 20s linear infinite; /* Smooth scrolling effect */
-}
+    animation: scroll-logos 20s linear infinite; 
+} */
 
-.logo-slider img {
-    height: 80px; /* Adjust logo size */
+/* .logo-slider img {
+    height: 80px; 
     object-fit: contain;
-    transition: transform 0.3s ease; /* For hover effect */
-}
+    transition: transform 0.3s ease; 
+} */
 
-.logo-slider img:hover {
-    transform: scale(1.1); /* Slight zoom-in effect on hover */
-}
+/* .logo-slider img:hover {
+    transform: scale(1.1); 
+} */
 
 /* Scrolling Animation */
-@keyframes scroll-logos {
+/* @keyframes scroll-logos {
     from {
-        transform: translateX(100%); /* Start from right */
+        transform: translateX(100%); 
     }
     to {
-        transform: translateX(-100%); /* Move left infinitely */
+        transform: translateX(-100%); 
     }
-}
+} */
 
 
 /* Section Background */
@@ -1027,6 +1027,600 @@ hr {
     font-weight: bold;
 }
 
+
+/* Home refresh */
+:root {
+  --fearless-gold: #ffae00;
+  --fearless-gold-deep: #d98c00;
+  --fearless-ink: #0b0b0f;
+  --fearless-muted: #5d6470;
+  --fearless-paper: #fffaf1;
+  --fearless-line: rgba(11, 11, 15, 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(255, 174, 0, 0.14), transparent 34rem),
+    linear-gradient(180deg, #fff 0%, #fff8eb 42%, #fff 100%);
+  overflow-x: hidden;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  height: 96px;
+  padding: 14px clamp(18px, 4vw, 54px);
+  background: rgba(0, 0, 0, 0.86);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logo-overlay {
+  top: 50%;
+  left: clamp(18px, 4vw, 54px);
+  transform: translateY(-50%);
+}
+
+.logo-overlay img {
+  height: 86px;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.35));
+}
+
+.nav-links {
+  gap: 6px;
+  margin-right: 0;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.92rem;
+  padding: 10px 14px;
+  border-radius: 999px;
+  letter-spacing: 0;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: var(--fearless-gold);
+  box-shadow: 0 12px 26px rgba(255, 174, 0, 0.28);
+}
+
+.hero-section {
+  min-height: calc(100vh - 96px);
+  height: auto;
+  isolation: isolate;
+}
+
+.hero-video {
+  transform: scale(1.02);
+}
+
+.hero-overlay {
+  min-height: calc(100vh - 96px);
+  justify-content: center;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.58) 46%, rgba(0, 0, 0, 0.15) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.72) 100%);
+  padding: 80px 0 110px;
+}
+
+.slider-container {
+  max-width: 1240px;
+  padding: 0 clamp(22px, 6vw, 80px);
+  min-height: 430px;
+}
+
+.slide-text {
+  max-width: 760px;
+  margin-top: 0;
+  padding: 0;
+}
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  margin-bottom: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  color: #ffe0a1;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hero-kicker::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--fearless-gold);
+  box-shadow: 0 0 0 7px rgba(255, 174, 0, 0.18);
+}
+
+.main-title,
+.subtitle {
+  font-size: clamp(3rem, 7vw, 6.8rem);
+  line-height: 0.95;
+  max-width: 820px;
+  margin-bottom: 22px;
+  letter-spacing: 0;
+}
+
+.main-title span {
+  color: var(--fearless-gold);
+}
+
+.description {
+  max-width: 640px;
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.cta-button,
+.mission-btn,
+.store-btn,
+.join-btn-main {
+  border-radius: 999px;
+  box-shadow: 0 16px 30px rgba(255, 174, 0, 0.26);
+}
+
+.cta-button {
+  color: #111;
+  background: var(--fearless-gold);
+}
+
+.cta-button.secondary {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.11);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: none;
+}
+
+.cta-button:hover {
+  background: #fff;
+  color: #111;
+}
+
+.hero-pulse-card {
+  position: absolute;
+  right: clamp(22px, 6vw, 76px);
+  bottom: 76px;
+  width: min(330px, calc(100% - 44px));
+  padding: 22px;
+  border-radius: 8px;
+  color: #fff;
+  background: rgba(10, 10, 12, 0.66);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.42);
+}
+
+.hero-pulse-card p {
+  color: rgba(255, 255, 255, 0.76);
+  line-height: 1.55;
+  margin-top: 8px;
+}
+
+.hero-mini-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.hero-mini-stats strong {
+  display: block;
+  color: var(--fearless-gold);
+  font-size: 1.3rem;
+}
+
+.hero-mini-stats span {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.74);
+  text-transform: uppercase;
+}
+
+.slider-controls {
+  left: clamp(22px, 6vw, 80px);
+  bottom: 42px;
+}
+
+.impact-section,
+.video-section,
+.human-lens-section,
+.insights-section {
+  padding: clamp(58px, 8vw, 100px) clamp(18px, 4vw, 40px);
+}
+
+.impact-heading,
+.event-header {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.05;
+}
+
+.impact-heading::after,
+.event-header::after {
+  content: "";
+  display: block;
+  width: 84px;
+  height: 5px;
+  margin: 18px auto 0;
+  border-radius: 999px;
+  background: var(--fearless-gold);
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
+  gap: 18px;
+}
+
+.stat-item {
+  margin: 0;
+  padding: 26px 18px;
+  background: #fff;
+  border: 1px solid var(--fearless-line);
+  border-radius: 8px;
+  box-shadow: 0 18px 44px rgba(19, 17, 12, 0.08);
+}
+
+.stat-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.impact-container {
+  max-width: 1160px;
+  margin: 50px auto 0;
+}
+
+.impact-item {
+  padding: 26px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--fearless-line);
+  border-radius: 8px;
+}
+
+.impact-item h3 {
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+}
+
+.impact-item p {
+  margin-top: 12px;
+  line-height: 1.75;
+}
+
+.mission-store-section {
+  padding: clamp(60px, 8vw, 100px) 20px;
+  background:
+    linear-gradient(135deg, #050505 0%, #17100a 72%, #2b1b00 100%);
+}
+
+.mission-card,
+.store-card {
+  min-height: 420px;
+  height: auto;
+  padding: clamp(24px, 4vw, 36px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.mission-content p,
+.store-content p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.mission-image img,
+.store-image img {
+  max-width: 120%;
+  max-height: 290px;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.35));
+}
+
+.video-content {
+  gap: clamp(24px, 6vw, 74px);
+}
+
+.video-text {
+  font-size: clamp(1.9rem, 4vw, 3.1rem);
+  line-height: 1.1;
+}
+
+.video-text p {
+  margin-top: 18px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--fearless-muted);
+}
+
+.video-embed iframe {
+  height: clamp(260px, 34vw, 410px);
+  border-radius: 8px;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.18);
+}
+
+.human-lens-section {
+  background: #101014;
+  color: #fff;
+}
+
+.text-left h2,
+.text-right h2,
+.text-right p {
+  color: #fff;
+}
+
+.text-left cite,
+.text-right cite {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--fearless-gold);
+}
+
+.image-layout img {
+  min-height: 240px;
+  border-radius: 8px;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.image-layout img:hover {
+  transform: translateY(-5px);
+  filter: saturate(1.08) contrast(1.03);
+}
+
+.event-header {
+  max-width: 1100px;
+  margin: 70px auto 18px;
+  padding: 0 20px;
+  box-shadow: none;
+  background: transparent;
+}
+
+.event-description {
+  max-width: 980px;
+  padding: 0 22px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--fearless-muted);
+}
+
+.event-cards {
+  max-width: 1180px;
+  margin: 34px auto 0;
+  padding: 10px 20px 36px;
+  gap: 18px;
+}
+
+.event-card {
+  width: 300px;
+  height: 360px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.18);
+}
+
+.event-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 32%, rgba(0, 0, 0, 0.78) 100%);
+}
+
+.event-card img {
+  transition: transform 0.45s ease;
+}
+
+.event-card h3 {
+  z-index: 1;
+  bottom: 22px;
+  font-size: 1.55rem;
+}
+
+.event-card-link:hover .event-card img {
+  transform: scale(1.08);
+}
+
+.event-card-link:hover .event-card {
+  transform: translateY(-6px);
+}
+
+.insights-section {
+  background: var(--fearless-paper);
+}
+
+.insights-container {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.85fr repeat(3, 1fr);
+  gap: 18px;
+}
+
+.insights-container > h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.05;
+}
+
+.insight-item {
+  padding: 26px;
+  margin: 0;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid var(--fearless-line);
+  box-shadow: 0 18px 36px rgba(19, 17, 12, 0.07);
+}
+
+.insight-item .category,
+.insight-item .read-article {
+  color: var(--fearless-gold-deep);
+}
+
+.join-us-section {
+  max-width: 1180px;
+  margin: 80px auto;
+  padding: 24px;
+  gap: clamp(22px, 5vw, 56px);
+  border-radius: 8px;
+  background: #08080a;
+  overflow: hidden;
+}
+
+.join-us-section img {
+  width: min(48%, 540px);
+  height: 430px;
+  object-fit: cover;
+  margin: 0;
+  border-radius: 8px;
+}
+
+.join-us-content h2 {
+  color: var(--fearless-gold);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.08;
+}
+
+.join-btn-main {
+  display: inline-block;
+  padding: 14px 24px;
+  color: #111;
+  background: var(--fearless-gold);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.footer {
+  padding: 58px clamp(20px, 5vw, 70px) 24px;
+  background: #070709;
+  gap: 26px;
+  text-align: left;
+}
+
+.footer .footer-copyright {
+  flex-basis: 100%;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media screen and (max-width: 980px) {
+  .hero-pulse-card {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin: 26px clamp(22px, 6vw, 80px) 0;
+  }
+
+  .stats-container,
+  .insights-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .impact-container,
+  .video-content {
+    flex-direction: column;
+  }
+
+  .mission-card,
+  .store-card {
+    max-width: 100%;
+  }
+
+  .join-us-section {
+    flex-direction: column;
+  }
+
+  .join-us-section img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    height: 78px;
+  }
+
+  .logo-overlay img {
+    height: 70px;
+  }
+
+  .hamburger {
+    top: 24px;
+    right: 22px;
+  }
+
+  .nav-links {
+    width: min(310px, 84vw);
+    padding: 94px 20px 20px;
+    gap: 10px;
+  }
+
+  .hero-section,
+  .hero-overlay {
+    min-height: calc(100vh - 78px);
+  }
+
+  .hero-overlay {
+    padding-top: 60px;
+  }
+
+  .main-title,
+  .subtitle {
+    font-size: clamp(2.7rem, 15vw, 4.6rem);
+  }
+
+  .hero-actions {
+    align-items: stretch;
+  }
+
+  .cta-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-mini-stats,
+  .stats-container,
+  .insights-container {
+    grid-template-columns: 1fr;
+  }
+
+  .text-row {
+    gap: 22px;
+  }
+
+  .text-right {
+    text-align: left;
+  }
+
+  .event-card {
+    width: 82vw;
+  }
+
+  .join-us-section {
+    margin: 46px 14px;
+  }
+
+  .join-us-section img {
+    height: 300px;
+  }
+}
 </style>
 
     
@@ -1066,56 +1660,48 @@ hr {
     <div class="hero-overlay">
         <div class="slider-container">
             <div class="slide-text active">
-                <h1 class="main-title">Welcome to  
-                  <br>The Fearless</br> 
-                   Movement</h1>
-                <!-- <div class="subtitle">Called to shine</div> -->
-                <div class="description">"Empowering young people to walk in unwavering faith"</div>
-                <a href="about.html" class="cta-button">Learn More</a>
+                <div class="hero-kicker">Youth. Faith. Courage.</div>
+                <h1 class="main-title">Welcome to <span>The Fearless</span> Movement</h1>
+                <div class="description">Empowering young people to walk in unwavering faith, shine boldly, and transform their communities.</div>
+                <div class="hero-actions">
+                    <a href="about.html" class="cta-button">Discover the movement</a>
+                    <a href="events.html" class="cta-button secondary">Explore events</a>
+                </div>
             </div>
             <div class="slide-text">
-                <!-- <h1 class="main-title">Transforming Lives</h1> -->
-                <div class="subtitle">Called to shine</div>
-                <div class="description">"Building a community of fearless believers"</div>
-                <a href="events.html" class="cta-button">Join Us</a>
+                <div class="hero-kicker">Called to shine</div>
+                <div class="subtitle">A community of fearless believers</div>
+                <div class="description">Gather with young people choosing faith, purpose, worship, service, and bold leadership.</div>
+                <div class="hero-actions">
+                    <a href="events.html" class="cta-button">Join Us</a>
+                    <a href="outreach.html" class="cta-button secondary">See outreach</a>
+                </div>
             </div>
             <div class="slide-text">
-                <!-- <h1 class="main-title">Make an Impact</h1> -->
-                <div class="subtitle">Reflecting Christ in a dark world</div>
-                <div class="description">"Together we can make a difference"</div>
-                <a href="contact.html" class="cta-button">Get Involved</a>
+                <div class="hero-kicker">Reflecting Christ</div>
+                <div class="subtitle">Light that moves beyond the room</div>
+                <div class="description">Together we can serve, disciple, and carry hope into the places that need it most.</div>
+                <div class="hero-actions">
+                    <a href="contact.html" class="cta-button">Get Involved</a>
+                    <a href="donations.html" class="cta-button secondary">Support the work</a>
+                </div>
             </div>
         </div>
+        <!-- <div class="hero-pulse-card">
+            <h3>Called to shine. Built to serve.</h3>
+            <p>From camps and worship nights to missions and mentorship, this is a home for young people becoming bold followers of Christ.</p>
+            <div class="hero-mini-stats">
+                <div><strong>1000+</strong><span>Youth</span></div>
+                <div><strong>20+</strong><span>Partners</span></div>
+                <div><strong>10+</strong><span>Countries</span></div>
+            </div>
+        </div> -->
         <div class="slider-controls">
             <div class="slider-dots"></div>
         </div>
     </div>
 </section>
-    
-    
-    <section class="logo-section">
-      <div class="logo-slider">
-          <!-- Logos start -->
-          <img src="logo/1f.png" alt="fearless Logo">
-          <img src="logo/cm.jpg" alt="cmm Logo">
-          <img src="logo/tf.jpg" alt="Tearfund Logo">
-          <img src="logo/kp.jpg" alt="Kepro Logo">
-          <img src="logo/dc.jpg" alt="Destiny chapel Logo">
-          <img src="logo/cr.jpg" alt="Crossroads Church Logo">
-          <img src="logo/cbl.jpg" alt="Mpesa Logo">
-          <!-- <img src="logo/mp.jpg" alt="Visa Logo"> -->
-          <!-- Duplicate logos for smooth scrolling -->
-          <img src="logo/1f.png" alt="fearless Logo">
-          <img src="logo/cm.jpg" alt="cmm Logo">
-          <img src="logo/tf.jpg" alt="Tearfund Logo">
-          <img src="logo/kp.jpg" alt="Kepro Logo">
-          <img src="logo/dc.jpg" alt="Destiny chapel Logo">
-          <img src="logo/cr.jpg" alt="Crossroads Church Logo">
-          <img src="logo/cbl.jpg" alt="Mpesa Logo">
-          <!-- <img src="logo/mp.jpg" alt="Visa Logo"> -->
-      </div>
-  </section>
-  
+
   <section class="impact-section">
     <h2 class="impact-heading">Our Impact</h2>
     <!-- <section class="stats-section"> -->
@@ -1174,7 +1760,7 @@ hr {
             <div class="impact-item">
                 <h3>10+ Countries</h3>
                 <p>Our organization is blessed to have a global reach, impacting over 10 countries across Africa and the world.
-                    Our missions and events extend to various regions, bringing hope, support, and the message of God’s love to diverse communities.
+                    Our missions and events extend to various regions, bringing hope, support, and the message of Godâ€™s love to diverse communities.
                     From remote villages in Africa to urban centers across continents, our dedicated teams work tirelessly to address local needs, 
                     provide humanitarian aid, and share the Gospel.</p>
             </div>
@@ -1236,7 +1822,7 @@ hr {
         <div class="content-container">
           <div class="text-row">
             <div class="text-left">
-              <h2>“Arise, shine, for your light has come, and the glory of the LORD rises upon you. See, darkness covers 
+              <h2>â€œArise, shine, for your light has come, and the glory of the LORD rises upon you. See, darkness covers 
                 the earth and thick darkness is over the peoples, but the LORD rises upon you and his glory appears over you.</h2>
                 <cite>~Isaiah 60:1-2~</cite>
             </div>
@@ -1272,13 +1858,13 @@ hr {
 
     <!-- Event Description -->
 <div class="event-description">
-  Ready for an encounter that will change your life forever? Welcome to The Fearless Movement Camp—where faith, fun, and transformation collide  
-    This is not just any camp; it’s a life-changing experience where you’ll encounter the Holy Spirit, build meaningful connections with other youth, and take part in activities that leave a lasting impact.  
+  Ready for an encounter that will change your life forever? Welcome to The Fearless Movement Campâ€”where faith, fun, and transformation collide  
+    This is not just any camp; itâ€™s a life-changing experience where youâ€™ll encounter the Holy Spirit, build meaningful connections with other youth, and take part in activities that leave a lasting impact.  
 
-    From transformative workshops to thrilling games, exciting events, and a memorable dinner night, there’s something for everyone.  
-    Take a moment to explore the activities showcased in the cards below — each one offering a glimpse into the incredible moments that await you at The Fearless Movement Camp.  
+    From transformative workshops to thrilling games, exciting events, and a memorable dinner night, thereâ€™s something for everyone.  
+    Take a moment to explore the activities showcased in the cards below â€” each one offering a glimpse into the incredible moments that await you at The Fearless Movement Camp.  
 
-    Don’t miss this opportunity to grow spiritually, make lifelong friends, and create unforgettable memories. We can’t wait to see you there!
+    Donâ€™t miss this opportunity to grow spiritually, make lifelong friends, and create unforgettable memories. We canâ€™t wait to see you there!
 </div>
     <!-- Event Cards -->
     <div class="event-cards">
@@ -1397,7 +1983,7 @@ hr {
 
     <!-- Copyright -->
     <div class="footer-copyright">
-        &copy; 2025 <span>The Fearless Movement</span>. All rights reserved
+        &copy; 2026 <span>The Fearless Movement</span>. All rights reserved
     </div>
 </div>
 
@@ -1556,3 +2142,5 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 </body>
 </html>
+
+
