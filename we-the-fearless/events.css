@@ -573,14 +573,20 @@ body {
     background-color: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
+    padding: 20px;
+    z-index: 2000;
   }
 
   .modal-content {
+    position: relative;
     background-color:#000;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     text-align: center;
-    max-width: 400px;
+    max-width: 430px;
+    width: 100%;
+    border: 1px solid rgba(255, 174, 0, 0.26);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
   }
 
   .modal-content input {
@@ -596,6 +602,53 @@ body {
     color: white;
     border: none;
     border-radius: 5px;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid rgba(255, 174, 0, 0.28);
+    border-radius: 50%;
+    background: transparent;
+    color: #fff;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .modal-intro {
+    margin: 12px 0 18px;
+    color: var(--muted, #bbbbbb);
+    font-size: 0.95rem;
+  }
+
+  .modal-status {
+    min-height: 24px;
+    margin-top: 14px;
+    color: var(--muted, #bbbbbb);
+    font-size: 0.92rem;
+  }
+
+  .modal-status.success {
+    color: #69db7c;
+  }
+
+  .modal-status.error {
+    color: #ff8787;
+  }
+
+  .modal-status.pending {
+    color: var(--gold, #ffae00);
+  }
+
+  .modal-content button:disabled {
+    cursor: wait;
+    opacity: 0.72;
+    transform: none;
   }
   /* Ticket Section */
 /* General Styles */
@@ -1513,4 +1566,29 @@ body {
     width: 100%;
     justify-content: center;
   }
+}
+
+.modal-content .modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 174, 0, 0.28);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  box-shadow: none;
+}
+
+.modal-content .modal-close:hover {
+  background: rgba(255, 174, 0, 0.12);
+  color: var(--gold);
+  transform: none;
+  box-shadow: none;
 }

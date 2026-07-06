@@ -226,18 +226,21 @@
     </select>
     <input type="number" id="ticket-quantity" placeholder="Enter quantity" min="1">
     <div class="total">Total: Sh. <span id="total-cost">0</span></div>
-    <button class="purchase-btn" id="purchase-button">Purchase Tickets</button>
+    <button class="purchase-btn" id="purchase-button">Register Interest</button>
   </div>
 </section>  
 
-<!-- Add Modal HTML for M-Pesa Payment -->
+<!-- Registration Modal -->
 <div class="modal" id="mpesa-modal">
   <div class="modal-content">
-    <h3>Complete Your Purchase</h3>
+    <button class="modal-close" id="close-registration-modal" aria-label="Close registration form">&times;</button>
+    <h3>Register Your Interest</h3>
+    <p class="modal-intro">Share your details and we will email you the next step for Fearless Camp registration.</p>
     <input type="text" id="user-name" placeholder="Full Name" required>
     <input type="email" id="user-email" placeholder="Email Address" required>
     <input type="text" id="user-phone" placeholder="Phone Number" required>
-    <button id="confirm-mpesa-button">Confirm Payment via MPesa</button>
+    <button id="confirm-mpesa-button">Submit Registration</button>
+    <p class="modal-status" id="registration-status" aria-live="polite"></p>
   </div>
 </div>
 <section class="ticket-section">
@@ -428,12 +431,9 @@ document.addEventListener("DOMContentLoaded", () => {
    navLinks.classList.toggle('active');
  }
 
- // Define redirect URLs for each ticket type
- const ticketRedirectUrls = {
-   '4500': 'https://paystack.com/buy/discounted-ticket-imcmdb',  // Discounted ticket URL
-   '5000': 'https://paystack.com/buy/fearlessalone',    // Standard ticket URL
-   '20000': 'https://paystack.com/buy/group-ticket-qofmko'       // Group ticket URL
- };
+ // Paste your deployed Google Apps Script web app URL here after setup.
+ const REGISTRATION_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwdtHJjCIi0GEbAYOJXXJclsPgZf_800ACPRH0kruE3jY6_W13-SxOPxgOA3Q1Uy02fvg/exec";
+ const EVENT_NAME = "The Fearless Movement Annual Camp 2026";
 
   // Define redirect URLs for payment plans
   const planRedirectUrls = {
@@ -610,51 +610,115 @@ document.addEventListener("DOMContentLoaded", () => {
    return qrCode;
  }
 
- // Purchase button logic
+ function isRegistrationConfigured() {
+   return REGISTRATION_SCRIPT_URL && !REGISTRATION_SCRIPT_URL.includes("PASTE_YOUR");
+ }
+
+ function setRegistrationStatus(message, type = "") {
+   const status = document.getElementById("registration-status");
+   if (!status) return;
+
+   status.textContent = message;
+   status.className = `modal-status ${type}`.trim();
+ }
+
+ function closeRegistrationModal() {
+   if (mpesaModal) {
+     mpesaModal.style.display = "none";
+   }
+ }
+
+ async function submitRegistration(payload) {
+   const formData = new FormData();
+
+   Object.entries(payload).forEach(([key, value]) => {
+     formData.append(key, value);
+   });
+
+   // Apps Script web apps do not always return CORS-readable responses.
+   // no-cors lets the browser send the registration without exposing private keys.
+   await fetch(REGISTRATION_SCRIPT_URL, {
+     method: "POST",
+     mode: "no-cors",
+     body: formData
+   });
+ }
+
+ // Registration button logic
  const purchaseButton = document.getElementById("purchase-button");
  const mpesaModal = document.getElementById("mpesa-modal");
+ const closeRegistrationButton = document.getElementById("close-registration-modal");
  
  if (purchaseButton) {
    purchaseButton.addEventListener("click", function () {
      const quantity = parseInt(document.getElementById("ticket-quantity").value);
      if (quantity > 0) {
        if (mpesaModal) {
-         mpesaModal.style.display = "flex"; // Show M-Pesa modal
+         setRegistrationStatus("");
+         mpesaModal.style.display = "flex";
        }
      } else {
-       alert("Please select a ticket quantity before proceeding.");
+       alert("Please enter a ticket quantity before registering.");
      }
    });
  }
 
- // Confirm M-Pesa payment button logic
+ if (closeRegistrationButton) {
+   closeRegistrationButton.addEventListener("click", closeRegistrationModal);
+ }
+
+ // Confirm registration button logic
  const confirmMpesaButton = document.getElementById("confirm-mpesa-button");
  
  if (confirmMpesaButton) {
    confirmMpesaButton.addEventListener("click", async function () {
-     const name = document.getElementById("user-name").value;
-     const email = document.getElementById("user-email").value;
-     const phone = document.getElementById("user-phone").value;
-     const ticketTypeValue = document.getElementById("ticket-type").value;
+     const name = document.getElementById("user-name").value.trim();
+     const email = document.getElementById("user-email").value.trim();
+     const phone = document.getElementById("user-phone").value.trim();
+     const ticketTypeSelect = document.getElementById("ticket-type");
+     const ticketTypeValue = ticketTypeSelect.value;
+     const ticketTypeLabel = ticketTypeSelect.options[ticketTypeSelect.selectedIndex].text;
      const quantity = parseInt(document.getElementById("ticket-quantity").value);
+     const totalAmount = ticketTypeValue * quantity;
 
      if (!name || !email || !phone || quantity <= 0) {
-       alert("Please fill all details correctly.");
+       setRegistrationStatus("Please fill in your name, email, phone number, and ticket quantity.", "error");
        return;
      }
 
-     // Get the redirect URL based on ticket type
-     const redirectUrl = ticketRedirectUrls[ticketTypeValue];
-     
-     if (redirectUrl) {
-       // Redirect to the specific payment URL
-       window.location.href = redirectUrl;
-     } else {
-       alert("Invalid ticket type selected.");
+     if (!isRegistrationConfigured()) {
+       setRegistrationStatus("Registration is ready, but the Google Apps Script URL has not been added yet.", "error");
+       return;
      }
 
-     // The rest of your existing code for ticket generation can go here
-     // or you can remove it if you're handling everything on the payment page
+     const originalButtonText = confirmMpesaButton.textContent;
+     confirmMpesaButton.disabled = true;
+     confirmMpesaButton.textContent = "Submitting...";
+     setRegistrationStatus("Submitting your registration...", "pending");
+
+     try {
+       await submitRegistration({
+         eventName: EVENT_NAME,
+         name,
+         email,
+         phone,
+         ticketType: ticketTypeLabel,
+         quantity,
+         totalAmount,
+         sourcePage: "events.html"
+       });
+
+       setRegistrationStatus("Thank you. Please check your email for the next registration step.", "success");
+       showSnackbar("Registration submitted. A thank-you email will be sent shortly.");
+       document.getElementById("user-name").value = "";
+       document.getElementById("user-email").value = "";
+       document.getElementById("user-phone").value = "";
+     } catch (error) {
+       setRegistrationStatus("We could not submit your registration. Please try again.", "error");
+     } finally {
+       confirmMpesaButton.disabled = false;
+       confirmMpesaButton.textContent = originalButtonText;
+     }
    });
  }
 
@@ -662,7 +726,7 @@ document.addEventListener("DOMContentLoaded", () => {
  if (mpesaModal) {
    mpesaModal.addEventListener("click", function (e) {
      if (e.target === this) {
-       this.style.display = "none";
+       closeRegistrationModal();
      }
    });
  }
