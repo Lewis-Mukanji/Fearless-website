@@ -366,25 +366,37 @@
             }
         }
 
+        footer {
+            background: #0a0a0a;
+        }
+
         .footer {
-            background-color: #222;
+            background:
+                radial-gradient(circle at 12% 0%, rgba(255, 174, 0, 0.11), transparent 26rem),
+                #0a0a0a;
             color: #fff;
-            padding: 40px 20px;
-            text-align: center;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            padding: 64px clamp(20px, 5vw, 70px) 0;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(220px, 1fr));
+            gap: 40px;
+            text-align: left;
         }
 
         .footer .footer-column {
-            flex: 1 1 30%;
-            margin: 10px;
+            margin: 0;
         }
 
         .footer .footer-column h4 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .footer .footer-column p {
+            color: #bbb;
+            line-height: 1.7;
+            margin: 0 0 20px;
         }
 
         .footer .footer-column ul {
@@ -394,61 +406,88 @@
         }
 
         .footer .footer-column ul li {
-            margin: 5px 0;
+            margin-bottom: 10px;
+            color: #bbb;
+            line-height: 1.6;
+        }
+
+        .footer .footer-column ul li i {
+            width: 22px;
+            margin-right: 8px;
+            color: #ffae00;
+            text-align: center;
         }
 
         .footer .footer-column ul li a {
-            color: #fff;
+            color: #bbb;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
         }
 
         .footer .footer-column ul li a:hover {
             color: #ffae00;
-            text-decoration: underline;
+            padding-left: 4px;
         }
 
         .footer .footer-socials {
-            text-align: left;
+            display: flex;
+            gap: 15px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         .footer .footer-socials a {
-            color: #fff;
-            font-size: 1.5rem;
-            margin: 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 174, 0, 0.1);
+            border: 1px solid rgba(255, 174, 0, 0.16);
+            border-radius: 50%;
+            color: #ffae00;
+            font-size: 1.2rem;
             text-decoration: none;
+            transition: all 0.3s ease;
         }
 
         .footer .footer-socials a:hover {
-            color: #ffae00;
+            background: #ffae00;
+            color: #000;
+            transform: translateY(-3px);
         }
 
         .footer .footer-copyright {
+            grid-column: 1 / -1;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 10px;
+            padding: 30px 0;
+            border-top: 1px solid #333;
             font-size: 0.9rem;
             color: #888;
         }
 
         .footer .footer-copyright span {
-            font-weight: bold;
+            color: #ffae00;
+            font-weight: 600;
         }
 
         /* Mobile footer adjustments */
         @media screen and (max-width: 768px) {
             .footer {
-                flex-direction: column;
+                grid-template-columns: 1fr;
+                gap: 30px;
                 text-align: center;
+                padding: 50px 22px 0;
             }
-            
-            .footer .footer-column {
-                flex: 1 1 100%;
-                margin: 15px 0;
-            }
-            
+
             .footer .footer-socials {
-                text-align: center;
+                justify-content: center;
+            }
+
+            .footer .footer-column ul li i {
+                margin-right: 6px;
             }
         }
 
