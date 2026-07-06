@@ -21,11 +21,11 @@
   <!-- Navigation Links -->
   <div class="nav-links" id="nav-links">
       <a href="index.html">Home</a>
+      <a href="about.html">About us</a>
       <a href="events.html" class="active">Events</a>
       <a href="outreach.html">Evangelism</a>
-      <a href="merchandise.html">Merchandise</a>
-      <a href="about.html">About us</a>
       <a href="donations.html">Donations</a>
+      <!-- <a href="merchandise.html">Merchandise</a> -->
       <a href="contact.html">Contact us</a>
   </div>
   
@@ -41,12 +41,17 @@
     <div class="hero-overlay">
       <div class="hero-content">
         <h1>Our Upcoming Annual Fearless Camp</h1>
+        <div class="hero-meta">
+          <span><i class="fas fa-calendar-alt"></i> August 31st - September 4th</span>
+          <span><i class="fas fa-map-marker-alt"></i> CMLTI Limuru, Kenya</span>
+          <span><i class="fas fa-campground"></i> Annual Camp</span>
+        </div>
         <div class="event-details">
-          <span>📅 August 25-29</span>
+          <span>📅 August 31st - September 4th</span>
           <span>📍 CMLTI Limuru, KENYA</span>
           <span>⛪ </span>
         </div>
-        <p>Embark on a journey of self-discovery as you push your limits.</p>
+        <p>Embark on a journey of faith, courage, discipleship, worship, and unforgettable community.</p>
         <div class="countdown-timer">
           <div><span id="days">000</span><p>DAYS</p></div>
           <div><span id="hours">00</span><p>HOURS</p></div>
@@ -59,43 +64,48 @@
     </div>
   </section>
 
-  <section id="discipleship-section" style="background-color: #000; color: #fff; padding: 50px 20px; text-align: center;">
-    <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 20px;">DISCIPLESHIP</h2>
-    <h3 style="font-size: 2rem; font-weight: bold; margin-bottom: 15px;">THE FEARLESS MOVEMENT YOUTH CAMP</h3>
-    <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 20px;">
+  <section id="discipleship-section" class="discipleship-section">
+    <div class="section-eyebrow"><i class="fas fa-fire"></i> Discipleship</div>
+    <h2>THE FEARLESS MOVEMENT YOUTH CAMP</h2>
+    <p>
         Discipleship is a lifetime commitment that every individual needs to choose for themselves.
         The Fearless Movement Youth Camp aims at sparking the desire for discipleship in the heart of every camp attendee.
     </p>
-    <p style="font-size: 1.2rem; line-height: 1.8;">
+    <p>
         With inspired preachings, dynamic workshops, and exciting camp activities all aimed at teaching the youth how to spread the word in everything they do.
     </p>
 </section>
 
-  <section id="fearless-event" style="background-color: black; color: white; padding: 50px 20px; text-align: left;">
-    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; max-width: 1200px; margin: 0 auto;">
+  <section id="fearless-event" class="featured-event-section">
+    <div class="featured-event-container">
         <!-- Left Side: Video -->
-        <div style="flex: 1; min-width: 300px; padding: 20px;">
-          <video autoplay muted loop style="width: 100%; border-radius: 0; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);">
+        <div class="featured-video">
+          <video autoplay muted loop playsinline>
             <source src="img/dy.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         
         </div>
         <!-- Right Side: Content -->
-        <div style="flex: 1; min-width: 300px; padding: 20px;">
+        <div class="featured-copy">
             <!-- Title -->
-            <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 20px;">Our Annual Fearless Camp</h2>
+            <div class="section-eyebrow"><i class="fas fa-star"></i> Featured Experience</div>
+            <h2>Our Annual Fearless Camp</h2>
             <!-- Subtitle -->
-            <h3 style="font-size: 1.5rem; font-weight: normal; margin-bottom: 15px;">Join Us For the Ultimate Experience</h3>
+            <h3>Join Us For the Ultimate Experience</h3>
             <!-- Description -->
-            <p style="font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
+            <p>
                 Be part of a transformational experience featuring inspiring speakers, worship sessions, and empowering discussions.
                 A once-in-a-lifetime opportunity to connect and grow!
             </p>
             <!-- Date and Venue -->
-            <p style="font-size: 1rem; line-height: 1.8;">
+            <p class="event-meta-list">
+                <span><i class="fas fa-calendar-alt"></i> <strong>August 31st, 2026 @ 10:00 am - September 4th, 2026 @ 1:00 pm</strong></span>
+                <span><i class="fas fa-map-marker-alt"></i> <strong>Clarence Matheny Ministries, Limuru, Kenya</strong></span>
+            </p>
+            <p class="event-meta-list legacy-event-meta">
                 <span style="display: block; margin-bottom: 10px;">
-                    🗓️ <strong>August 25, 2025 @ 10:00 am - August 29, 2025 @ 1:00 pm</strong>
+                    🗓️ <strong>August 31st, 2026 @ 10:00 am - September 4th, 2026 @ 1:00 pm</strong>
                 </span>
                 <span style="display: block;">
                     📍 <strong>Clarence Matheny Ministries, Limuru, Kenya</strong>
@@ -111,7 +121,7 @@
   <p>Join Us For Life Changing Events Today!!</p>
   <div class="events-container">
     <div class="event-card" onclick="toggleDescription(this)">
-      <img src="img/fee.jpeg" alt="Event 1">
+      <img src="img/AnnualCamp.jpeg" alt="Event 1">
       <div class="event-info">
         <div class="date">
           <span>5</span>
@@ -125,7 +135,7 @@
       </div>
     </div>
     <div class="event-card" onclick="toggleDescription(this)">
-      <img src="img/e3.jpg" alt="Event 2">
+      <img src="img/WorshipExperience.jpeg" alt="Event 2">
       <div class="event-info">
         <div class="date">
           <span>7</span>
@@ -139,7 +149,7 @@
       </div>
     </div>
     <div class="event-card" onclick="toggleDescription(this)">
-      <img src="img/e1.jpg" alt="Event 3">
+      <img src="img/LeadersSummit.jpeg" alt="Event 3">
       <div class="event-info">
         <div class="date">
           <span>15</span>
@@ -152,7 +162,7 @@
       </div>
     </div>
     <div class="event-card" onclick="toggleDescription(this)">
-      <img src="img/we.jpg" alt="Event 4">
+      <img src="img/Dinner.jpeg" alt="Event 4">
       <div class="event-info">
         <div class="date">
           <span>28</span>
@@ -198,16 +208,6 @@
   <h2>Purchase The Fearless Movement Annual Camp Tickets</h2>
   <div class="card-container">
     <div class="card">
-      <img src="img/2f.png" alt="Discount Ticket">
-      <div class="badge">10% OFF</div>
-      <div class="card-content">
-        <h3>10% Discount</h3>
-        <p>Save 10% 
-          on the initial cost</p>
-        <span>Sh. 4500</span> 
-      </div>
-    </div>
-    <div class="card">
       <img src="img/2f.png" alt="Standard Ticket">
       <div class="badge">Standard</div>
       <div class="card-content">
@@ -216,51 +216,31 @@
         <span>Sh. 5000</span>
       </div>
     </div>
-    <div class="card">
-      <img src="img/2f.png" alt="Group Ticket">
-      <div class="badge">Best Value</div>
-      <div class="card-content">
-        <h3>Group Ticket</h3>
-        <p>Group ticket which gives access
-          to 4 people</p>
-        <span>Sh. 20000</span>
-      </div>
-    </div>
   </div>
   
   <div class="selection-container">
     <select id="ticket-type">
-      <option value="4500">10% Discount - Sh. 4500</option>
+      <!-- <option value="4500">10% Discount - Sh. 4500</option> -->
       <option value="5000">Standard - Sh. 5000</option>
-      <option value="20000">Group Ticket - Sh. 20000</option>
+      <!-- <option value="20000">Group Ticket - Sh. 20000</option> -->
     </select>
     <input type="number" id="ticket-quantity" placeholder="Enter quantity" min="1">
     <div class="total">Total: Sh. <span id="total-cost">0</span></div>
-    <button class="purchase-btn" id="purchase-button">Purchase Tickets</button>
+    <button class="purchase-btn" id="purchase-button">Register Interest</button>
   </div>
-  <div class="thank-you-message">
-    <p>
-      <em>"We have plans that can help you purchase tickets in a more convenient and pocket friendly way."
-        <br> "Please select an appropriate payment plan and proceed." </br> 
-      </em> 
-    </p>
-    <div class="action-buttons">
-      <button class="orange-button" id="daily-button">Daily Plan</button>
-      <button class="orange-button" id="weekly-button">Weekly Plan</button>
-      <button class="orange-button" id="monthly-button">Monthly Plan</button>
-    </div>
-    <em>"We appreciate your support and look forward to seeing you at the camp!"</em>
-</div>
 </section>  
 
-<!-- Add Modal HTML for M-Pesa Payment -->
+<!-- Registration Modal -->
 <div class="modal" id="mpesa-modal">
   <div class="modal-content">
-    <h3>Complete Your Purchase</h3>
+    <button class="modal-close" id="close-registration-modal" aria-label="Close registration form">&times;</button>
+    <h3>Register Your Interest</h3>
+    <p class="modal-intro">Share your details and we will email you the next step for Fearless Camp registration.</p>
     <input type="text" id="user-name" placeholder="Full Name" required>
     <input type="email" id="user-email" placeholder="Email Address" required>
     <input type="text" id="user-phone" placeholder="Phone Number" required>
-    <button id="confirm-mpesa-button">Confirm Payment via MPesa</button>
+    <button id="confirm-mpesa-button">Submit Registration</button>
+    <p class="modal-status" id="registration-status" aria-live="polite"></p>
   </div>
 </div>
 <section class="ticket-section">
@@ -409,17 +389,19 @@
           <a href="https://instagram.com/the.fearlessmovement" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="https://www.facebook.com/thefearlessmovement" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
           <a href="https://www.tiktok.com/@the.fearless.move" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://youtube.com/@thefearlessmovement?si=M5ST_UPsni4apQUp" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
       </div>
   </div>
 
   <!-- Middle Column -->
   <div class="footer-column">
-      <h4>Our Store</h4>
+      <h4>Explore</h4>
       <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#service">Service</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="outreach.html">Outreach</a></li>
+          <li><a href="contact.html">Contact</a></li>
       </ul>
   </div>
 
@@ -427,8 +409,7 @@
   <div class="footer-column">
       <h4>Get In Touch</h4>
       <ul>
-        <li><i class="fas fa-map-marker-alt"></i> 04, Funzi Road Nairobi</li>
-        <li><i class="fas fa-phone"></i> +254 710 899453</li>
+        <li><i class="fas fa-map-marker-alt"></i> Clarence Matheny Ministries</li>
         <li><i class="fas fa-phone"></i> +254 710 899453</li>
         <li><i class="fas fa-envelope"></i> info@thefearlessmovement.co.ke</li>
       </ul>
@@ -436,7 +417,7 @@
 
   <!-- Copyright -->
   <div class="footer-copyright">
-      &copy; 2025 <span>The Fearless Movement</span>. All rights reserved
+      &copy; 2026 <span>The Fearless Movement</span>. All rights reserved
   </div>
 </div>
 
@@ -450,12 +431,9 @@ document.addEventListener("DOMContentLoaded", () => {
    navLinks.classList.toggle('active');
  }
 
- // Define redirect URLs for each ticket type
- const ticketRedirectUrls = {
-   '4500': 'https://paystack.com/buy/discounted-ticket-imcmdb',  // Discounted ticket URL
-   '5000': 'https://paystack.com/buy/fearlessalone',    // Standard ticket URL
-   '20000': 'https://paystack.com/buy/group-ticket-qofmko'       // Group ticket URL
- };
+ // Paste your deployed Google Apps Script web app URL here after setup.
+ const REGISTRATION_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxts6bV6NvL64mTq5cqzzO3gOJ2BX5t7JqYnX_zXDPDZcxjEMeOZgn5t-QKOv1Ppbb_Rg/exec";
+ const EVENT_NAME = "The Fearless Movement Annual Camp 2026";
 
   // Define redirect URLs for payment plans
   const planRedirectUrls = {
@@ -488,7 +466,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
  // Countdown Timer
- const eventDate = new Date("August 25, 2025 00:00:00").getTime();
+ const eventDate = new Date("August 31, 2026 00:00:00").getTime();
  
  function updateCountdown() {
    const now = new Date().getTime();
@@ -632,51 +610,115 @@ document.addEventListener("DOMContentLoaded", () => {
    return qrCode;
  }
 
- // Purchase button logic
+ function isRegistrationConfigured() {
+   return REGISTRATION_SCRIPT_URL && !REGISTRATION_SCRIPT_URL.includes("PASTE_YOUR");
+ }
+
+ function setRegistrationStatus(message, type = "") {
+   const status = document.getElementById("registration-status");
+   if (!status) return;
+
+   status.textContent = message;
+   status.className = `modal-status ${type}`.trim();
+ }
+
+ function closeRegistrationModal() {
+   if (mpesaModal) {
+     mpesaModal.style.display = "none";
+   }
+ }
+
+ async function submitRegistration(payload) {
+   const formData = new FormData();
+
+   Object.entries(payload).forEach(([key, value]) => {
+     formData.append(key, value);
+   });
+
+   // Apps Script web apps do not always return CORS-readable responses.
+   // no-cors lets the browser send the registration without exposing private keys.
+   await fetch(REGISTRATION_SCRIPT_URL, {
+     method: "POST",
+     mode: "no-cors",
+     body: formData
+   });
+ }
+
+ // Registration button logic
  const purchaseButton = document.getElementById("purchase-button");
  const mpesaModal = document.getElementById("mpesa-modal");
+ const closeRegistrationButton = document.getElementById("close-registration-modal");
  
  if (purchaseButton) {
    purchaseButton.addEventListener("click", function () {
      const quantity = parseInt(document.getElementById("ticket-quantity").value);
      if (quantity > 0) {
        if (mpesaModal) {
-         mpesaModal.style.display = "flex"; // Show M-Pesa modal
+         setRegistrationStatus("");
+         mpesaModal.style.display = "flex";
        }
      } else {
-       alert("Please select a ticket quantity before proceeding.");
+       alert("Please enter a ticket quantity before registering.");
      }
    });
  }
 
- // Confirm M-Pesa payment button logic
+ if (closeRegistrationButton) {
+   closeRegistrationButton.addEventListener("click", closeRegistrationModal);
+ }
+
+ // Confirm registration button logic
  const confirmMpesaButton = document.getElementById("confirm-mpesa-button");
  
  if (confirmMpesaButton) {
    confirmMpesaButton.addEventListener("click", async function () {
-     const name = document.getElementById("user-name").value;
-     const email = document.getElementById("user-email").value;
-     const phone = document.getElementById("user-phone").value;
-     const ticketTypeValue = document.getElementById("ticket-type").value;
+     const name = document.getElementById("user-name").value.trim();
+     const email = document.getElementById("user-email").value.trim();
+     const phone = document.getElementById("user-phone").value.trim();
+     const ticketTypeSelect = document.getElementById("ticket-type");
+     const ticketTypeValue = ticketTypeSelect.value;
+     const ticketTypeLabel = ticketTypeSelect.options[ticketTypeSelect.selectedIndex].text;
      const quantity = parseInt(document.getElementById("ticket-quantity").value);
+     const totalAmount = ticketTypeValue * quantity;
 
      if (!name || !email || !phone || quantity <= 0) {
-       alert("Please fill all details correctly.");
+       setRegistrationStatus("Please fill in your name, email, phone number, and ticket quantity.", "error");
        return;
      }
 
-     // Get the redirect URL based on ticket type
-     const redirectUrl = ticketRedirectUrls[ticketTypeValue];
-     
-     if (redirectUrl) {
-       // Redirect to the specific payment URL
-       window.location.href = redirectUrl;
-     } else {
-       alert("Invalid ticket type selected.");
+     if (!isRegistrationConfigured()) {
+       setRegistrationStatus("Registration is ready, but the Google Apps Script URL has not been added yet.", "error");
+       return;
      }
 
-     // The rest of your existing code for ticket generation can go here
-     // or you can remove it if you're handling everything on the payment page
+     const originalButtonText = confirmMpesaButton.textContent;
+     confirmMpesaButton.disabled = true;
+     confirmMpesaButton.textContent = "Submitting...";
+     setRegistrationStatus("Submitting your registration...", "pending");
+
+     try {
+       await submitRegistration({
+         eventName: EVENT_NAME,
+         name,
+         email,
+         phone,
+         ticketType: ticketTypeLabel,
+         quantity,
+         totalAmount,
+         sourcePage: "events.html"
+       });
+
+       setRegistrationStatus("Thank you. Please check your email for the next registration step.", "success");
+       showSnackbar("Registration submitted. A thank-you email will be sent shortly.");
+       document.getElementById("user-name").value = "";
+       document.getElementById("user-email").value = "";
+       document.getElementById("user-phone").value = "";
+     } catch (error) {
+       setRegistrationStatus("We could not submit your registration. Please try again.", "error");
+     } finally {
+       confirmMpesaButton.disabled = false;
+       confirmMpesaButton.textContent = originalButtonText;
+     }
    });
  }
 
@@ -684,7 +726,7 @@ document.addEventListener("DOMContentLoaded", () => {
  if (mpesaModal) {
    mpesaModal.addEventListener("click", function (e) {
      if (e.target === this) {
-       this.style.display = "none";
+       closeRegistrationModal();
      }
    });
  }

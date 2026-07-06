@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            background-color: #111;
+            overflow-x: hidden;
+        }
+       /* Logo styling */
+ .logo-overlay {
+    position: absolute;
+    top: 0px;
+    left: 40px;
+    z-index: 1001;
+}
+
+.logo-overlay img {
+    height: 120px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 20px;
+    position: relative;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: #000;
+    height: 130px;
+}
+
+/* Nav links */
+.nav-links {
+    display: flex;
+    gap: 20px;
+    margin-right: 20px;
+}
+
+.nav-links a {
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: #ffae00;
+    color: #000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Hamburger menu */
+.hamburger {
+    display: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Mobile responsive styles */
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: block;
+        position: fixed;
+        right: 20px;
+        top: 20px;
+    }
+
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        flex-direction: column;
+        background: #000;
+        height: 100vh;
+        width: 250px;
+        padding-top: 80px;
+        transition: 0.3s ease;
+        margin: 0;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links a {
+        padding: 15px 25px;
+        width: 100%;
+        display: block;
+    }
+
+    .logo-overlay img {
+        height: 100px;
+    }
+}
+
+        .hero-section {
+            text-align: center;
+            padding: 100px 20px;
+            background: url('img/pp.jpg') no-repeat center center/cover;
+            color: #fff;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+        }
+
+        /* Mobile hero adjustments */
+        @media screen and (max-width: 768px) {
+            .hero-section {
+                padding: 80px 20px 60px;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-section p {
+                font-size: 1rem;
+            }
+        }
+
+        .contact-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+
+        .contact-section p {
+            color: #bbb;
+            margin-bottom: 40px;
+        }
+
+        /* FIXED: Mobile responsive contact cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 0 10px;
+        }
+
+        .info-card {
+            background: #222;
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #333;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.1);
+        }
+
+        .info-card i {
+            font-size: 2.5rem;
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+
+        .info-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .info-card p {
+            color: #bbb;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile specific adjustments for contact cards */
+        @media screen and (max-width: 768px) {
+            .contact-section {
+                padding: 30px 15px;
+            }
+            
+            .contact-section h2 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+            
+            .info-cards {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 30px;
+                padding: 0;
+            }
+            
+            .info-card {
+                padding: 25px 20px;
+                margin: 0 5px;
+            }
+            
+            .info-card i {
+                font-size: 2rem;
+            }
+            
+            .info-card h3 {
+                font-size: 1.1rem;
+            }
+            
+            .info-card p {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Extra small screens */
+        @media screen and (max-width: 480px) {
+            .info-cards {
+                margin: 0 auto 30px;
+            }
+            
+            .info-card {
+                padding: 20px 15px;
+                margin: 0;
+            }
+        }
+
+        .form-section {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 30px;
+            background: #222;
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+
+        .form-section h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #ffc107;
+        }
+
+        .form-section p {
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+
+        .form-section form input,
+        .form-section form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background: #333;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-section form input:focus,
+        .form-section form textarea:focus {
+            outline: none;
+            border-color: #ffc107;
+        }
+
+        .form-section form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-section form button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #ffc107;
+            color: #000;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-section form button:hover {
+            background: #ff9900;
+        }
+
+        .form-section form button:disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+
+        /* Mobile form adjustments */
+        @media screen and (max-width: 768px) {
+            .form-section {
+                margin: 0 10px;
+                padding: 25px 20px;
+            }
+            
+            .form-section h3 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .form-section {
+                margin: 0 5px;
+                padding: 20px 15px;
+            }
+        }
+
+        .map {
+            margin: 40px auto;
+            max-width: 1200px;
+            padding: 0 10px;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            border-radius: 12px;
+        }
+
+        /* Mobile map adjustments */
+        @media screen and (max-width: 768px) {
+            .map {
+                margin: 30px auto;
+                padding: 0 5px;
+            }
+            
+            .map iframe {
+                height: 250px;
+            }
+        }
+
+        footer {
+            background: #0a0a0a;
+        }
+
+        .footer {
+            background:
+                radial-gradient(circle at 12% 0%, rgba(255, 174, 0, 0.11), transparent 26rem),
+                #0a0a0a;
+            color: #fff;
+            padding: 64px clamp(20px, 5vw, 70px) 0;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(220px, 1fr));
+            gap: 40px;
+            text-align: left;
+        }
+
+        .footer .footer-column {
+            margin: 0;
+        }
+
+        .footer .footer-column h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .footer .footer-column p {
+            color: #bbb;
+            line-height: 1.7;
+            margin: 0 0 20px;
+        }
+
+        .footer .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer .footer-column ul li {
+            margin-bottom: 10px;
+            color: #bbb;
+            line-height: 1.6;
+        }
+
+        .footer .footer-column ul li i {
+            width: 22px;
+            margin-right: 8px;
+            color: #ffae00;
+            text-align: center;
+        }
+
+        .footer .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .footer .footer-column ul li a:hover {
+            color: #ffae00;
+            padding-left: 4px;
+        }
+
+        .footer .footer-socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer .footer-socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 174, 0, 0.1);
+            border: 1px solid rgba(255, 174, 0, 0.16);
+            border-radius: 50%;
+            color: #ffae00;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer .footer-socials a:hover {
+            background: #ffae00;
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        .footer .footer-copyright {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 10px;
+            padding: 30px 0;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .footer .footer-copyright span {
+            color: #ffae00;
+            font-weight: 600;
+        }
+
+        /* Mobile footer adjustments */
+        @media screen and (max-width: 768px) {
+            .footer {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+                padding: 50px 22px 0;
+            }
+
+            .footer .footer-socials {
+                justify-content: center;
+            }
+
+            .footer .footer-column ul li i {
+                margin-right: 6px;
+            }
+        }
+
+        /* Response message styling */
+        #responseMessage {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+     <!-- Navbar -->
+<div class="navbar">
+    <!-- Logo -->
+    <div class="logo-overlay">
+        <a href="index.html">
+            <img src="img/2f.png" alt="Fearless Logo">
+        </a>
+    </div>
+    
+    <!-- Navigation Links -->
+    <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About us</a>
+      <a href="events.html">Events</a>
+      <a href="outreach.html">Evangelism</a>
+      <a href="donations.html">Donations</a>
+      <!-- <a href="merchandise.html">Merchandise</a> -->
+      <a href="contact.html" class="active">Contact us</a>
+  </div>
+    
+    <!-- Hamburger Menu Icon -->
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+  </div>
+
+<div class="hero-section">
+    <h1>Contact Us</h1>
+    <p>Please contact us with any questions or concerns.</p>
+</div>
+
+<section class="contact-section">
+    <h2>Contact Information</h2>
+    <p> </p>
+
+    <div class="info-cards">
+        <div class="info-card">
+            <i class="fas fa-phone"></i>
+            <h3>+254 710 899453</h3>
+            <p>For any inquiries, assistance, or to learn more about our events and missions, 
+                please don't hesitate to give us a call. 
+                We're here to help and look forward to connecting with you!</p>
+        </div>
+        <div class="info-card">
+            <i class="fas fa-envelope"></i>
+            <h3>info@thefearlessmovement.com</h3>
+            <p>For detailed inquiries, volunteer opportunities, or any other questions, 
+                please reach out to us via email. Our team is ready to assist you and provide any information you need.</p>
+        </div>
+        <div class="info-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Limuru, Kenya</h3>
+            <p>Visit us at our office to learn more about our organization, volunteer opportunities, or upcoming events. 
+                We're excited to welcome you and assist you in person!</p>
+        </div> 
+    </div>
+    <div class="form-section">
+        <h3>Get In Touch!!</h3>
+        <p>Fill out the form and we'll get back to you soon.</p>
+        <form id="contactForm">
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <input type="text" id="phone" name="phone" placeholder="Your Phone" required>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="responseMessage"></p>
+    </div>
+
+    <div class="map">
+        <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.0890506723395!2d36.675662773412334!3d-1.09549843544411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f29c7b8b0a9bd%3A0x51d10fa9a2a28ffd!2sClarence%20Matheny%20Ministries%20Limuru!5e0!3m2!1sen!2ske!4v1733324475526!5m2!1sen!2ske"></iframe>
+    </div>
+</section>
+
+<footer>
+    <div class="footer">
+        <!-- Left Column -->
+        <div class="footer-column">
+            <h4>The Fearless Movement</h4>
+            <p> Nurturing a fearless generation ready to uplift their communities and inspire the world.</p>
+            <div class="footer-socials">
+                <a href="https://twitter.com/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/the.fearlessmovement" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/thefearlessmovement" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.tiktok.com/@the.fearless.move" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+    </div>
+    
+        <!-- Middle Column -->
+        <div class="footer-column">
+            <h4>Our Store</h4>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#service">Service</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    
+        <!-- Right Column -->
+        <div class="footer-column">
+            <h4>Get In Touch</h4>
+            <ul>
+                <li><i class="fas fa-map-marker-alt"></i> Clarence Matheny Ministries</li>
+                <li><i class="fas fa-phone"></i> +254 710 899453</li>
+                <li><i class="fas fa-phone"></i> +254 710 899453</li>
+                <li><i class="fas fa-envelope"></i> info@thefearlessmovement.co.ke</li>
+            </ul>
+        </div>
+    
+        <!-- Copyright -->
+        <div class="footer-copyright">
+            &copy; 2026 <span>The Fearless Movement</span>. All rights reserved
+        </div>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() {
+        const navLinks = document.getElementById('nav-links');
+        navLinks.classList.toggle('active');
+    }
+
+    document.getElementById("contactForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    
+    // Get form elements
+    const form = this;
+    const submitButton = form.querySelector('button[type="submit"]');
+    const responseMessage = document.getElementById("responseMessage");
+    const originalButtonText = submitButton.textContent;
+
+    // Show loading state
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+    responseMessage.textContent = '';
+    responseMessage.style.color = '';
+
+    try {
+        // Get form values
+        const formData = {
+            to: "thefearlessmovement1@gmail.com",
+            subject: "New Contact Form Submission",
+            name: document.getElementById('name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            message: document.getElementById('message').value.trim()
+        };
+
+        // Basic validation
+        if (!formData.name || !formData.email || !formData.phone || !formData.message) {
+            throw new Error("Please fill in all fields");
+        }
+
+        const response = await fetch("https://endpoint.thefearlessmovement.co.ke/api/submit-form", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok || !data.success) {
+            throw new Error(data.message || "Error sending message");
+        }
+
+        // Success
+        responseMessage.style.color = '#4CAF50';
+        responseMessage.textContent = "Thank you! Your message has been sent successfully.";
+        form.reset();
+        
+    } catch (error) {
+        responseMessage.style.color = '#f44336';
+        responseMessage.textContent = error.message || "Error sending message. Please try again later.";
+        console.error('Error:', error);
+    } finally {
+        // Restore button state
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+    }
+});
+</script>
+
+</body>
+</html>

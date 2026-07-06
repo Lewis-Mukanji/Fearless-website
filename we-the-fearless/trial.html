@@ -1,0 +1,498 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Enquiries</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="enq.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h3>Fearless Admin</h3>
+            </div>
+            <div class="sidebar-menu">
+                <ul>
+                    <li><a href="admin-dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                    <li><a href="admin-events.html"><i class="fas fa-calendar-alt"></i> <span>Events</span></a></li>
+                    <li><a href="admin-donations.html"><i class="fas fa-donate"></i> <span>Donations</span></a></li>
+                    <li><a href="admin-merchandise.html"><i class="fas fa-tshirt"></i> <span>Merchandise</span></a></li>
+                    <li><a href="admin-enquiries.html" class="active"><i class="fas fa-envelope"></i> <span>Enquiries</span></a></li>
+                    <li><a href="admin-users.html"><i class="fas fa-users"></i> <span>Users</span></a></li>
+                    <li><a href="admin-settings.html"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-left">
+                    <h2>Enquiries Management</h2>
+                </div>
+                <div class="header-right">
+                    <div class="user-profile" id="userProfile">
+                        <img src="https://via.placeholder.com/40" alt="User">
+                        <span>Admin User</span>
+                        <i class="fas fa-chevron-down"></i>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <ul>
+                                <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+                                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                                <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Dashboard Cards -->
+                <div class="dashboard-cards">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Total Enquiries</div>
+                            <div class="card-icon enquiries">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 id="totalEnquiries">0</h3>
+                            <div class="card-footer">All time enquiries</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Website Impressions</div>
+                            <div class="card-icon impressions">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 id="totalImpressions">0</h3>
+                            <div class="card-footer">Last 30 days</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Contact Page</div>
+                            <div class="card-icon contact">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 id="contactEnquiries">0</h3>
+                            <div class="card-footer">From contact page</div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">About Page</div>
+                            <div class="card-icon about">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 id="aboutEnquiries">0</h3>
+                            <div class="card-footer">From about page</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enquiries Table -->
+                <div class="enquiries-table">
+                    <div class="table-header">
+                        <div class="table-title">Recent Enquiries</div>
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchInput" placeholder="Search enquiries...">
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Message</th>
+                                <th>Source</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="enquiriesTableBody">
+                            <!-- Enquiries will be loaded here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Enquiry Modal -->
+    <div class="modal" id="viewEnquiryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Enquiry Details</div>
+                <button class="modal-close" id="closeViewModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" id="viewName" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" id="viewEmail" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" class="form-control" id="viewPhone" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Source</label>
+                    <input type="text" class="form-control" id="viewSource" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="text" class="form-control" id="viewDate" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea class="form-control" id="viewMessage" readonly></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="closeViewBtn">Close</button>
+                <button class="btn btn-primary" id="replyToEnquiryBtn">Reply</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reply Enquiry Modal -->
+    <div class="modal" id="replyEnquiryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Reply to Enquiry</div>
+                <button class="modal-close" id="closeReplyModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>To</label>
+                    <input type="email" class="form-control" id="replyTo" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" class="form-control" id="replySubject" value="Re: Your Enquiry">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea class="form-control" id="replyMessage" placeholder="Type your response here..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelReplyBtn">Cancel</button>
+                <button class="btn btn-primary" id="sendReplyBtn">Send Reply</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+const userProfile = document.getElementById('userProfile');
+const dropdownMenu = document.getElementById('dropdownMenu');
+const logoutBtn = document.getElementById('logoutBtn');
+const searchInput = document.getElementById('searchInput');
+const enquiriesTableBody = document.getElementById('enquiriesTableBody');
+
+// Modal Elements
+const viewEnquiryModal = document.getElementById('viewEnquiryModal');
+const closeViewModal = document.getElementById('closeViewModal');
+const closeViewBtn = document.getElementById('closeViewBtn');
+const replyToEnquiryBtn = document.getElementById('replyToEnquiryBtn');
+
+const replyEnquiryModal = document.getElementById('replyEnquiryModal');
+const closeReplyModal = document.getElementById('closeReplyModal');
+const cancelReplyBtn = document.getElementById('cancelReplyBtn');
+const sendReplyBtn = document.getElementById('sendReplyBtn');
+
+// Stats Elements
+const totalEnquiries = document.getElementById('totalEnquiries');
+const totalImpressions = document.getElementById('totalImpressions');
+const contactEnquiries = document.getElementById('contactEnquiries');
+const aboutEnquiries = document.getElementById('aboutEnquiries');
+
+// Current selected enquiry
+let currentEnquiry = null;
+
+// Toggle dropdown menu
+userProfile.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('active');
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+    if (!userProfile.contains(e.target)) {
+        dropdownMenu.classList.remove('active');
+    }
+});
+
+// Logout functionality
+logoutBtn.addEventListener('click', () => {
+    // In a real app, you would call your logout API
+    localStorage.removeItem('authToken');
+    window.location.href = 'login.html';
+});
+
+// Modal controls
+closeViewModal.addEventListener('click', () => {
+    viewEnquiryModal.classList.remove('active');
+});
+
+closeViewBtn.addEventListener('click', () => {
+    viewEnquiryModal.classList.remove('active');
+});
+
+closeReplyModal.addEventListener('click', () => {
+    replyEnquiryModal.classList.remove('active');
+});
+
+cancelReplyBtn.addEventListener('click', () => {
+    replyEnquiryModal.classList.remove('active');
+});
+
+// View enquiry details
+const viewEnquiry = (enquiry) => {
+    currentEnquiry = enquiry;
+    
+    document.getElementById('viewName').value = enquiry.name;
+    document.getElementById('viewEmail').value = enquiry.email;
+    document.getElementById('viewPhone').value = enquiry.phone;
+    document.getElementById('viewSource').value = enquiry.page_source === 'contact.html' ? 'Contact Page' : 'About Page';
+    document.getElementById('viewDate').value = new Date(enquiry.created_at).toLocaleString();
+    document.getElementById('viewMessage').value = enquiry.message;
+    
+    viewEnquiryModal.classList.add('active');
+};
+
+// Reply to enquiry
+replyToEnquiryBtn.addEventListener('click', () => {
+    viewEnquiryModal.classList.remove('active');
+    
+    document.getElementById('replyTo').value = currentEnquiry.email;
+    document.getElementById('replySubject').value = `Re: Your Enquiry from ${currentEnquiry.page_source === 'contact.html' ? 'Contact Page' : 'About Page'}`;
+    document.getElementById('replyMessage').value = `Dear ${currentEnquiry.name},\n\n`;
+    
+    replyEnquiryModal.classList.add('active');
+});
+
+// Send reply
+sendReplyBtn.addEventListener('click', async () => {
+    const to = document.getElementById('replyTo').value;
+    const subject = document.getElementById('replySubject').value;
+    const message = document.getElementById('replyMessage').value;
+    
+    if (!to || !subject || !message) {
+        alert('Please fill in all fields');
+        return;
+    }
+    
+    try {
+        sendReplyBtn.disabled = true;
+        sendReplyBtn.textContent = 'Sending...';
+        
+        // In a real app, you would call your email API
+        const response = await fetch('/api/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+            },
+            body: JSON.stringify({
+                to,
+                subject,
+                message,
+                name: 'Fearless Movement Admin'
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to send email');
+        }
+        
+        alert('Reply sent successfully!');
+        replyEnquiryModal.classList.remove('active');
+    } catch (error) {
+        console.error('Error sending reply:', error);
+        alert(`Error: ${error.message}`);
+    } finally {
+        sendReplyBtn.disabled = false;
+        sendReplyBtn.textContent = 'Send Reply';
+    }
+});
+
+// Search functionality
+searchInput.addEventListener('input', () => {
+    const searchTerm = searchInput.value.toLowerCase();
+    const rows = enquiriesTableBody.querySelectorAll('tr');
+    
+    rows.forEach(row => {
+        const name = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
+        const email = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+        const phone = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+        
+        if (name.includes(searchTerm) || email.includes(searchTerm) || phone.includes(searchTerm)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+});
+
+// Format date
+const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+};
+
+// Load enquiries - UPDATED TO USE ADMIN ENDPOINT
+const loadEnquiries = async () => {
+    try {
+        // Show loading state
+        enquiriesTableBody.innerHTML = '<tr><td colspan="7" style="text-align: center;">Loading enquiries...</td></tr>';
+        
+        // Fetch enquiries from the ADMIN API endpoint
+        const response = await fetch('http://localhost:5000/api/admin/enquiries?page=1&limit=10', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+            }
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to fetch enquiries');
+        }
+        
+        // Update stats
+        totalEnquiries.textContent = data.stats.total;
+        contactEnquiries.textContent = data.stats.contact;
+        aboutEnquiries.textContent = data.stats.about;
+        
+        // Update impressions (mock data or integrate with your analytics)
+        totalImpressions.textContent = Math.floor(Math.random() * 1000) + 500;
+        
+        // Render enquiries table
+        if (data.data.length === 0) {
+            enquiriesTableBody.innerHTML = '<tr><td colspan="7" style="text-align: center;">No enquiries found</td></tr>';
+            return;
+        }
+        
+        enquiriesTableBody.innerHTML = '';
+        
+        data.data.forEach(enquiry => {
+            const row = document.createElement('tr');
+            row.className = 'fade-in';
+            
+            row.innerHTML = `
+                <td data-label="Name">${enquiry.name}</td>
+                <td data-label="Email">${enquiry.email}</td>
+                <td data-label="Phone">${enquiry.phone}</td>
+                <td data-label="Message">${enquiry.message.substring(0, 30)}${enquiry.message.length > 30 ? '...' : ''}</td>
+                <td data-label="Source">
+                    <span class="badge ${enquiry.page_source === 'contact.html' ? 'badge-contact' : 'badge-about'}">
+                        ${enquiry.page_source === 'contact.html' ? 'Contact' : 'About'}
+                    </span>
+                </td>
+                <td data-label="Date">${formatDate(enquiry.created_at)}</td>
+                <td data-label="Actions">
+                    <div class="action-btns">
+                        <button class="btn btn-view" onclick="viewEnquiry(${JSON.stringify(enquiry).replace(/"/g, '&quot;')})">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                        <button class="btn btn-reply" onclick="replyToEnquiry(${JSON.stringify(enquiry).replace(/"/g, '&quot;')})">
+                            <i class="fas fa-reply"></i> Reply
+                        </button>
+                        <button class="btn btn-delete" onclick="deleteEnquiry(${enquiry.id})">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </td>
+            `;
+            
+            enquiriesTableBody.appendChild(row);
+        });
+        
+    } catch (error) {
+        console.error('Error loading enquiries:', error);
+        enquiriesTableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--danger);">Error: ${error.message}</td></tr>`;
+    }
+};
+
+// Delete enquiry function
+window.deleteEnquiry = async (enquiryId) => {
+    if (!confirm('Are you sure you want to delete this enquiry?')) {
+        return;
+    }
+    
+    try {
+        const response = await fetch(`/api/admin/enquiries/${enquiryId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+            }
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to delete enquiry');
+        }
+        
+        alert('Enquiry deleted successfully');
+        loadEnquiries(); // Refresh the list
+    } catch (error) {
+        console.error('Error deleting enquiry:', error);
+        alert(`Error: ${error.message}`);
+    }
+};
+
+// Global function for reply button in table
+window.replyToEnquiry = (enquiry) => {
+    currentEnquiry = enquiry;
+    
+    document.getElementById('replyTo').value = enquiry.email;
+    document.getElementById('replySubject').value = `Re: Your Enquiry from ${enquiry.page_source === 'contact.html' ? 'Contact Page' : 'About Page'}`;
+    document.getElementById('replyMessage').value = `Dear ${enquiry.name},\n\n`;
+    
+    replyEnquiryModal.classList.add('active');
+};
+
+// Initialize the page
+document.addEventListener('DOMContentLoaded', () => {
+    // Check authentication
+    if (!localStorage.getItem('authToken')) {
+        window.location.href = 'login.html';
+        return;
+    }
+    
+    loadEnquiries();
+    
+    // Refresh data every 30 seconds
+    setInterval(loadEnquiries, 30000);
+});
+    </script>
+</body>
+</html> -->

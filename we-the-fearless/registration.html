@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fearless Camp Registrations</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #ffae00;
+      --gold-soft: #f0c040;
+      --bg: #121212;
+      --panel: #1e1e1e;
+      --muted: #bbbbbb;
+      --line: rgba(255, 174, 0, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background:
+        radial-gradient(circle at 12% 3%, rgba(255, 174, 0, 0.13), transparent 28rem),
+        linear-gradient(180deg, #121212 0%, #171717 55%, #101010 100%);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .admin-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 36px 0 60px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 78px;
+      height: 78px;
+      object-fit: contain;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .admin-card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: linear-gradient(135deg, #1e1e1e, #292929);
+      box-shadow: 0 22px 54px rgba(0, 0, 0, 0.28);
+    }
+
+    .login-card {
+      width: min(460px, 100%);
+      margin: 70px auto;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .login-card h1,
+    .registrations-panel h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.08;
+    }
+
+    .login-card p,
+    .registrations-panel p {
+      margin-top: 12px;
+      color: var(--muted);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .password-wrap {
+      position: relative;
+      flex: 1;
+    }
+
+    .password-wrap input {
+      padding-right: 52px;
+    }
+
+    .password-toggle {
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      width: 38px;
+      min-height: 38px;
+      padding: 0;
+      transform: translateY(-50%);
+      border: 1px solid rgba(255, 174, 0, 0.22);
+      background: transparent;
+      color: var(--gold);
+      box-shadow: none;
+    }
+
+    .password-toggle:hover {
+      background: rgba(255, 174, 0, 0.12);
+    }
+
+    input {
+      width: 100%;
+      padding: 13px 15px;
+      border: 1px solid rgba(255, 174, 0, 0.28);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.055);
+      color: #fff;
+      font: inherit;
+    }
+
+    button,
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 0 20px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      color: #000;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .status {
+      min-height: 24px;
+      margin-top: 14px;
+      color: #ff8787;
+      font-size: 0.92rem;
+    }
+
+    .registrations-panel {
+      padding: clamp(24px, 4vw, 38px);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 24px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(160px, 1fr));
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .summary-box {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.22);
+    }
+
+    .summary-box strong {
+      display: block;
+      color: var(--gold);
+      font-size: 1.9rem;
+      line-height: 1;
+    }
+
+    .summary-box span {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #151515;
+    }
+
+    table {
+      width: 100%;
+      min-width: 900px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--gold);
+      color: #000;
+      font-size: 0.88rem;
+    }
+
+    td {
+      color: #f5f5f5;
+      font-size: 0.92rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 760px) {
+      .topbar,
+      .panel-header,
+      .toolbar,
+      .form-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .password-wrap {
+        width: 100%;
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="admin-shell">
+    <div class="topbar">
+      <a href="events.html" class="brand">
+        <img src="img/2f.png" alt="Fearless Movement logo">
+        <div>
+          <strong>The Fearless Movement</strong>
+          <span>Camp registration admin</span>
+        </div>
+      </a>
+      <a class="back-link" href="events.html"><i class="fas fa-arrow-left"></i> Events</a>
+    </div>
+
+    <section class="admin-card login-card" id="login-card">
+      <h1>Registrations</h1>
+      <p>Enter the private page password to view submitted Fearless Camp registrations.</p>
+      <div class="form-row">
+        <div class="password-wrap">
+          <input type="password" id="page-password" placeholder="Password" autocomplete="current-password">
+          <button type="button" class="password-toggle" id="toggle-password" aria-label="Show password">
+            <i class="fas fa-eye"></i>
+          </button>
+        </div>
+        <button id="unlock-button">Unlock</button>
+      </div>
+      <p class="status" id="login-status" aria-live="polite"></p>
+    </section>
+
+    <section class="admin-card registrations-panel hidden" id="registrations-panel">
+      <div class="panel-header">
+        <div>
+          <h1>Fearless Camp Registrations</h1>
+          <p>These records come from the Google Sheet connected to the event registration form.</p>
+        </div>
+        <button id="refresh-button"><i class="fas fa-sync-alt"></i> Refresh</button>
+      </div>
+
+      <div class="summary-grid">
+        <div class="summary-box">
+          <strong id="total-registrations">0</strong>
+          <span>Total registrations</span>
+        </div>
+        <div class="summary-box">
+          <strong id="total-quantity">0</strong>
+          <span>Total ticket quantity</span>
+        </div>
+        <div class="summary-box">
+          <strong id="total-value">Sh. 0</strong>
+          <span>Interested ticket value</span>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <input type="search" id="search-input" placeholder="Search by name, email, phone, or event">
+        <p class="muted" id="loaded-status">Not loaded yet</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Event</th>
+              <th>Ticket</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="registrations-body">
+            <tr>
+              <td colspan="8" class="muted">Unlock and refresh to load registrations.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const REGISTRATION_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxts6bV6NvL64mTq5cqzzO3gOJ2BX5t7JqYnX_zXDPDZcxjEMeOZgn5t-QKOv1Ppbb_Rg/exec";
+    const ADMIN_TOKEN = "FearlessCampAdmin2026"; 
+    const PAGE_PASSWORD = "FearlessAdmin2024";
+
+    let registrations = [];
+
+    const loginCard = document.getElementById("login-card");
+    const registrationsPanel = document.getElementById("registrations-panel");
+    const loginStatus = document.getElementById("login-status");
+    const pagePassword = document.getElementById("page-password");
+    const togglePassword = document.getElementById("toggle-password");
+    const unlockButton = document.getElementById("unlock-button");
+    const refreshButton = document.getElementById("refresh-button");
+    const searchInput = document.getElementById("search-input");
+    const loadedStatus = document.getElementById("loaded-status");
+    const registrationsBody = document.getElementById("registrations-body");
+
+    function isConfigured() {
+      return REGISTRATION_SCRIPT_URL && !REGISTRATION_SCRIPT_URL.includes("PASTE_YOUR") && ADMIN_TOKEN !== "CHANGE_THIS_ADMIN_TOKEN";
+    }
+
+    function formatCurrency(value) {
+      return `Sh. ${Number(value || 0).toLocaleString()}`;
+    }
+
+    function loadJsonp(url) {
+      return new Promise((resolve, reject) => {
+        const callbackName = `registrationsCallback_${Date.now()}`;
+        const script = document.createElement("script");
+
+        window[callbackName] = (data) => {
+          resolve(data);
+          delete window[callbackName];
+          script.remove();
+        };
+
+        script.onerror = () => {
+          reject(new Error("Unable to load registrations."));
+          delete window[callbackName];
+          script.remove();
+        };
+
+        script.src = `${url}${url.includes("?") ? "&" : "?"}action=list&token=${encodeURIComponent(ADMIN_TOKEN)}&callback=${callbackName}`;
+        document.body.appendChild(script);
+      });
+    }
+
+    function renderRows(rows) {
+      if (!rows.length) {
+        registrationsBody.innerHTML = '<tr><td colspan="8" class="muted">No registrations found.</td></tr>';
+        return;
+      }
+
+      registrationsBody.innerHTML = rows.map((registration) => `
+        <tr>
+          <td>${registration.timestamp || ""}</td>
+          <td>${registration.name || ""}</td>
+          <td>${registration.email || ""}</td>
+          <td>${registration.phone || ""}</td>
+          <td>${registration.eventName || ""}</td>
+          <td>${registration.ticketType || ""}</td>
+          <td>${registration.quantity || ""}</td>
+          <td>${formatCurrency(registration.totalAmount)}</td>
+        </tr>
+      `).join("");
+    }
+
+    function updateSummary(rows) {
+      const totalQuantity = rows.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
+      const totalValue = rows.reduce((sum, item) => sum + Number(item.totalAmount || 0), 0);
+
+      document.getElementById("total-registrations").textContent = rows.length;
+      document.getElementById("total-quantity").textContent = totalQuantity.toLocaleString();
+      document.getElementById("total-value").textContent = formatCurrency(totalValue);
+    }
+
+    function applySearch() {
+      const query = searchInput.value.trim().toLowerCase();
+      const filtered = registrations.filter((registration) => {
+        return Object.values(registration).join(" ").toLowerCase().includes(query);
+      });
+
+      renderRows(filtered);
+      updateSummary(filtered);
+    }
+
+    async function loadRegistrations() {
+      if (!isConfigured()) {
+        loadedStatus.textContent = "Add the Apps Script URL and admin token inside this page first.";
+        registrationsBody.innerHTML = '<tr><td colspan="8" class="muted">Registration admin is not connected yet.</td></tr>';
+        return;
+      }
+
+      loadedStatus.textContent = "Loading...";
+
+      try {
+        const response = await loadJsonp(REGISTRATION_SCRIPT_URL);
+        registrations = response.registrations || [];
+        applySearch();
+        loadedStatus.textContent = `Loaded ${registrations.length} registration${registrations.length === 1 ? "" : "s"}.`;
+      } catch (error) {
+        loadedStatus.textContent = "Could not load registrations.";
+      }
+    }
+
+    function unlockPage() {
+      if (pagePassword.value !== PAGE_PASSWORD) {
+        loginStatus.textContent = "Incorrect password.";
+        return;
+      }
+
+      loginStatus.textContent = "";
+      loginCard.classList.add("hidden");
+      registrationsPanel.classList.remove("hidden");
+      loadRegistrations();
+    }
+
+    unlockButton.addEventListener("click", unlockPage);
+    togglePassword.addEventListener("click", () => {
+      const isPasswordHidden = pagePassword.type === "password";
+      pagePassword.type = isPasswordHidden ? "text" : "password";
+      togglePassword.innerHTML = isPasswordHidden
+        ? '<i class="fas fa-eye-slash"></i>'
+        : '<i class="fas fa-eye"></i>';
+      togglePassword.setAttribute("aria-label", isPasswordHidden ? "Hide password" : "Show password");
+    });
+    refreshButton.addEventListener("click", loadRegistrations);
+    searchInput.addEventListener("input", applySearch);
+    pagePassword.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") unlockPage();
+    });
+  </script>
+</body>
+</html>

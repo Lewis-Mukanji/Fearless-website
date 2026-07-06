@@ -345,6 +345,552 @@ button.donate-now:hover {
 .footer .footer-copyright span {
     font-weight: bold;
 }
+
+/* Donations UI refresh - outreach-inspired */
+:root {
+    --gold: #ffae00;
+    --gold-soft: #f0c040;
+    --ink: #121212;
+    --ink-2: #1a1a1a;
+    --panel: #1e1e1e;
+    --muted: #bbbbbb;
+    --line: rgba(255, 174, 0, 0.16);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: #fff;
+    background:
+        radial-gradient(circle at 14% 8%, rgba(255, 174, 0, 0.12), transparent 27rem),
+        linear-gradient(180deg, #121212 0%, #171717 46%, #121212 100%);
+    line-height: 1.6;
+}
+
+.navbar {
+    min-height: 112px;
+    height: auto;
+    padding: 16px clamp(18px, 4vw, 48px);
+    background: rgba(0, 0, 0, 0.92);
+    box-shadow: 0 2px 18px rgba(0, 0, 0, 0.4);
+}
+
+.logo-overlay {
+    top: 50%;
+    left: clamp(18px, 4vw, 42px);
+    transform: translateY(-50%);
+}
+
+.logo-overlay img {
+    height: 96px;
+    transition: transform 0.3s ease;
+}
+
+.logo-overlay img:hover {
+    transform: scale(1.06);
+}
+
+.nav-links {
+    gap: 8px;
+    margin-right: 0;
+    align-items: center;
+}
+
+.nav-links a {
+    font-size: 0.98rem;
+    padding: 10px 16px;
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(255, 174, 0, 0.22);
+}
+
+.hero-section {
+    position: relative;
+    min-height: 64vh;
+    height: auto;
+    padding: clamp(90px, 12vw, 150px) 20px;
+    background:
+        linear-gradient(135deg, rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.54)),
+        url('img/ha.jpg') center/cover no-repeat;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 22% 48%, rgba(255, 174, 0, 0.32), transparent 28%),
+        radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.12), transparent 24%);
+    z-index: -1;
+}
+
+.hero-content {
+    width: min(920px, 100%);
+}
+
+.hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 16px;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 174, 0, 0.35);
+    background: rgba(255, 174, 0, 0.12);
+    color: var(--gold);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.hero-content h1 {
+    max-width: 920px;
+    margin: 0 auto;
+    font-size: clamp(2.7rem, 7vw, 5.2rem);
+    line-height: 1;
+    background: linear-gradient(45deg, #fff, var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-content p {
+    max-width: 720px;
+    margin: 22px auto 0;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: clamp(1rem, 1.7vw, 1.22rem);
+}
+
+.hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    gap: 18px;
+    width: min(820px, 100%);
+    margin: 42px auto 0;
+}
+
+.hero-stat {
+    padding: 20px;
+    border: 1px solid rgba(255, 174, 0, 0.22);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(12px);
+}
+
+.hero-stat strong {
+    display: block;
+    color: var(--gold);
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.hero-stat span {
+    display: block;
+    margin-top: 8px;
+    color: #fff;
+    font-size: 0.86rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.donation-section {
+    padding: clamp(64px, 8vw, 110px) 20px;
+    background:
+        radial-gradient(ellipse at center, rgba(255, 174, 0, 0.07), transparent 70%),
+        var(--ink);
+}
+
+.donation-container {
+    width: min(1180px, 100%);
+    align-items: stretch;
+    gap: clamp(24px, 5vw, 48px);
+}
+
+.donation-image,
+.donation-form {
+    flex: 1;
+}
+
+.donation-image {
+    display: flex;
+}
+
+.giving-card,
+.donation-form {
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: linear-gradient(135deg, #1e1e1e, #292929);
+    box-shadow: 0 22px 54px rgba(0, 0, 0, 0.3);
+}
+
+.giving-card {
+    width: 100%;
+    min-height: 100%;
+    padding: clamp(28px, 4vw, 44px);
+    position: relative;
+    overflow: hidden;
+}
+
+.giving-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255, 174, 0, 0.16), transparent 45%);
+    pointer-events: none;
+}
+
+.giving-card > * {
+    position: relative;
+}
+
+.giving-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(255, 174, 0, 0.13);
+    color: var(--gold);
+    font-size: 2rem;
+    margin-bottom: 24px;
+}
+
+.giving-card h3 {
+    color: #fff;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+
+.giving-card p {
+    color: var(--muted);
+    margin-bottom: 26px;
+}
+
+.giving-points {
+    display: grid;
+    gap: 16px;
+}
+
+.giving-points div {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #fff;
+}
+
+.giving-points i {
+    color: var(--gold);
+    margin-top: 4px;
+}
+
+.donation-form {
+    padding: clamp(28px, 4vw, 44px);
+    color: #fff;
+}
+
+.donation-form h2 {
+    color: #fff;
+    font-size: clamp(1.8rem, 3vw, 2.7rem);
+    line-height: 1.15;
+}
+
+.donation-form p {
+    color: var(--muted);
+}
+
+.donation-form cite {
+    display: inline-block;
+    color: var(--gold);
+    margin-bottom: 26px;
+    font-weight: 600;
+}
+
+.form-group {
+    gap: 16px;
+}
+
+input,
+select,
+textarea {
+    min-width: 0;
+    padding: 13px 15px;
+    border: 1px solid rgba(255, 174, 0, 0.28);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.055);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+select option {
+    color: #111;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #929292;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(255, 174, 0, 0.12);
+}
+
+.amount-input-group {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid rgba(255, 174, 0, 0.18);
+    border-radius: 16px;
+    background: rgba(255, 174, 0, 0.08);
+}
+
+.amount-input-group span {
+    color: var(--gold);
+}
+
+button.donate-now {
+    background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+    color: #000;
+    padding: 14px 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    box-shadow: 0 12px 28px rgba(255, 174, 0, 0.22);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button.donate-now:hover {
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(255, 174, 0, 0.32);
+}
+
+.faq-section {
+    padding: clamp(64px, 8vw, 100px) 20px;
+    background: var(--ink-2);
+}
+
+.faq-section h2 {
+    color: #fff;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    margin-bottom: 28px;
+}
+
+.faq-section h2::after {
+    content: '';
+    display: block;
+    width: 82px;
+    height: 3px;
+    margin: 16px auto 0;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-soft));
+}
+
+.faq-item {
+    padding: 24px 26px;
+    border-radius: 18px;
+    margin-bottom: 16px;
+    background: #1e1e1e;
+    border: 1px solid var(--line);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.faq-item:hover,
+.faq-item.active {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+}
+
+.faq-item h3 {
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    align-items: center;
+}
+
+.faq-item h3::after {
+    content: '+';
+    color: var(--gold);
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+.faq-item.active h3::after {
+    content: '-';
+}
+
+.faq-item .faq-answer {
+    color: var(--muted);
+    line-height: 1.75;
+}
+
+footer {
+    background: #0a0a0a;
+}
+
+.footer {
+    background:
+        radial-gradient(circle at 12% 0%, rgba(255, 174, 0, 0.11), transparent 26rem),
+        #0a0a0a;
+    color: #fff;
+    padding: 64px clamp(20px, 5vw, 70px) 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    gap: 40px;
+    text-align: left;
+}
+
+.footer .footer-column {
+    margin: 0;
+}
+
+.footer .footer-column h4 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.footer .footer-column p,
+.footer .footer-column ul li {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.footer .footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer .footer-column ul li i {
+    width: 22px;
+    margin-right: 8px;
+    color: var(--gold);
+    text-align: center;
+}
+
+.footer .footer-column ul li a {
+    color: var(--muted);
+    font-size: 0.95rem;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer .footer-column ul li a:hover {
+    color: var(--gold);
+    padding-left: 4px;
+    text-decoration: none;
+}
+
+.footer .footer-socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.footer .footer-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    background: rgba(255, 174, 0, 0.1);
+    border: 1px solid rgba(255, 174, 0, 0.16);
+    border-radius: 50%;
+    color: var(--gold);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.footer .footer-socials a:hover {
+    background: var(--gold);
+    color: #000;
+    transform: translateY(-3px);
+}
+
+.footer .footer-copyright {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 10px;
+    padding: 30px 0;
+    border-top: 1px solid #333;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.footer .footer-copyright span {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+@media screen and (max-width: 900px) {
+    .nav-links {
+        width: min(290px, 84vw);
+    }
+
+    .donation-container {
+        flex-direction: column;
+    }
+
+    .hero-stats,
+    .footer {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        text-align: center;
+        gap: 30px;
+        padding: 50px 22px 0;
+    }
+
+    .footer .footer-socials {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .navbar {
+        min-height: 92px;
+    }
+
+    .logo-overlay img {
+        height: 76px;
+    }
+
+    .hero-section {
+        min-height: 72vh;
+    }
+
+    .form-group {
+        flex-direction: column;
+    }
+
+    .amount-input-group {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .amount-input-group input {
+        flex: 1;
+        width: 100%;
+    }
+}
 </style>
 
 </head>
@@ -360,14 +906,14 @@ button.donate-now:hover {
     
     <!-- Navigation Links -->
     <div class="nav-links" id="nav-links">
-        <a href="index.html">Home</a>
-        <a href="events.html">Events</a>
-        <a href="outreach.html">Outreach</a>
-        <a href="merchandise.html">Merchandise</a>
-        <a href="about.html">About us</a>
-        <a href="donations.html" class="active">Donations</a>
-        <a href="contact.html">Contact us</a>
-    </div>
+      <a href="index.html">Home</a>
+      <a href="about.html">About us</a>
+      <a href="events.html">Events</a>
+      <a href="outreach.html">Evangelism</a>
+      <a href="donations.html" class="active">Donations</a>
+      <!-- <a href="merchandise.html">Merchandise</a> -->
+      <a href="contact.html">Contact us</a>
+  </div>
     
     <!-- Hamburger Menu Icon -->
     <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
@@ -376,7 +922,23 @@ button.donate-now:hover {
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-content">
+            <div class="hero-kicker"><i class="fas fa-heart"></i> Give with purpose</div>
             <h1>Empower Change With Your Donation.</h1>
+            <p>Your generosity helps us disciple young people, support missions, host transformative gatherings, and serve communities with practical hope.</p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <strong>1000+</strong>
+                    <span>Lives reached</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>20+</strong>
+                    <span>Partners</span>
+                </div>
+                <div class="hero-stat">
+                    <strong>10+</strong>
+                    <span>Countries</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -385,6 +947,16 @@ button.donate-now:hover {
         <div class="donation-container">
             <div class="donation-image">
                 <!-- <img src="img/donation.jpg" alt="Donation Box"> -->
+                <div class="giving-card">
+                    <div class="giving-icon"><i class="fas fa-hands-helping"></i></div>
+                    <h3>Every gift becomes movement.</h3>
+                    <p>Whether you give once or partner with us regularly, your support helps create spaces where young people encounter Christ, grow in purpose, and serve boldly.</p>
+                    <div class="giving-points">
+                        <div><i class="fas fa-check-circle"></i><span>Support youth camps, worship nights, and discipleship gatherings.</span></div>
+                        <div><i class="fas fa-check-circle"></i><span>Help missions and outreach teams serve communities in need.</span></div>
+                        <div><i class="fas fa-check-circle"></i><span>Make it possible for more young people to attend Fearless events.</span></div>
+                    </div>
+                </div>
             </div>
             <div class="donation-form">
                 <h2>Your Donation Has The Power To Transform Lives.</h2>
@@ -479,17 +1051,19 @@ button.donate-now:hover {
                   <a href="https://instagram.com/the.fearlessmovement" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                   <a href="https://www.facebook.com/thefearlessmovement" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                   <a href="https://www.tiktok.com/@the.fearless.move" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                  <a href="https://youtube.com/@thefearlessmovement?si=M5ST_UPsni4apQUp" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
               </div>
       </div>
       
           <!-- Middle Column -->
           <div class="footer-column">
-              <h4>Our Store</h4>
+              <h4>Explore</h4>
               <ul>
-                  <li><a href="#home">Home</a></li>
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#service">Service</a></li>
-                  <li><a href="#contact">Contact</a></li>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="events.html">Events</a></li>
+                  <li><a href="outreach.html">Outreach</a></li>
+                  <li><a href="contact.html">Contact</a></li>
               </ul>
           </div>
       
@@ -497,8 +1071,7 @@ button.donate-now:hover {
           <div class="footer-column">
               <h4>Get In Touch</h4>
               <ul>
-                <li><i class="fas fa-map-marker-alt"></i> 04, Funzi Road Nairobi</li>
-                <li><i class="fas fa-phone"></i> +254 710 899453</li>
+                <li><i class="fas fa-map-marker-alt"></i> Clarence Matheny Ministries</li>
                 <li><i class="fas fa-phone"></i> +254 710 899453</li>
                 <li><i class="fas fa-envelope"></i> info@thefearlessmovement.co.ke</li>
               </ul>
@@ -506,7 +1079,7 @@ button.donate-now:hover {
       
           <!-- Copyright -->
           <div class="footer-copyright">
-              &copy; 2025 <span>The Fearless Movement</span>. All rights reserved
+              &copy; 2026 <span>The Fearless Movement</span>. All rights reserved
           </div>
       </div>
   </footer>
