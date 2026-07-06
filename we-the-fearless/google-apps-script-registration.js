@@ -19,7 +19,7 @@
 const SPREADSHEET_ID = "1Ijuin1UknCJzUK04CrdM_y3DWFmmQDF00tiuICZknao";
 const SHEET_NAME = "Fearless Camp Registration";
 const ADMIN_TOKEN = "FearlessCampAdmin2026";
-const GOOGLE_FORM_OR_DOC_LINK = "PASTE_YOUR_GOOGLE_FORM_OR_DOC_LINK_HERE";
+const GOOGLE_FORM_OR_DOC_LINK = "https://forms.gle/d5AoKKoNhSEN1XAx5";
 const EMAIL_SENDER_NAME = "The Fearless Movement";
 
 function doPost(e) {
