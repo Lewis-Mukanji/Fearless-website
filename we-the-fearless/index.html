@@ -1621,6 +1621,219 @@ body {
     height: 300px;
   }
 }
+
+/* Home polish pass */
+.hero-pulse-card {
+  border-radius: 20px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.045)),
+    rgba(10, 10, 12, 0.72);
+  border-color: rgba(255, 174, 0, 0.22);
+}
+
+.hero-pulse-card h3 {
+  color: #fff;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.impact-section {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 174, 0, 0.12), transparent 28rem),
+    #121212;
+  color: #fff;
+}
+
+.impact-item,
+.stat-item,
+.insight-item {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.impact-item {
+  background: linear-gradient(135deg, #1e1e1e, #292929);
+  border-color: rgba(255, 174, 0, 0.16);
+}
+
+.impact-item:hover,
+.stat-item:hover,
+.insight-item:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 174, 0, 0.46);
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.16);
+}
+
+.impact-item h3 {
+  color: #fff;
+}
+
+.impact-item p {
+  color: #c9c9c9;
+}
+
+.stats-container {
+  margin-top: 34px;
+}
+
+.stat-item {
+  background: #1e1e1e;
+  border-color: rgba(255, 174, 0, 0.14);
+  color: #fff;
+}
+
+.stat-item p {
+  color: #d6d6d6;
+}
+
+.mission-card,
+.store-card,
+.video-embed iframe,
+.image-layout img,
+.event-card,
+.insight-item,
+.join-us-section,
+.join-us-section img {
+  border-radius: 20px;
+}
+
+.mission-card,
+.store-card {
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.28);
+}
+
+.video-section {
+  background: linear-gradient(180deg, #fff 0%, #fff8eb 100%);
+}
+
+.human-lens-section {
+  background:
+    radial-gradient(circle at 84% 10%, rgba(255, 174, 0, 0.11), transparent 24rem),
+    #101014;
+}
+
+.event-header {
+  color: #111;
+}
+
+.event-description {
+  color: #5d6470;
+}
+
+.event-cards {
+  scroll-padding-inline: 20px;
+}
+
+.insights-section {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 174, 0, 0.12), transparent 26rem),
+    #121212;
+}
+
+.insights-container > h2,
+.insight-item h3 {
+  color: #fff;
+}
+
+.insight-item {
+  background: linear-gradient(135deg, #1e1e1e, #292929);
+  border-color: rgba(255, 174, 0, 0.16);
+}
+
+.insight-item .category {
+  color: #ffae00;
+}
+
+.insight-item .read-article {
+  display: inline-flex;
+  margin-top: 12px;
+  color: #ffae00;
+  font-weight: 700;
+}
+
+.join-us-section {
+  border: 1px solid rgba(255, 174, 0, 0.16);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 174, 0, 0.11), transparent 26rem),
+    #0a0a0a;
+}
+
+.footer .footer-column p,
+.footer .footer-column ul li,
+.footer .footer-column ul li a {
+  color: #bbb;
+}
+
+.footer .footer-column ul li i {
+  width: 22px;
+  margin-right: 8px;
+  color: #ffae00;
+  text-align: center;
+}
+
+.footer .footer-socials {
+  display: flex;
+  gap: 15px;
+}
+
+.footer .footer-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  border-radius: 50%;
+  background: rgba(255, 174, 0, 0.1);
+  border: 1px solid rgba(255, 174, 0, 0.16);
+  color: #ffae00;
+  font-size: 1.15rem;
+}
+
+.footer .footer-socials a:hover {
+  background: #ffae00;
+  color: #000;
+  transform: translateY(-3px);
+}
+
+.footer .footer-copyright {
+  grid-column: 1 / -1;
+}
+
+.footer .footer-copyright span {
+  color: #ffae00;
+}
+
+@media screen and (max-width: 980px) {
+  .footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer .footer-socials {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-pulse-card {
+    width: auto;
+  }
+
+  .stats-container {
+    margin-top: 22px;
+  }
+
+  .mission-card,
+  .store-card {
+    min-width: 86vw;
+  }
+}
 </style>
 
     
@@ -1760,7 +1973,7 @@ body {
             <div class="impact-item">
                 <h3>10+ Countries</h3>
                 <p>Our organization is blessed to have a global reach, impacting over 10 countries across Africa and the world.
-                    Our missions and events extend to various regions, bringing hope, support, and the message of Godâ€™s love to diverse communities.
+                    Our missions and events extend to various regions, bringing hope, support, and the message of God's love to diverse communities.
                     From remote villages in Africa to urban centers across continents, our dedicated teams work tirelessly to address local needs, 
                     provide humanitarian aid, and share the Gospel.</p>
             </div>
@@ -1822,8 +2035,8 @@ body {
         <div class="content-container">
           <div class="text-row">
             <div class="text-left">
-              <h2>â€œArise, shine, for your light has come, and the glory of the LORD rises upon you. See, darkness covers 
-                the earth and thick darkness is over the peoples, but the LORD rises upon you and his glory appears over you.</h2>
+              <h2>"Arise, shine, for your light has come, and the glory of the LORD rises upon you. See, darkness covers 
+                the earth and thick darkness is over the peoples, but the LORD rises upon you and his glory appears over you."</h2>
                 <cite>~Isaiah 60:1-2~</cite>
             </div>
             <div class="text-right">
@@ -1858,13 +2071,13 @@ body {
 
     <!-- Event Description -->
 <div class="event-description">
-  Ready for an encounter that will change your life forever? Welcome to The Fearless Movement Campâ€”where faith, fun, and transformation collide  
-    This is not just any camp; itâ€™s a life-changing experience where youâ€™ll encounter the Holy Spirit, build meaningful connections with other youth, and take part in activities that leave a lasting impact.  
+  Ready for an encounter that will change your life forever? Welcome to The Fearless Movement Camp, where faith, fun, and transformation collide.  
+    This is not just any camp; it's a life-changing experience where you'll encounter the Holy Spirit, build meaningful connections with other youth, and take part in activities that leave a lasting impact.  
 
-    From transformative workshops to thrilling games, exciting events, and a memorable dinner night, thereâ€™s something for everyone.  
-    Take a moment to explore the activities showcased in the cards below â€” each one offering a glimpse into the incredible moments that await you at The Fearless Movement Camp.  
+    From transformative workshops to thrilling games, exciting events, and a memorable dinner night, there's something for everyone.  
+    Take a moment to explore the activities showcased in the cards below, each one offering a glimpse into the incredible moments that await you at The Fearless Movement Camp.  
 
-    Donâ€™t miss this opportunity to grow spiritually, make lifelong friends, and create unforgettable memories. We canâ€™t wait to see you there!
+    Don't miss this opportunity to grow spiritually, make lifelong friends, and create unforgettable memories. We can't wait to see you there!
 </div>
     <!-- Event Cards -->
     <div class="event-cards">
@@ -1960,13 +2173,14 @@ body {
 
     <!-- Middle Column -->
     <div class="footer-column">
-        <h4>Our Store</h4>
+        <h4>Explore</h4>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="donations.html">Faq</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="outreach.html">Outreach</a></li>
+            <li><a href="donations.html">Donations</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="login.html">Login</a></li>
         </ul>
     </div>
 
@@ -1975,7 +2189,6 @@ body {
         <h4>Get In Touch</h4>
         <ul>
             <li><i class="fas fa-map-marker-alt"></i> Clarence Matheny Ministries</li>
-            <li><i class="fas fa-phone"></i> +254 710 899453</li>
             <li><i class="fas fa-phone"></i> +254 710 899453</li>
             <li><i class="fas fa-envelope"></i> info@thefearlessmovement.co.ke</li>
         </ul>

@@ -21,11 +21,11 @@
   <!-- Navigation Links -->
   <div class="nav-links" id="nav-links">
       <a href="index.html">Home</a>
+      <a href="about.html">About us</a>
       <a href="events.html" class="active">Events</a>
       <a href="outreach.html">Evangelism</a>
-      <!-- <a href="merchandise.html">Merchandise</a> -->
-      <a href="about.html">About us</a>
       <a href="donations.html">Donations</a>
+      <!-- <a href="merchandise.html">Merchandise</a> -->
       <a href="contact.html">Contact us</a>
   </div>
   
@@ -41,12 +41,17 @@
     <div class="hero-overlay">
       <div class="hero-content">
         <h1>Our Upcoming Annual Fearless Camp</h1>
+        <div class="hero-meta">
+          <span><i class="fas fa-calendar-alt"></i> August 31st - September 4th</span>
+          <span><i class="fas fa-map-marker-alt"></i> CMLTI Limuru, Kenya</span>
+          <span><i class="fas fa-campground"></i> Annual Camp</span>
+        </div>
         <div class="event-details">
           <span>📅 August 31st - September 4th</span>
           <span>📍 CMLTI Limuru, KENYA</span>
           <span>⛪ </span>
         </div>
-        <p>Embark on a journey of self-discovery as you push your limits.</p>
+        <p>Embark on a journey of faith, courage, discipleship, worship, and unforgettable community.</p>
         <div class="countdown-timer">
           <div><span id="days">000</span><p>DAYS</p></div>
           <div><span id="hours">00</span><p>HOURS</p></div>
@@ -59,41 +64,46 @@
     </div>
   </section>
 
-  <section id="discipleship-section" style="background-color: #000; color: #fff; padding: 50px 20px; text-align: center;">
-    <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 20px;">DISCIPLESHIP</h2>
-    <h3 style="font-size: 2rem; font-weight: bold; margin-bottom: 15px;">THE FEARLESS MOVEMENT YOUTH CAMP</h3>
-    <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 20px;">
+  <section id="discipleship-section" class="discipleship-section">
+    <div class="section-eyebrow"><i class="fas fa-fire"></i> Discipleship</div>
+    <h2>THE FEARLESS MOVEMENT YOUTH CAMP</h2>
+    <p>
         Discipleship is a lifetime commitment that every individual needs to choose for themselves.
         The Fearless Movement Youth Camp aims at sparking the desire for discipleship in the heart of every camp attendee.
     </p>
-    <p style="font-size: 1.2rem; line-height: 1.8;">
+    <p>
         With inspired preachings, dynamic workshops, and exciting camp activities all aimed at teaching the youth how to spread the word in everything they do.
     </p>
 </section>
 
-  <section id="fearless-event" style="background-color: black; color: white; padding: 50px 20px; text-align: left;">
-    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; max-width: 1200px; margin: 0 auto;">
+  <section id="fearless-event" class="featured-event-section">
+    <div class="featured-event-container">
         <!-- Left Side: Video -->
-        <div style="flex: 1; min-width: 300px; padding: 20px;">
-          <video autoplay muted loop style="width: 100%; border-radius: 0; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);">
+        <div class="featured-video">
+          <video autoplay muted loop playsinline>
             <source src="img/dy.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         
         </div>
         <!-- Right Side: Content -->
-        <div style="flex: 1; min-width: 300px; padding: 20px;">
+        <div class="featured-copy">
             <!-- Title -->
-            <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 20px;">Our Annual Fearless Camp</h2>
+            <div class="section-eyebrow"><i class="fas fa-star"></i> Featured Experience</div>
+            <h2>Our Annual Fearless Camp</h2>
             <!-- Subtitle -->
-            <h3 style="font-size: 1.5rem; font-weight: normal; margin-bottom: 15px;">Join Us For the Ultimate Experience</h3>
+            <h3>Join Us For the Ultimate Experience</h3>
             <!-- Description -->
-            <p style="font-size: 1rem; line-height: 1.6; margin-bottom: 20px;">
+            <p>
                 Be part of a transformational experience featuring inspiring speakers, worship sessions, and empowering discussions.
                 A once-in-a-lifetime opportunity to connect and grow!
             </p>
             <!-- Date and Venue -->
-            <p style="font-size: 1rem; line-height: 1.8;">
+            <p class="event-meta-list">
+                <span><i class="fas fa-calendar-alt"></i> <strong>August 31st, 2026 @ 10:00 am - September 4th, 2026 @ 1:00 pm</strong></span>
+                <span><i class="fas fa-map-marker-alt"></i> <strong>Clarence Matheny Ministries, Limuru, Kenya</strong></span>
+            </p>
+            <p class="event-meta-list legacy-event-meta">
                 <span style="display: block; margin-bottom: 10px;">
                     🗓️ <strong>August 31st, 2026 @ 10:00 am - September 4th, 2026 @ 1:00 pm</strong>
                 </span>
@@ -238,7 +248,7 @@
     <div class="total">Total: Sh. <span id="total-cost">0</span></div>
     <button class="purchase-btn" id="purchase-button">Purchase Tickets</button>
   </div>
-  <div class="thank-you-message">
+  <!-- <div class="thank-you-message">
     <p>
       <em>"We have plans that can help you purchase tickets in a more convenient and pocket friendly way."
         <br> "Please select an appropriate payment plan and proceed." </br> 
@@ -250,7 +260,7 @@
       <button class="orange-button" id="monthly-button">Monthly Plan</button>
     </div>
     <em>"We appreciate your support and look forward to seeing you at the camp!"</em>
-</div>
+</div> -->
 </section>  
 
 <!-- Add Modal HTML for M-Pesa Payment -->
@@ -409,17 +419,19 @@
           <a href="https://instagram.com/the.fearlessmovement" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           <a href="https://www.facebook.com/thefearlessmovement" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
           <a href="https://www.tiktok.com/@the.fearless.move" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://youtube.com/@thefearlessmovement?si=M5ST_UPsni4apQUp" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
       </div>
   </div>
 
   <!-- Middle Column -->
   <div class="footer-column">
-      <h4>Our Store</h4>
+      <h4>Explore</h4>
       <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#service">Service</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="outreach.html">Outreach</a></li>
+          <li><a href="contact.html">Contact</a></li>
       </ul>
   </div>
 
@@ -428,7 +440,6 @@
       <h4>Get In Touch</h4>
       <ul>
         <li><i class="fas fa-map-marker-alt"></i> Clarence Matheny Ministries</li>
-        <li><i class="fas fa-phone"></i> +254 710 899453</li>
         <li><i class="fas fa-phone"></i> +254 710 899453</li>
         <li><i class="fas fa-envelope"></i> info@thefearlessmovement.co.ke</li>
       </ul>
